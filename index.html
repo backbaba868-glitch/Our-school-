@@ -19,24 +19,42 @@
         nav a { color:white; padding:15px 18px; display:inline-block; text-decoration:none; font-weight: 600; font-size: 14px; text-transform: uppercase; }
         nav a:hover { background:#0d47a1; transition: 0.3s; }
 
-        /* Sections */
+        /* Hero Section */
+       .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050853064-88989b99f9a7?auto=format&fit=crop&w=1000&q=80'); background-size: cover; color:white; text-align:center; padding:80px 20px; }
+       .hero h2 { font-size: 2rem; margin-bottom: 10px; color: #ffd600; }
+
+        /* Main Sections */
         section { max-width: 1100px; margin: 25px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         h2 { color: #0d47a1; border-left: 5px solid #ffd600; padding-left: 15px; margin-bottom: 25px; }
 
-        /* Unified Grid System (The "One Box" Solution) */
-       .faculty-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-       .profile-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; text-align: center; border: 1px solid #eee; transition: 0.3s; }
-       .profile-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        /* Fixed Teacher Grid - "One Box" Solution */
+       .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+       .teacher-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; text-align: center; border: 1px solid #eee; transition: 0.3s; }
+       .teacher-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
         
-        /* Forces all images to be the same size */
-       .profile-card img { width: 100%; height: 320px; object-fit: cover; display: block; }
-       .profile-info { padding: 15px; }
-       .profile-info h3 { margin: 0; color: #0d47a1; font-size: 1.1rem; }
-       .profile-info p { margin: 5px 0 0; color: #666; font-size: 0.9rem; font-weight: 600; }
+        /* Fixes big and small image sizes to be uniform */
+       .teacher-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+       .teacher-info { padding: 15px; }
+       .teacher-info h3 { margin: 0; color: #0d47a1; font-size: 1.1rem; }
+       .teacher-info p { margin: 5px 0 0; color: #666; font-size: 0.9rem; font-weight: 600; }
 
-        /* Developer Special Styling */
-       .developer-card { border: 2px solid #2e7d32; }
-       .developer-card.role { color: #2e7d32; }
+        /* List for teachers without photos */
+       .text-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 20px; }
+       .text-card { background: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid #ddd; text-align: center; font-size: 0.9rem; }
+
+        /* Future Vision Cards */
+       .future-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+       .vision-item { background: #fffde7; padding: 20px; border-radius: 10px; border-left: 5px solid #fbc02d; }
+       .vision-item h3 { margin-top: 0; color: #f57f17; }
+
+        /* Achievement Cards */
+       .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+       .card { background:#e3f2fd; padding:20px; border-radius:8px; text-align:center; font-weight:bold; color: #0d47a1; border: 1px solid #bbdefb; }
+
+        /* Forms */
+        input, textarea { width:100%; padding:12px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size: 16px; box-sizing: border-box; }
+        button { background:#2e7d32; color:white; padding:15px 30px; border:none; border-radius:6px; cursor:pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button:hover { background:#1b5e20; }
 
         /* Footer */
         footer { background:#0d47a1; color:white; text-align:center; padding:30px 15px; margin-top: 50px; }
@@ -48,48 +66,151 @@
 <header>
     <img src="https://i.imgur.com/8QO9T9l.jpeg" alt="Logo" class="school-logo">
     <h1>Shree Ganesh Secondary School</h1>
-    <p>Suryagadhi-4, Ratmate, Nuwakot, Bagmati Province, Nepal [span_7](start_span)[span_7](end_span)</p>
+    <p>Suryagadhi-4, Ratmate, Nuwakot, Bagmati Province, Nepal [1]</p>
+    <p><strong>Estd: 2035 BS</strong> | Medium: Nepali | Classes: 0 - 12 [1]</p>
 </header>
 
 <nav>
     <a href="#">Home</a>
     <a href="#about">About</a>
     <a href="#teachers">Teachers</a>
-    <a href="#developer">Developer</a>
+    <a href="#future">Future</a>
+    <a href="#courses">Courses</a>
+    <a href="#admission">Admission</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<section id="teachers">
-    <h2>Our Dedicated Teachers</h2>
-    <div class="faculty-grid">
-        <div class="profile-card">
-            <img src="https://i.imgur.com/7XQKRUN.jpeg" alt="Ram Kumar Giri">
-            <div class="profile-info"><h3>Ram Kumar Giri</h3><p>Faculty Member</p></div>
-        </div>
-        <div class="profile-card">
-            <img src="https://i.imgur.com/mYIU2Gv.jpeg" alt="Mina Thapa">
-            <div class="profile-info"><h3>Mina Thapa</h3><p>Faculty Member</p></div>
-        </div>
-        </div>
-</section>
+<div class="hero">
+    <h2>"Practice Makes Perfect"</h2>
+    <p>We believe in 50% Theory and 50% Practical Education for Every Student.[1]</p>
+</div>
 
-<section id="developer">
-    <h2>Website Developer</h2>
-    <div class="faculty-grid">
-        <div class="profile-card developer-card">
-            <img src="YOUR_IMGUR_LINK_HERE" alt="Sirjan Bhattarai">
-            <div class="profile-info">
-                <h3>Sirjan Bhattarai</h3>
-                <p class="role">Web Developer & Designer</p>
-            </div>
-        </div>
+<section id="about">
+    <h2>About Our School</h2>
+    <p>Shree Ganesh Secondary School is a leading educational institution in Nuwakot, dedicated to accessible, high-quality education.[1]</p>
+    <div style="background: #f1f8e9; padding: 20px; border-radius: 8px; margin-top: 20px;">
+        <h3>Principal's Message</h3>
+        <p><em>"Our mission is to foster a disciplined environment where students gain the knowledge and skills necessary for the 21st century." [1]</em></p>
+        <p><strong>— Principal: Keshar Adhikari</strong></p>
     </div>
 </section>
 
+<section id="teachers">
+    <h2>Our Dedicated Teachers</h2>
+    <div class="teacher-grid">
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/7XQKRUN.jpeg" alt="Ram Kumar Giri">
+            <div class="teacher-info"><h3>Ram Kumar Giri</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/mYIU2Gv.jpeg" alt="Mina Thapa">
+            <div class="teacher-info"><h3>Mina Thapa</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/RBsZLeH.jpeg" alt="Jayaram Pathak">
+            <div class="teacher-info"><h3>Jayaram Pathak</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/Pv3Etkw.jpeg" alt="Shaku Shankar Koirala">
+            <div class="teacher-info"><h3>Shaku Shankar Koirala</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/RhwxHGM.jpeg" alt="Upendra Thapa">
+            <div class="teacher-info"><h3>Upendra Thapa</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/ttig6DZ.jpeg" alt="Sita Tamang">
+            <div class="teacher-info"><h3>Sita Tamang</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/TaaoGWG.jpeg" alt="Rajeshwori Giri">
+            <div class="teacher-info"><h3>Rajeshwori Giri</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/YHXbFtc.jpeg" alt="Dipak Malla">
+            <div class="teacher-info"><h3>Dipak Malla</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/0M4c4DZ.jpeg" alt="Gita Adhikari">
+            <div class="teacher-info"><h3>Gita Adhikari</h3><p>Faculty Member</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/k7bpqjf.jpeg" alt="Dipendra Thapa">
+            <div class="teacher-info"><h3>Dipendra Thapa</h3><p>Faculty Member</p></div>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; color: #0d47a1;">Additional Faculty & Staff</h3>
+    <div class="text-grid">
+        <div class="text-card">Keshar Adhikari</div>
+        <div class="text-card">Ashok Rai</div>
+        <div class="text-card">Mim Bahadur Manandhar</div>
+        <div class="text-card">Khamlal Timalsina</div>
+        <div class="text-card">Hari Sharan Devkota</div>
+        <div class="text-card">Saraswati Subedi</div>
+        <div class="text-card">Chandika Bhatta</div>
+        <div class="text-card">Laxmi Adhikari</div>
+        <div class="text-card">Goma Saru Magar</div>
+        <div class="text-card">Padam Bahadur Rai</div>
+        <div class="text-card">Kaji Bahadur Paudel</div>
+        <div class="text-card">Shanti Shrestha</div>
+    </div>
+</section>
+
+<section id="future">
+    <h2>School Features & Goals</h2>
+    <div class="future-grid">
+        <div class="vision-item"><h3>Digital Growth</h3><p>Integrating smart-boards and high-speed internet. [1]</p></div>
+        <div class="vision-item"><h3>Lab Expansion</h3><p>Building advanced Science and Computer labs. [1]</p></div>
+        <div class="vision-item"><h3>Community Hub</h3><p>A center for vocational training in Suryagadhi. [1]</p></div>
+    </div>
+</section>
+
+<section id="achievements">
+    <h2>Our Achievements</h2>
+    <div class="cards">
+        <div class="card">🏆 Municipality Level Award Winner [1]</div>
+        <div class="card">🎓 84.47% SEE Pass Rate [1]</div>
+        <div class="card">💻 Best Management School [1]</div>
+    </div>
+</section>
+
+<section id="admission">
+    <h2>Online Admission Inquiry</h2>
+    <form action="https://formspree.io/f/xgonldyb" method="POST" style="max-width: 600px; margin: auto;">
+        <input type="text" name="name" placeholder="Student Name" required>
+        <input type="text" name="class" placeholder="Class to join" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Full Address & Details" rows="4" required></textarea>
+        <button type="submit">Send Inquiry</button>
+    </form>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Suryagadhi-4, Ratmate, Nuwakot, Nepal [1]</p>
+    <p>📞 +977 9851338955 [1]</p>
+    <p>📧 ganeshmabi444@gmail.com [1]</p>
+</section>
+
 <footer>
-    <p>&copy; 2026 Shree Ganesh Secondary School | All Rights Reserved [span_8](start_span)[span_8](end_span)</p>
+    <p>&copy; 2026 Shree Ganesh Secondary School | All Rights Reserved [1]</p>
+    <p>Principal: <strong>Keshar Adhikari</strong></p>
     <p>Website Designed by: <span class="footer-credit">Sirjan Bhattarai</span></p>
 </footer>
 
+<script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith("#")) {
+                e.preventDefault();
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
 </body>
-</html>
+    </html>
+    
