@@ -19,46 +19,37 @@
         nav { background:#1565c0; text-align:center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         nav a { color:white; padding:15px 18px; display:inline-block; text-decoration:none; font-weight: 600; font-size: 14px; text-transform: uppercase; }
         nav a:hover { background:#0d47a1; transition: 0.3s; }
-
-        /* The Grid Container */
+          /* The Container */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  gap: 20px;
   padding: 20px;
 }
 
-/* Image Wrapper */
+/* The Image Wrapper */
 .gallery-item {
+  width: 100%;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  background: #fff;
+  border-radius: 8px;
+  background: #eee; /* Placeholder color while loading */
 }
 
-/* The Image Style */
+/* THE FIX: This forces all images to be the same size */
 .gallery-item img {
   width: 100%;
-  height: 250px;
-  object-fit: cover; /* Ensures images fill the space without stretching */
+  aspect-ratio: 4 / 3; /* Forces a standard 4:3 rectangle shape */
+  object-fit: cover;   /* Crops the image to fit the box without stretching */
   display: block;
-  transition: transform 0.4s ease-in-out;
-  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* Hover Zoom Effect */
+/* Subtle hover effect */
 .gallery-item img:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
-
-/* Mobile Responsive adjustment */
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-}
-
+        
+           
         /* Hero Section */
        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050853064-88989b99f9a7?auto=format&fit=crop&w=1000&q=80'); background-size: cover; color:white; text-align:center; padding:80px 20px; }
        .hero h2 { font-size: 2rem; margin-bottom: 10px; color: #ffd600; }
