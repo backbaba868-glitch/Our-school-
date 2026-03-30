@@ -32,6 +32,24 @@
     text-align: center;
     color: white;
 }
+        /* This will fix the huge logo size */
+.school-logo, .main-logo {
+    width: 120px;       /* Change this number to make it bigger or smaller */
+    height: 120px;      /* Keep height the same as width for a perfect circle */
+    object-fit: contain; /* Ensures the logo doesn't look stretched */
+    display: block;
+    margin: 0 auto;     /* Centers the logo */
+    border-radius: 50%; /* Optional: Makes it circular if it's a square logo */
+}
+
+/* Adjusting for mobile so it looks good on phones */
+@media (max-width: 600px) {
+    .school-logo, .main-logo {
+        width: 100px;
+        height: 100px;
+    }
+}
+        
 
 /* Logo styling */
 .main-logo {
