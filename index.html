@@ -134,6 +134,52 @@
         <a href="mailto: "sirjanbhattarai308@gmail.com" style="text-decoration:none; background:#0d47a1; color:white; padding:10px 25px; border-radius:25px; font-weight:bold; transition:0.3s;">Contact Developer</a>
     </div>
 </section>
+        /* This makes the page slide smoothly */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Style for each section to make them look like separate "pages" */
+.content-section {
+    padding: 80px 20px;
+    min-height: 600px; /* Ensures each section is tall enough */
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Keep the Navbar fixed at the top so it's always visible */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #004aad;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Adds space at the top so the header doesn't hide the section title */
+section {
+    scroll-margin-top: 60px;
+}
+        
         
 
         /* Footer */
@@ -171,7 +217,42 @@
     <a href="#contact">Contact</a>
     <a href="#Galary">Galary</a>
 </nav>
+<nav class="navbar">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#teachers">Teachers</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
+<section id="home" class="hero-container">
+    <div class="overlay">
+        <img src="your-logo.png" class="school-logo">
+        <h1>Shree Ganesh Secondary School</h1>
+    </div>
+</section>
+
+<section id="about" class="content-section">
+    <h2>About Our School</h2>
+    <p>Details about the school go here...</p>
+</section>
+
+<section id="teachers" class="content-section">
+    <h2>Our Teachers</h2>
+    <p>Meet our dedicated staff...</p>
+</section>
+
+<section id="gallery" class="content-section">
+    <h2>School Gallery</h2>
+    </section>
+
+<section id="contact" class="content-section">
+    <h2>Contact Us</h2>
+    <p>Phone: +977-XXXXXXXXXX</p>
+</section>
+    
 <div class="hero">
     <h2>"Practice Makes Perfect"</h2>
     <p>We believe in 50% Theory and 50% Practical Education for Every Student.</p>
