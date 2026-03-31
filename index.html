@@ -386,6 +386,56 @@
     });
 </script>
 
+    <div style="text-align: center; padding: 10px; background: #fff;">
+    <button id="speak-btn" style="width: auto; background: #d32f2f; padding: 10px 20px;">
+        🔊 वेबसाइटको जानकारी सुन्नुहोस् (Listen to Website)
+    </button>
+    <button id="stop-btn" style="width: auto; background: #333; padding: 10px 20px; display: none;">
+        🛑 रोक्नुहोस् (Stop)
+    </button>
+    </div>
+<script>
+const speakBtn = document.getElementById('speak-btn');
+const stopBtn = document.getElementById('stop-btn');
+
+// वेबसाइटमा भएका मुख्य जानकारीहरू जम्मा गर्ने
+function getWebsiteText() {
+    const schoolName = document.querySelector('.school-name').innerText;
+    const location = document.querySelector('.school-location').innerText;
+    const aboutText = document.querySelector('#about p').innerText;
+    const contactInfo = "सम्पर्क नम्बर ९८५१३३८९५५।";
+    
+    return `नमस्ते, श्री गणेश माध्यमिक विद्यालयको वेबसाइटमा स्वागत छ। यो विद्यालय ${location} मा अवस्थित छ। हाम्रो बारेमा: ${aboutText} थप जानकारीको लागि हाम्रो ${contactInfo} मा फोन गर्नुहोस्। धन्यवाद।`;
+}
+
+speakBtn.addEventListener('click', () => {
+    const textToSpeak = getWebsiteText();
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    
+    // नेपाली आवाज सेट गर्ने प्रयास (यदि ब्राउजरमा उपलब्ध छ भने)
+    utterance.lang = 'ne-NP'; 
+    utterance.rate = 0.9; // अलि बिस्तारै बोल्ने
+
+    window.speechSynthesis.speak(utterance);
+
+    // बटनहरू परिवर्तन गर्ने
+    speakBtn.style.display = 'none';
+    stopBtn.style.display = 'inline-block';
+
+    utterance.onend = () => {
+        speakBtn.style.display = 'inline-block';
+        stopBtn.style.display = 'none';
+    };
+});
+
+stopBtn.addEventListener('click', () => {
+    window.speechSynthesis.cancel();
+    speakBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
+});
+</script>
+    
+
 </body>
     </html>
     
