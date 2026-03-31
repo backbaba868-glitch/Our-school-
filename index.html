@@ -482,6 +482,40 @@
     }, { once: true });
 
     speakBtn.addEventListener('click', speakWebsite);
+    function searchSite() {
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    
+    // यदि खाली सर्च गरेमा केही नगर्ने
+    if (input === "") return;
+
+    // सबै section र heading हरूमा खोज्ने
+    let elements = document.querySelectorAll('section, h1, h2, h3, p, .teacher-card');
+    let found = false;
+
+    for (let el of elements) {
+        if (el.innerText.toLowerCase().includes(input)) {
+            // भेटिएपछि त्यहाँ पुग्ने (Scroll)
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // हाइलाइट गर्ने (Highlight)
+            let originalBg = el.style.backgroundColor;
+            el.style.backgroundColor = "#ffd600"; 
+            el.style.transition = "0.5s";
+            
+            setTimeout(() => {
+                el.style.backgroundColor = originalBg;
+            }, 2500);
+
+            found = true;
+            break; // पहिलो नतिजा भेटिएपछि रोकिने
+        }
+    }
+
+    if (!found) {
+        alert("माफ गर्नुहोला, '" + input + "' सँग सम्बन्धित केही भेटिएन।");
+    }
+    }
+    
 </script>
     
 
