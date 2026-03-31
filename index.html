@@ -385,98 +385,106 @@
         });
     });
 </script>
-<div style="text-align: center; padding: 20px; background: #f0f2f5;">
-    <button id="speak-btn" style="
-        background: #1565c0; 
-        color: white; 
-        padding: 15px 30px; 
-        border: none; 
-        border-radius: 50px; 
-        font-weight: bold; 
-        cursor: pointer; 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        font-size: 16px;
-        transition: 0.3s;">
-        🔊 Listen to Website (Male Voice)
+<div style="background: #1565c0; padding: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; position: sticky; top: 0; z-index: 2000;">
+    
+    <div style="position: relative;">
+        <input type="text" id="searchInput" placeholder="Search teacher or news..." style="width: 250px; padding: 10px; border-radius: 20px; border: none; margin: 0;">
+        <button onclick="searchSite()" style="position: absolute; right: 5px; top: 5px; width: 60px; padding: 5px; background: #ffd600; color: #000; border-radius: 15px;">Search</button>
+    </div>
+
+    <select id="langSelect" onchange="changeLanguage()" style="padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold;">
+        <option value="en">🌐 English</option>
+        <option value="ne">🌐 नेपाली (Nepali)</option>
+    </select>
+
+    <button id="speak-btn" style="background: #2e7d32; color: white; padding: 10px 20px; border: none; border-radius: 20px; font-weight: bold; cursor: pointer;">
+        🔊 Listen
     </button>
 </div>
 
 <script>
     const speakBtn = document.getElementById('speak-btn');
+    const langSelect = document.getElementById('langSelect');
     let synth = window.speechSynthesis;
 
+    // क. सर्च गर्ने फङ्सन (Search Function)
+    function searchSite() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let sections = document.querySelectorAll('section, .teacher-card, h2, p');
+        let found = false;
+
+        sections.forEach(section => {
+            if (section.innerText.toLowerCase().includes(input)) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                section.style.background = "#fffde7"; // हाइलाइट गर्ने
+                setTimeout(() => section.style.background = "", 2000);
+                found = true;
+            }
+        });
+
+        if (!found) alert("No results found for: " + input);
+    }
+
+    // ख. भाषा बदल्ने फङ्सन (Simple Translation Simulator)
+    function changeLanguage() {
+        let lang = langSelect.value;
+        const translations = {
+            'en': {
+                'about': 'About Our School',
+                'teacher': 'Our Teachers',
+                'contact': 'Contact Us',
+                'btn': '🔊 Listen'
+            },
+            'ne': {
+                'about': 'हाम्रो विद्यालयको बारेमा',
+                'teacher': 'हाम्रा शिक्षकहरू',
+                'contact': 'सम्पर्क गर्नुहोस्',
+                'btn': '🔊 जानकारी सुन्नुहोस्'
+            }
+        };
+
+        // शीर्षकहरू फेर्ने
+        document.querySelector('#about h2').innerText = translations[lang].about;
+        document.querySelector('#teachers h2').innerText = translations[lang].teacher;
+        document.querySelector('#contact h2').innerText = translations[lang].contact;
+        speakBtn.innerText = translations[lang].btn;
+    }
+
+    // ग. आवाज (Voice) - अब यो भाषा अनुसार बोल्छ!
     function speakWebsite() {
-        // यदि पहिले नै बोलिरहेको छ भने रोक्ने (Stop if already speaking)
-        if (synth.speaking) {
-            synth.cancel();
-            speakBtn.innerHTML = "🔊 Listen to Website";
-            speakBtn.style.background = "#1565c0";
-            return;
+        if (synth.speaking) { synth.cancel(); return; }
+
+        let lang = langSelect.value;
+        let message = "";
+
+        if (lang === 'en') {
+            message = "Welcome to Shree Ganesh Secondary School. We provide quality education in Nuwakot, Nepal. Developed by Sirjan Bhattarai.";
+        } else {
+            message = "श्री गणेश माध्यमिक विद्यालयको वेबसाइटमा स्वागत छ। यो विद्यालय नुवाकोटमा अवस्थित छ। यसको निर्माण सिर्जन भट्टराईले गरेका हुन्।";
         }
-
-        // वेबसाइटको जानकारी अङ्ग्रेजीमा (English for better support)
-        const schoolName = "Shree Ganesh Secondary School";
-        const location = "Suryagadhi-4, Ratmate, Nuwakot, Nepal";
-        const establishment = "Established in 2035 B.S.";
-        const principal = "The school's principal is Mr. Keshar Adhikari.";
-        const about = "We believe in 50 percent theory and 50 percent practical education for every student.";
-        const contact = "Contact us at 9-8-5-1-3-3-8-9-5-5 or email ganeshmabi444@gmail.com.";
-        const developer = "This website is developed by Sirjan Bhattarai.";
-
-        // सबै जानकारी जोड्ने
-        const message = `Welcome to ${schoolName}. Located in ${location}. ${establishment}. ${about} ${principal} ${contact} ${developer}. Thank you for visiting our website.`;
 
         const utterance = new SpeechSynthesisUtterance(message);
+        
+        // भाषा अनुसार इन्जिन मिलाउने
+        utterance.lang = (lang === 'en') ? 'en-US' : 'hi-IN'; // नेपाली नभए हिन्दी इन्जिनले नेपाली पढ्छ
+        utterance.pitch = 0.8; // पुरुष आवाज (Male Voice)
+        utterance.rate = 0.9;
 
-        // अङ्ग्रेजी पुरुष आवाज (English Male Voice) खोज्ने
-        let voices = synth.getVoices();
-        let maleVoice = voices.find(v => 
-            (v.name.includes('Male') || v.name.includes('David') || v.name.includes('James') || v.name.includes('en-US')) && 
-            !v.name.includes('Female')
-        );
-
-        if (maleVoice) {
-            utterance.voice = maleVoice;
-        }
-
-        // आवाजलाई "Male" र "Deep" बनाउने सेटिङ
-        utterance.lang = 'en-US'; 
-        utterance.pitch = 0.8;  // ०.८ राख्दा आवाज मोटो र पुरुषको जस्तो सुनिन्छ
-        utterance.rate = 0.9;   // अलि बिस्तारै र प्रस्ट बोल्न
-
-        // सुरु हुँदा बटनको नाम फेर्ने
-        utterance.onstart = () => {
-            speakBtn.innerHTML = "🛑 Stop Listening...";
-            speakBtn.style.background = "#d32f2f";
-        };
-
-        // सकिएपछि बटनलाई पुरानै अवस्थामा ल्याउने
-        utterance.onend = () => {
-            speakBtn.innerHTML = "🔊 Listen to Website";
-            speakBtn.style.background = "#1565c0";
-        };
+        utterance.onstart = () => speakBtn.innerText = "🛑 Stop";
+        utterance.onend = () => speakBtn.innerText = (lang === 'en') ? "🔊 Listen" : "🔊 जानकारी सुन्नुहोस्";
 
         synth.speak(utterance);
     }
 
-    // आवाज लोड हुन केही समय लाग्ने भएकोले यो जरुरी छ
-    window.speechSynthesis.onvoiceschanged = () => {
-        console.log("Male voices loaded and ready.");
-    };
+    // घ. पहिलो टचमा इन्जिन एक्टिभ गर्ने (GitHub Fix)
+    document.body.addEventListener('click', () => {
+        const silent = new SpeechSynthesisUtterance("");
+        synth.speak(silent);
+    }, { once: true });
 
     speakBtn.addEventListener('click', speakWebsite);
-    // यो लाइन थप्नुहोस् जसले गर्दा ब्राउजरको आवाज इन्जिन एक्टिभ होस्
-document.body.addEventListener('click', () => {
-    if (synth.speaking) return; 
-    // यसले पहिलो क्लिकमै इन्जिनलाई 'Wake up' गराउँछ
-}, { once: true });
-    
 </script>
     
-     
-    
-    
-    </script>
 
 </body>
     </html>
