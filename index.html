@@ -484,37 +484,40 @@
     speakBtn.addEventListener('click', speakWebsite);
     function searchSite() {
     let input = document.getElementById('searchInput').value.trim().toLowerCase();
-    
-    // यदि खाली सर्च गरेमा केही नगर्ने
     if (input === "") return;
 
-    // सबै section र heading हरूमा खोज्ने
-    let elements = document.querySelectorAll('section, h1, h2, h3, p, .teacher-card');
+    // शिक्षकको कार्डहरू खोज्ने
+    let cards = document.querySelectorAll('.teacher-card');
     let found = false;
 
-    for (let el of elements) {
-        if (el.innerText.toLowerCase().includes(input)) {
-            // भेटिएपछि त्यहाँ पुग्ने (Scroll)
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // हाइलाइट गर्ने (Highlight)
-            let originalBg = el.style.backgroundColor;
-            el.style.backgroundColor = "#ffd600"; 
-            el.style.transition = "0.5s";
-            
+    for (let card of cards) {
+        // कार्ड भित्रको नाम मात्र चेक गर्ने
+        let name = card.querySelector('h3').innerText.toLowerCase();
+        
+        if (name.includes(input)) {
+            // पूरा कार्डलाई नै स्क्रिनको बीचमा ल्याउने
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // कार्डलाई हाइलाइट गर्ने ताकि कुन हो भन्ने प्रस्ट होस्
+            card.style.border = "4px solid #ffd600";
+            card.style.transform = "scale(1.05)";
+            card.style.transition = "0.5s";
+
             setTimeout(() => {
-                el.style.backgroundColor = originalBg;
-            }, 2500);
+                card.style.border = "1px solid #eee";
+                card.style.transform = "scale(1)";
+            }, 3000);
 
             found = true;
-            break; // पहिलो नतिजा भेटिएपछि रोकिने
+            break; 
         }
     }
 
     if (!found) {
-        alert("माफ गर्नुहोला, '" + input + "' सँग सम्बन्धित केही भेटिएन।");
+        alert("माफ गर्नुहोला, '" + input + "' नाम गरेको शिक्षक भेटिएन।");
     }
     }
+        
     
 </script>
     
