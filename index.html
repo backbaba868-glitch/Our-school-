@@ -395,46 +395,59 @@
     </button>
     </div>
 <script>
-const speakBtn = document.getElementById('speak-btn');
+
+    const speakBtn = document.getElementById('speak-btn');
 const stopBtn = document.getElementById('stop-btn');
+let synth = window.speechSynthesis;
 
-// वेबसाइटमा भएका मुख्य जानकारीहरू जम्मा गर्ने
-function getWebsiteText() {
-    const schoolName = document.querySelector('.school-name').innerText;
-    const location = document.querySelector('.school-location').innerText;
-    const aboutText = document.querySelector('#about p').innerText;
-    const contactInfo = "सम्पर्क नम्बर ९८५१३३८९५५।";
+function speak() {
+    if (synth.speaking) { synth.cancel(); }
+
+    const textToSpeak = "नमस्ते, श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेबसाइटमा तपाईंलाई स्वागत छ। म यस विद्यालयको डिजिटल सहायक हुँ। हाम्रो विद्यालय नुवाकोटको सूर्यगढी ४, रातमाटेमा अवस्थित छ। थप जानकारीका लागि तलका सेक्सनहरू हेर्नुहोस्। धन्यवाद।";
     
-    return `नमस्ते, श्री गणेश माध्यमिक विद्यालयको वेबसाइटमा स्वागत छ। यो विद्यालय ${location} मा अवस्थित छ। हाम्रो बारेमा: ${aboutText} थप जानकारीको लागि हाम्रो ${contactInfo} मा फोन गर्नुहोस्। धन्यवाद।`;
-}
-
-speakBtn.addEventListener('click', () => {
-    const textToSpeak = getWebsiteText();
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
     
-    // नेपाली आवाज सेट गर्ने प्रयास (यदि ब्राउजरमा उपलब्ध छ भने)
+    // ब्राउजरमा उपलब्ध आवाजहरू जम्मा गर्ने
+    let voices = synth.getVoices();
+
+    // पुरुष आवाज (Male Voice) खोज्ने प्रयास
+    // धेरैजसो 'Google Hindi' वा 'Google English (Male)' ले नेपाली राम्रोसँग पढ्छन्
+    let maleVoice = voices.find(voice => 
+        voice.name.includes('Male') || 
+        voice.name.includes('David') || 
+        voice.name.includes('Google हिन्दी')
+    );
+
+    if (maleVoice) {
+        utterance.voice = maleVoice;
+    }
+
+    // आवाजलाई अलि "Male" बनाउन पिच (Pitch) घटाउने र दर (Rate) मिलाउने
+    utterance.pitch = 0.8; // यो कम गर्दा आवाज धोद्रो (Deep/Male) सुनिन्छ
+    utterance.rate = 0.85; // अलि बिस्तारै र प्रस्ट बोल्ने
     utterance.lang = 'ne-NP'; 
-    utterance.rate = 0.9; // अलि बिस्तारै बोल्ने
 
-    window.speechSynthesis.speak(utterance);
-
-    // बटनहरू परिवर्तन गर्ने
-    speakBtn.style.display = 'none';
-    stopBtn.style.display = 'inline-block';
+    utterance.onstart = () => {
+        speakBtn.innerText = "🔊 बोल्दैछ...";
+        stopBtn.style.display = 'inline-block';
+    };
 
     utterance.onend = () => {
-        speakBtn.style.display = 'inline-block';
+        speakBtn.innerText = "🔊 वेबसाइटको जानकारी सुन्नुहोस्";
         stopBtn.style.display = 'none';
     };
-});
 
-stopBtn.addEventListener('click', () => {
-    window.speechSynthesis.cancel();
-    speakBtn.style.display = 'inline-block';
-    stopBtn.style.display = 'none';
-});
-</script>
-    
+    synth.speak(utterance);
+}
+
+// केही ब्राउजरमा आवाज लोड हुन समय लाग्छ, त्यसैले यो चाहिन्छ
+window.speechSynthesis.onvoiceschanged = () => {
+    console.log("आवाजहरू लोड भए!");
+};
+
+speakBtn.addEventListener('click', speak);
+stopBtn.addEventListener('click', () => { synth.cancel(); });
+    </script>
 
 </body>
     </html>
