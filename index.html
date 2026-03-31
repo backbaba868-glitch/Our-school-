@@ -385,72 +385,89 @@
         });
     });
 </script>
-
-    <div style="text-align: center; padding: 15px; background: #e3f2fd;">
-    <button id="speak-btn" style="width: auto; background: #0d47a1; color: white; padding: 12px 25px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        🔊 Listen to Website Info
+<div style="text-align: center; padding: 20px; background: #f0f2f5;">
+    <button id="speak-btn" style="
+        background: #1565c0; 
+        color: white; 
+        padding: 15px 30px; 
+        border: none; 
+        border-radius: 50px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        font-size: 16px;
+        transition: 0.3s;">
+        🔊 Listen to Website (Male Voice)
     </button>
-    </div>
-    
+</div>
+
 <script>
-const speakBtn = document.getElementById('speak-btn');
-let synth = window.speechSynthesis;
+    const speakBtn = document.getElementById('speak-btn');
+    let synth = window.speechSynthesis;
 
-function speakWebsite() {
-    // यदि पहिले नै बोलिरहेको छ भने रोक्ने
-    if (synth.speaking) {
-        synth.cancel();
-        speakBtn.innerText = "🔊 वेबसाइटको जानकारी सुन्नुहोस्";
-        return;
+    function speakWebsite() {
+        // यदि पहिले नै बोलिरहेको छ भने रोक्ने (Stop if already speaking)
+        if (synth.speaking) {
+            synth.cancel();
+            speakBtn.innerHTML = "🔊 Listen to Website";
+            speakBtn.style.background = "#1565c0";
+            return;
+        }
+
+        // वेबसाइटको जानकारी अङ्ग्रेजीमा (English for better support)
+        const schoolName = "Shree Ganesh Secondary School";
+        const location = "Suryagadhi-4, Ratmate, Nuwakot, Nepal";
+        const establishment = "Established in 2035 B.S.";
+        const principal = "The school's principal is Mr. Keshar Adhikari.";
+        const about = "We believe in 50 percent theory and 50 percent practical education for every student.";
+        const contact = "Contact us at 9-8-5-1-3-3-8-9-5-5 or email ganeshmabi444@gmail.com.";
+        const developer = "This website is developed by Sirjan Bhattarai.";
+
+        // सबै जानकारी जोड्ने
+        const message = `Welcome to ${schoolName}. Located in ${location}. ${establishment}. ${about} ${principal} ${contact} ${developer}. Thank you for visiting our website.`;
+
+        const utterance = new SpeechSynthesisUtterance(message);
+
+        // अङ्ग्रेजी पुरुष आवाज (English Male Voice) खोज्ने
+        let voices = synth.getVoices();
+        let maleVoice = voices.find(v => 
+            (v.name.includes('Male') || v.name.includes('David') || v.name.includes('James') || v.name.includes('en-US')) && 
+            !v.name.includes('Female')
+        );
+
+        if (maleVoice) {
+            utterance.voice = maleVoice;
+        }
+
+        // आवाजलाई "Male" र "Deep" बनाउने सेटिङ
+        utterance.lang = 'en-US'; 
+        utterance.pitch = 0.8;  // ०.८ राख्दा आवाज मोटो र पुरुषको जस्तो सुनिन्छ
+        utterance.rate = 0.9;   // अलि बिस्तारै र प्रस्ट बोल्न
+
+        // सुरु हुँदा बटनको नाम फेर्ने
+        utterance.onstart = () => {
+            speakBtn.innerHTML = "🛑 Stop Listening...";
+            speakBtn.style.background = "#d32f2f";
+        };
+
+        // सकिएपछि बटनलाई पुरानै अवस्थामा ल्याउने
+        utterance.onend = () => {
+            speakBtn.innerHTML = "🔊 Listen to Website";
+            speakBtn.style.background = "#1565c0";
+        };
+
+        synth.speak(utterance);
     }
 
-    // १. वेबसाइटका सबै मुख्य कुराहरूलाई एउटै टेक्स्टमा राख्ने
-    // अङ्ग्रेजी इन्जिनले बुझ्ने गरी नेपाली शब्दहरू लेखिएका छन्
-    const schoolName = "Shree Ganesh Secondary School";
-    const location = "Suryagadhi-4, Ratmate, Nuwakot, Nepal";
-    const aboutText = "This school is dedicated to providing high-quality education.";
-    const principal = "The Principal is Mr. Keshar Adhikari.";
-    const contact = "Contact us at 9851338955 or email ganeshmabi444@gmail.com";
-    const developer = "This website is developed by Sirjan Bhattarai.";
+    // आवाज लोड हुन केही समय लाग्ने भएकोले यो जरुरी छ
+    window.speechSynthesis.onvoiceschanged = () => {
+        console.log("Male voices loaded and ready.");
+    };
 
-    const fullContent = `Welcome to ${schoolName}. Located in ${location}. ${aboutText} ${principal} ${contact}. ${developer}. Thank you.`;
-
-    const utterance = new SpeechSynthesisUtterance(fullContent);
-
-    // २. अङ्ग्रेजी पुरुष आवाज (English Male Voice) सेट गर्ने
-    let voices = synth.getVoices();
+    speakBtn.addEventListener('click', speakWebsite);
+</script>
     
-    // ब्राउजरमा "Male" वा "Google US English" वा "David" आवाज खोज्ने
-    let maleVoice = voices.find(v => v.name.includes('Male') || v.name.includes('David') || v.name.includes('Microsoft James') || v.name.includes('en-US'));
-
-    if (maleVoice) {
-        utterance.voice = maleVoice;
-    }
-
-    // ३. आवाजलाई मोटो र पुरुषको जस्तो बनाउने सेटिङ (Deep Voice)
-    utterance.lang = 'en-US'; 
-    utterance.pitch = 0.8;  // ०.८ राख्दा आवाज धोद्रो र पुरुषको जस्तो सुनिन्छ
-    utterance.rate = 0.9;   // अलि बिस्तारै बोल्नका लागि
-
-    utterance.onstart = () => {
-        speakBtn.innerText = "🛑 रोक्नुहोस् (Listening...)";
-        speakBtn.style.background = "#333";
-    };
-
-    utterance.onend = () => {
-        speakBtn.innerText = "🔊 वेबसाइटको जानकारी सुन्नुहोस्";
-        speakBtn.style.background = "#d32f2f";
-    };
-
-    synth.speak(utterance);
-}
-
-// आवाज लोड हुनका लागि यो फङ्सन चाहिन्छ
-window.speechSynthesis.onvoiceschanged = () => {
-    console.log("English Voices Loaded");
-};
-
-speakBtn.addEventListener('click', speakWebsite);
+     
     
     
     </script>
