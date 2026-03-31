@@ -465,6 +465,12 @@
     };
 
     speakBtn.addEventListener('click', speakWebsite);
+    // यो लाइन थप्नुहोस् जसले गर्दा ब्राउजरको आवाज इन्जिन एक्टिभ होस्
+document.body.addEventListener('click', () => {
+    if (synth.speaking) return; 
+    // यसले पहिलो क्लिकमै इन्जिनलाई 'Wake up' गराउँछ
+}, { once: true });
+    
 </script>
     
      
