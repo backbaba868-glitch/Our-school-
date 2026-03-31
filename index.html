@@ -588,7 +588,16 @@ function highlight(el) {
         el.style.boxShadow = "none";
     }, 3000);
     }
-                
+
+    const searchInput = document.getElementById('searchInput');
+
+// किबोर्ड खुल्दा सर्च बार नछोपियोस् भन्नका लागि
+searchInput.addEventListener('focus', () => {
+    setTimeout(() => {
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300); // किबोर्ड खुल्न दिने समय
+});
+    
         
     
 </script>
