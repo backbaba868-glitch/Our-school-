@@ -519,7 +519,51 @@
     if (!found) {
         alert("माफ गर्नुहोला, '" + input + "' नाम गरेको शिक्षक भेटिएन।");
     }
+    }function searchSite() {
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (input === "") return;
+
+    // १. सबैभन्दा पहिले शिक्षकका कार्डहरूमा खोज्ने
+    let teachers = document.querySelectorAll('.teacher-card');
+    let found = false;
+
+    for (let card of teachers) {
+        if (card.innerText.toLowerCase().includes(input)) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            highlight(card);
+            found = true;
+            break;
+        }
     }
+
+    // २. यदि शिक्षक भेटिएन भने अरु सेक्सनहरू (Contact, About, etc.) मा खोज्ने
+    if (!found) {
+        let sections = document.querySelectorAll('section');
+        for (let section of sections) {
+            if (section.innerText.toLowerCase().includes(input)) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                highlight(section);
+                found = true;
+                break;
+            }
+        }
+    }
+
+    if (!found) {
+        alert("माफ गर्नुहोला, '" + input + "' सँग मिल्दो केही भेटिएन। स्पेलिङ चेक गर्नुहोला।");
+    }
+}
+
+// हाइलाइट गर्ने फङ्सन
+function highlight(el) {
+    el.style.outline = "5px solid #ffd600";
+    el.style.boxShadow = "0 0 20px rgba(255, 214, 0, 0.8)";
+    setTimeout(() => {
+        el.style.outline = "none";
+        el.style.boxShadow = "none";
+    }, 3000);
+    }
+                
         
     
 </script>
