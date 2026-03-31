@@ -424,8 +424,8 @@ function speak() {
 
     // आवाजलाई अलि "Male" बनाउन पिच (Pitch) घटाउने र दर (Rate) मिलाउने
     utterance.pitch = 0.8; // यो कम गर्दा आवाज धोद्रो (Deep/Male) सुनिन्छ
-    utterance.rate = 0.85; // अलि बिस्तारै र प्रस्ट बोल्ने
-    utterance.lang = 'ne-NP'; 
+    utterance.rate = 1.0; // अलि बिस्तारै र प्रस्ट बोल्ने
+    utterance.lang = 'En=en'; 
 
     utterance.onstart = () => {
         speakBtn.innerText = "🔊 बोल्दैछ...";
