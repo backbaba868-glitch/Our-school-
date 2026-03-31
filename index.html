@@ -19,6 +19,31 @@
     width: 100%;
     position: relative;
 }
+        .search-container {
+    background: #1565c0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    position: sticky;
+    bottom: 0; /* किबोर्ड खुल्दा यो आफैं माथि सर्छ */
+    z-index: 3000;
+    width: 100%;
+}
+
+/* मोबाइलको लागि विशेष सेटिङ */
+@media screen and (max-width: 600px) {
+    .search-container {
+        padding: 5px;
+    }
+    #searchInput {
+        width: 150px; /* मोबाइलमा सानो बनाउने ताकि सबै कुरा एउटै लाइनमा अटोस */
+        font-size: 14px;
+    }
+}
+        
 
 /* Dark layer to make white text readable over the photo */
 .overlay {
