@@ -32,6 +32,23 @@
     z-index: 3000;
     width: 100%;
 }
+        /* सर्चले भेटाएको कार्ड मेनु भन्दा १०० पिक्सेल मुनि रोकियोस् भन्नका लागि */
+.teacher-card, section {
+    scroll-margin-top: 110px; 
+    transition: all 0.5s ease;
+}
+
+/* कार्ड भित्रको नाम र विषयको स्पेस */
+.teacher-card h3 {
+    margin-bottom: 5px;
+}
+.teacher-subject {
+    margin-bottom: 15px;
+    display: block;
+    color: #2e7d32;
+    font-weight: bold;
+}
+        
 
 /* मोबाइलको लागि विशेष सेटिङ */
 @media screen and (max-width: 600px) {
@@ -598,6 +615,45 @@
         if (synth.speaking) return;
         synth.speak(new SpeechSynthesisUtterance(""));
     }, { once: true });
+    function searchSite() {
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (input === "") return;
+
+    // शिक्षकका कार्डहरू मात्र फिल्टर गर्ने
+    let cards = document.querySelectorAll('.teacher-card');
+    let found = false;
+
+    for (let card of cards) {
+        let name = card.querySelector('h3').innerText.toLowerCase();
+        // यदि कार्डमा विषय (subject) छ भने त्यसलाई पनि सर्चमा जोड्ने
+        let subject = card.querySelector('.teacher-subject') ? card.querySelector('.teacher-subject').innerText.toLowerCase() : "";
+
+        if (name.includes(input) || subject.includes(input)) {
+            // 'start' मा स्क्रोल गर्दा CSS को scroll-margin-top ले मेनु भन्दा मुनि राख्छ
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // कुन कार्ड हो भनेर चिनाउन पहेंलो बोर्डर दिने
+            card.style.outline = "5px solid #ffd600";
+            card.style.boxShadow = "0 0 20px rgba(255, 214, 0, 0.5)";
+            
+            setTimeout(() => {
+                card.style.outline = "none";
+                card.style.boxShadow = "none";
+            }, 3000);
+
+            found = true;
+            break; // पहिलो सहि नतिजा भेटिएपछि रोकिने
+        }
+    }
+
+    if (!found) {
+        alert("माफ गर्नुहोला, तपाईंले खोज्नुभएको '" + input + "' भेटिएन।");
+    }
+    
+    // सर्च गरेपछि किबोर्ड हटाउने (मोबाइलका लागि)
+    document.getElementById('searchInput').blur();
+    }
+    
 </script>
     
 
