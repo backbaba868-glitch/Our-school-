@@ -116,7 +116,18 @@
   gap: 20px;
   padding: 20px;
 }
+#loginMsg {
+  margin-top: 10px;
+  font-weight: bold;
+}
 
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
 /* The Image Wrapper */
 .gallery-item {
   width: 100%;
@@ -233,25 +244,35 @@
 </nav>
   <section>
   <h2>Student Login</h2>
-  <input type="text" id="user" placeholder="Username">
-  <input type="password" id="pass" placeholder="Password">
+  <input type="text" id="user" placeholder="Enter Username">
+  <input type="password" id="pass" placeholder="Enter Password">
+  
   <button onclick="login()">Login</button>
+  
   <p id="loginMsg"></p>
-  </section>  
+    </section>
 
     <script>
+
 function login(){
   let u = document.getElementById("user").value;
   let p = document.getElementById("pass").value;
+  let msg = document.getElementById("loginMsg");
 
-  if(u == "admin" && p == "1234"){
-    document.getElementById("loginMsg").innerHTML = "Login Success ✅";
-  } else {
-    document.getElementById("loginMsg").innerHTML = "Wrong Login ❌";
+  if(u === "" || p === ""){
+    msg.innerHTML = "⚠️ Please fill all fields";
+    msg.className = "error";
+  }
+  else if(u === "admin" && p === "1234"){
+    msg.innerHTML = "✅ Login Successful!";
+    msg.className = "success";
+  }
+  else{
+    msg.innerHTML = "❌ Invalid Username or Password";
+    msg.className = "error";
   }
 }
-        if(u == "sirjan" && p == "mypassword")
-    </script>
+      </script>
     
     
 <div class="hero">
