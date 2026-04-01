@@ -108,22 +108,26 @@ button {
         </form>
         <a href="index.html" class="back-home">← Back to Home</a>
     </div>
-<script>
-    document.querySelector('form').onsubmit = function(e) {
-        e.preventDefault(); // पेज रिफ्रेस हुनबाट रोक्छ
-        
-        var user = document.querySelector('input[type="text"]').value;
-        var pass = document.querySelector('input[type="password"]').value;
 
-        // यहाँ तपाईंले आफ्नो युजरनेम र पासवर्ड राख्न सक्नुहुन्छ
-        if (user === "admin" && pass === "school123") {
-            alert("लगइन सफल भयो!");
-            window.location.href = "home.html"; // लगइन भएपछि जाने पेज
+    <script>
+    // फर्म सबमिट हुँदा चल्ने फङ्सन
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault(); // पेजलाई रिफ्रेस हुनबाट रोक्छ
+
+        // इनपुट फिल्डबाट डाटा लिने
+        var username = document.querySelectorAll('input')[0].value;
+        var password = document.querySelectorAll('input')[1].value;
+
+        // युजरनेम र पासवर्ड चेक गर्ने (तपाईंले यहाँ आफ्नो इच्छा अनुसार फेर्न सक्नुहुन्छ)
+        if (username === "admin" && password === "12345") {
+            alert("लगइन सफल भयो! स्वागत छ।");
+            window.location.href = "home.html"; // सफल भएपछि home.html मा लैजान्छ
         } else {
-            alert("युजरनेम वा पासवर्ड गलत छ। फेरि प्रयास गर्नुहोस्।");
+            alert("गलत युजरनेम वा पासवर्ड! फेरि प्रयास गर्नुहोस्।");
         }
-    };
+    });
 </script>
+    
     
 </body>
 </html>
