@@ -590,25 +590,30 @@
 
     // घ. आवाज (Male Voice Logic)
     function speakWebsite() {
-        if (synth.speaking) { synth.cancel(); return; }
+    if (synth.speaking) { synth.cancel(); return; }
 
-        let lang = langSelect.value;
-        let message = (lang === 'en') 
-            ? "Welcome to Shree Ganesh Secondary School, Nuwakot. This website is developed by Sirjan Bhattarai. Thank you."
-            : "श्री गणेश माध्यमिक विद्यालयमा स्वागत छ। यो विद्यालय नुवाकोटमा अवस्थित छ। यसको निर्माण सिर्जन भट्टराईले गरेका हुन्। धन्यवाद।";
+    let lang = langSelect.value;
+    let message = "";
 
-        const utterance = new SpeechSynthesisUtterance(message);
-        
-        // पुरुष आवाज सेटिङ
-        utterance.lang = (lang === 'en') ? 'en-US' : 'hi-IN'; 
-        utterance.pitch = 0.8; // Deep Male Voice
-        utterance.rate = 0.9;
-
-        utterance.onstart = () => speakBtn.innerText = "🛑 Stop";
-        utterance.onend = () => updateButtonText();
-
-        synth.speak(utterance);
+    if (lang === 'en') {
+        message = "Welcome to Shree Ganesh Secondary School, located in the beautiful region of Suryagadhi-4, Ratmate, Nuwakot, Nepal. Our school is a center of excellence, dedicated to providing quality education and fostering the overall growth of our students. We offer a wide range of courses and modern learning facilities to prepare our students for a bright future. This official website is proudly developed by Sirjan Bhattarai, a lead developer and student of this institution. For more information, please explore our teachers' profiles and admission inquiry section. Thank you for visiting!";
+    } else {
+        message = "श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेबसाइटमा तपाईंलाई हार्दिक स्वागत छ। यो विद्यालय नुवाकोट जिल्लाको सूर्यगढी-४, रातमाटेमा अवस्थित छ। हाम्रो मुख्य उद्देश्य विद्यार्थीहरूलाई गुणस्तरीय शिक्षा प्रदान गर्नु र उनीहरूको चौतर्फी विकासमा सहयोग पुर्‍याउनु हो। हामी यहाँ आधुनिक शिक्षण पद्धति र उत्कृष्ट शैक्षिक वातावरण सुनिश्चित गर्दछौं। यो वेबसाइट यसै विद्यालयका विद्यार्थी तथा कुशल विकासकर्ता सिर्जन भट्टराईले निर्माण गरेका हुन्। विद्यालयको बारेमा थप जानकारीका लागि हाम्रा शिक्षकहरूको विवरण र भर्ना सम्बन्धी सेक्सन हेर्न सक्नुहुन्छ। धन्यवाद!";
     }
+
+    const utterance = new SpeechSynthesisUtterance(message);
+    
+    // आवाजको सेटिङ
+    utterance.lang = (lang === 'en') ? 'en-US' : 'hi-IN'; 
+    utterance.pitch = 0.9; // पुरुष आवाजका लागि ठिक्कको मोटोपन
+    utterance.rate = 0.85; // पढ्दा प्रस्ट सुनियोस् भनेर अलि बिस्तारै
+
+    utterance.onstart = () => speakBtn.innerText = "🛑 Stop";
+    utterance.onend = () => updateUI();
+
+    synth.speak(utterance);
+    }
+    
 
     // ङ. ब्राउजर एक्टिभेसन (GitHub/Mobile Fix)
     document.body.addEventListener('click', () => {
