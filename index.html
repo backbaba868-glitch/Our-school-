@@ -692,39 +692,96 @@
     const searchInput = document.getElementById('searchInput');
     let synth = window.speechSynthesis;
 
-    // क. सर्च फङ्सन (नाम र विषय दुवै खोज्ने)
+    // क. सर्च फङ्सन (नाम र विषय दुवै खोज
     function searchSite() {
-        let input = searchInput.value.trim().toLowerCase();
-        if (input === "") return;
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (input === "") return;
 
-        // स्पेलिङ गल्ती सच्याउने (Fuzzy Search)
-        if (input.includes("contract")) input = "contact";
+    // शिक्षकका कार्डहरू खोज्ने
+    let cards = document.querySelectorAll('.teacher-card');
+    let found = false;
 
-        let cards = document.querySelectorAll('.teacher-card, section, h2, h3');
-        let found = false;
+    for (let card of cards) {
+        let name = card.querySelector('h3').innerText.toLowerCase();
+        // कार्ड भित्र विषय (subject) छ भने त्यसलाई पनि खोज्ने
+        let subjectEl = card.querySelector('.teacher-subject');
+        let subject = subjectEl ? subjectEl.innerText.toLowerCase() : "";
 
-        for (let el of cards) {
-            if (el.innerText.toLowerCase().includes(input)) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                
-                // हाइलाइट एफेक्ट
-                el.style.outline = "5px solid #ffd600";
-                el.style.borderRadius = "10px";
-                setTimeout(() => el.style.outline = "none", 3000);
-                
-                found = true;
-                break;
-            }
+        if (name.includes(input) || subject.includes(input)) {
+            // १. पहिले कार्डको लोकेसन पत्ता लगाउने
+            const yOffset = -120; // मेनुको उचाई अनुसार यसलाई मिलाउनुहोस् (जति धेरै, उति तल झर्छ)
+            const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            // २. ठ्याक्कै त्यो लोकेसनमा स्क्रोल गर्ने
+            window.scrollTo({ top: y, behavior: 'smooth' });
+
+            // ३. हाइलाइट गर्ने (ताकि सही फोटो चिनियोस्)
+            card.style.transition = "0.5s";
+            card.style.outline = "6px solid #ffd600";
+            card.style.transform = "scale(1.03)";
+            
+            setTimeout(() => {
+                card.style.outline = "none";
+                card.style.transform = "scale(1)";
+            }, 3000);
+
+            found = true;
+            break; 
         }
-        if (!found) alert("Not found: " + input);
     }
 
-    // ख. किबोर्ड फिक्स: टाइप गर्दा पेज तल सार्ने
-    searchInput.addEventListener('focus', () => {
-        setTimeout(() => {
-            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
-    });
+    if (!found) {
+        alert("Sorry, no results for: " + input);
+    }
+    
+    // मोबाइल किबोर्ड बन्द गर्ने
+    document.getElementById('searchInput').blur();
+    }
+    function searchSite() {
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (input === "") return;
+
+    // शिक्षकका कार्डहरू खोज्ने
+    let cards = document.querySelectorAll('.teacher-card');
+    let found = false;
+
+    for (let card of cards) {
+        let name = card.querySelector('h3').innerText.toLowerCase();
+        // कार्ड भित्र विषय (subject) छ भने त्यसलाई पनि खोज्ने
+        let subjectEl = card.querySelector('.teacher-subject');
+        let subject = subjectEl ? subjectEl.innerText.toLowerCase() : "";
+
+        if (name.includes(input) || subject.includes(input)) {
+            // १. पहिले कार्डको लोकेसन पत्ता लगाउने
+            const yOffset = -120; // मेनुको उचाई अनुसार यसलाई मिलाउनुहोस् (जति धेरै, उति तल झर्छ)
+            const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            // २. ठ्याक्कै त्यो लोकेसनमा स्क्रोल गर्ने
+            window.scrollTo({ top: y, behavior: 'smooth' });
+
+            // ३. हाइलाइट गर्ने (ताकि सही फोटो चिनियोस्)
+            card.style.transition = "0.5s";
+            card.style.outline = "6px solid #ffd600";
+            card.style.transform = "scale(1.03)";
+            
+            setTimeout(() => {
+                card.style.outline = "none";
+                card.style.transform = "scale(1)";
+            }, 3000);
+
+            found = true;
+            break; 
+        }
+    }
+
+    if (!found) {
+        alert("Sorry, no results for: " + input);
+    }
+    
+    // मोबाइल किबोर्ड बन्द गर्ने
+    document.getElementById('searchInput').blur();
+    }
+    
 
     // ग. भाषा अनुसार बटनको नाम फेर्ने
     function updateButtonText() {
