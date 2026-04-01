@@ -211,6 +211,165 @@
         footer p { margin: 5px 0; font-size: 0.9rem; }
         .footer-credit { color: #ffd600; font-weight: bold; }
     </style>
+    <style>
+    section, .teacher-card {
+        scroll-margin-top: 110px;
+        transition: all 0.4s ease;
+    }
+
+    .teacher-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .teacher-subject {
+        color: #2e7d32;
+        font-weight: bold;
+        margin: 8px 0;
+        display: block;
+    }
+
+    /* सर्च बार कन्टेनर */
+    .bottom-nav-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #1565c0;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        z-index: 10000;
+        box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+    }
+
+    #searchInput {
+        width: 140px;
+        padding: 12px;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+    }
+
+    .search-btn {
+        background: #ffd600;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: -50px;
+    }
+
+    #langSelect, #speak-btn {
+        padding: 10px 15px;
+        border-radius: 20px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #speak-btn { background: #2e7d32; color: white; }
+
+    @media screen and (max-height: 500px) {
+        .bottom-nav-bar { position: relative; }
+    }
+</style>
+
+<div class="bottom-nav-bar">
+    <div style="display: flex; align-items: center;">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button class="search-btn" onclick="searchSite()">Search</button>
+    </div>
+
+    <select id="langSelect" onchange="updateUI()">
+        <option value="en">🌐 EN</option>
+        <option value="ne">🌐 NE</option>
+    </select>
+
+    <button id="speak-btn" onclick="speakWebsite()">🔊 Listen</button>
+</div>
+
+<script>
+    const speakBtn = document.getElementById('speak-btn');
+    const langSelect = document.getElementById('langSelect');
+    const searchInput = document.getElementById('searchInput');
+    let synth = window.speechSynthesis;
+
+    // क. सर्च फङ्सन (Wrong Photo फिक्स)
+    function searchSite() {
+        let input = searchInput.value.trim().toLowerCase();
+        if (input === "") return;
+        if (input.includes("contract")) input = "contact";
+
+        let elements = document.querySelectorAll('.teacher-card, section, h2, h3, .teacher-subject');
+        let found = false;
+
+        for (let el of elements) {
+            if (el.innerText.toLowerCase().includes(input)) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                el.style.outline = "5px solid #ffd600";
+                setTimeout(() => el.style.outline = "none", 3000);
+                found = true;
+                break;
+            }
+        }
+        if (!found) alert("Not found: " + input);
+        searchInput.blur();
+    }
+
+    // ख. भाषा अनुसार बटन अपडेट
+    function updateUI() {
+        let lang = langSelect.value;
+        speakBtn.innerText = (lang === 'en') ? "🔊 Listen" : "🔊 सुन्नुहोस्";
+        searchInput.placeholder = (lang === 'en') ? "Search..." : "खोज्नुहोस्...";
+    }
+
+    // ग. मुख्य आवाज फङ्सन (लामो जानकारी सहित)
+    function speakWebsite() {
+        // यदि पहिले नै बोलिरहेको छ भने रोक्ने
+        if (synth.speaking) {
+            synth.cancel();
+            updateUI();
+            return;
+        }
+
+        let lang = langSelect.value;
+        let message = "";
+
+        if (lang === 'en') {
+            message = "Welcome to Shree Ganesh Secondary School, located in Suryagadhi-4, Ratmate, Nuwakot, Nepal. Our institution is dedicated to providing quality education and fostering excellence in every student. We offer a modern learning environment with dedicated faculty members. This website was developed by Sirjan Bhattarai, a lead developer and student of this school. We invite you to explore our courses, meet our teachers, and join our academic community. Thank you for visiting our official website!";
+        } else {
+            message = "श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेबसाइटमा तपाईंलाई स्वागत छ। यो विद्यालय नुवाकोट जिल्लाको सूर्यगढी-४, रातमाटेमा अवस्थित छ। हाम्रो मुख्य लक्ष्य विद्यार्थीहरूलाई गुणस्तरीय र व्यावहारिक शिक्षा प्रदान गर्नु हो। यहाँ हामी विद्यार्थीहरूको उज्ज्वल भविष्यका लागि उत्कृष्ट शैक्षिक वातावरण सुनिश्चित गर्दछौं। यो वेबसाइट यसै विद्यालयका विद्यार्थी सिर्जन भट्टराईले निर्माण गरेका हुन्। विद्यालयको बारेमा थप जानकारीको लागि कृपया हाम्रो वेबसाइट अवलोकन गर्नुहोला। धन्यवाद!";
+        }
+
+        const utterance = new SpeechSynthesisUtterance(message);
+        utterance.lang = (lang === 'en') ? 'en-US' : 'hi-IN'; 
+        utterance.pitch = 0.8; // पुरुषको मोटो आवाज
+        utterance.rate = 0.85; // बिस्तारै र प्रस्ट पढ्ने
+
+        utterance.onstart = () => speakBtn.innerText = "🛑 Stop";
+        utterance.onend = () => updateUI();
+
+        synth.speak(utterance);
+    }
+
+    // घ. महत्वपूर्ण: ब्राउजरमा आवाज सुचारु गर्ने ट्रिक (Click Fix)
+    document.addEventListener('click', function() {
+        // एकपटक खाली आवाज बजाएपछि ब्राउजरले आवाज अनुमति दिन्छ
+        if (!synth.speaking) {
+            let silent = new SpeechSynthesisUtterance("");
+            synth.speak(silent);
+        }
+    }, { once: true });
+</script>
+    
 </head>
 <body>
 
