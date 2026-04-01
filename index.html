@@ -301,6 +301,45 @@
     const langSelect = document.getElementById('langSelect');
     const searchInput = document.getElementById('searchInput');
     let synth = window.speechSynthesis;
+    function searchSite() {
+    let input = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (input === "") return;
+
+    // शिक्षकका कार्डहरू मात्र खोज्ने (Strict Card Search)
+    let cards = document.querySelectorAll('.teacher-card');
+    let found = false;
+
+    for (let card of cards) {
+        // कार्ड भित्रको नाम र विषय दुवै चेक गर्ने
+        let cardText = card.innerText.toLowerCase();
+        
+        if (cardText.includes(input)) {
+            // 'start' मा स्क्रोल गर्दा CSS को scroll-margin-top ले काम गर्छ
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // कुन कार्ड हो भनेर झुक्किन नदिन पहेंलो बोर्डर र छाया (Shadow) दिने
+            card.style.outline = "5px solid #ffd600";
+            card.style.boxShadow = "0 10px 20px rgba(0,0,0,0.3)";
+            
+            // ३ सेकेन्ड पछि हाइलाइट हटाउने
+            setTimeout(() => {
+                card.style.outline = "none";
+                card.style.boxShadow = "none";
+            }, 3000);
+
+            found = true;
+            break; // एउटा नतिजा भेटिएपछि रोकिने (यसले अर्को फोटोमा जान दिँदैन)
+        }
+    }
+
+    if (!found) {
+        alert("माफ गर्नुहोला, '" + input + "' भेटिएन।");
+    }
+    
+    // मोबाइलमा सर्च गरेपछि किबोर्ड हटाउने
+    document.getElementById('searchInput').blur();
+    }
+    
 
     // क. सर्च फङ्सन (Wrong Photo फिक्स)
     function searchSite() {
