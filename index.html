@@ -666,7 +666,7 @@
 
         const utterance = new SpeechSynthesisUtterance(message);
         utterance.lang = (lang === 'en') ? 'en-US' : 'hi-IN'; 
-        utterance.pitch = 0.8; // पुरुषको मोटो आवाज
+        utterance.pitch = 01.02 // पुरुषको मोटो आवाज
         utterance.rate = 0.85; // बिस्तारै र प्रस्ट पढ्ने
 
         utterance.onstart = () => speakBtn.innerText = "🛑 Stop";
