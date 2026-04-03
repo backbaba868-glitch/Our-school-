@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>School Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f7f6; padding: 20px; }
+        .admin-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #0d47a1; text-align: center; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { background: #2e7d32; color: white; border: none; padding: 10px 20px; cursor: pointer; width: 100%; border-radius: 5px; font-weight: bold; }
+        button:hover { background: #1b5e20; }
+        .notice-list { margin-top: 20px; }
+        .notice-item { background: #e3f2fd; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; }
+        .delete-btn { background: #c62828; padding: 5px 10px; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <h2>Notice Board Admin</h2>
+    <input type="text" id="noticeTitle" placeholder="Notice Title (उदा: भोलि बिदा सम्बन्धी)">
+    <textarea id="noticeDesc" rows="4" placeholder="Description (विवरण)"></textarea>
+    <button onclick="addNotice()">Post Notice</button>
+
+    <div class="notice-list" id="adminNoticeList">
+        </div>
+</div>
+
+<script>
+    // नोटिस थप्ने फङ्सन (अहिलेको लागि LocalStorage मा सेभ हुन्छ)
+    function addNotice() {
+        const title = document.getElementById('noticeTitle').value;
+        const desc = document.getElementById('noticeDesc').value;
+
+        if(title === "" || desc === "") {
+            alert("कृपया सबै खाली ठाउँ भर्नुहोस्");
+            return;
+        }
+
+        const notice = { title, desc, date: new Date().toLocaleDateString() };
+        let notices = JSON.parse(localStorage.getItem('notices')) || [];
+        notices.push(notice);
+        localStorage.setItem('notices', JSON.stringify(notices));
+
+        displayNotices();
+        document.getElementById('noticeTitle').value = "";
+        document.getElementById('noticeDesc').value = "";
+    }
+
+    function displayNotices() {
+        const list = document.getElementById('adminNoticeList');
+        let notices = JSON.parse(localStorage.getItem('notices')) || [];
+        list.innerHTML = "<h3>Current Notices:</h3>";
+        
+        notices.forEach((n, index) => {
+            list.innerHTML += `
+                <div class="notice-item">
+                    <span><strong>${n.title}</strong> (${n.date})</span>
+                    <button class="delete-btn" onclick="deleteNotice(${index})">Delete</button>
+                </div>
+            `;
+        });
+    }
+
+    function deleteNotice(index) {
+        let notices = JSON.parse(localStorage.getItem('notices'));
+        notices.splice(index, 1);
+        localStorage.setItem('notices', JSON.stringify(notices));
+        displayNotices();
+    }
+
+    window.onload = displayNotices;
+</script>
+</body>
+</html>
