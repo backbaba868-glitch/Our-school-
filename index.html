@@ -691,37 +691,51 @@ function googleTranslateElementInit() {
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 <script>
     const startBtn = document.getElementById('start-voice');
     const stopBtn = document.getElementById('stop-voice');
+    let synth = window.speechSynthesis;
 
-    startBtn.addEventListener('click', () => {
-        // पहिले बोलिरहेको छ भने रोक्ने
-        window.speechSynthesis.cancel();
+    function speakNow() {
+        // पहिलेको आवाज रोक्ने
+        synth.cancel();
 
-        // पढ्ने टेक्स्ट छान्ने (About section र अरु मुख्य कुरा)
-        const schoolTitle = "Welcome to Shree Ganesh Secondary School, Nuwakot.";
-        const aboutContent = document.getElementById('about').innerText;
-        const finalSpeech = schoolTitle + " " + aboutContent;
-
-        const utterance = new SpeechSynthesisUtterance(finalSpeech);
-
-        // नेपाली जस्तै सुनिने गरी मिलाइएको (Hindi voice अक्सर नेपाली जस्तै सुनिन्छ)
-        utterance.lang = 'hi-IN'; 
-        utterance.rate = 0.85; // बोल्ने गति (अलि बिस्तारै)
-        utterance.pitch = 1.0;
-
-        // बोल्न सुरु गर्ने
-        window.speechSynthesis.speak(utterance);
+        // पढ्नुपर्ने टेक्स्ट (यसलाई अझै थप्न सक्नुहुन्छ)
+        const textToRead = "Welcome to Shree Ganesh Secondary School, Nuwakot. We believe in fifty percent theory and fifty percent practical education.";
         
-        console.log("Voice started...");
-    });
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        
+        // उपलब्ध आवाजहरू चेक गर्ने
+        const voices = synth.getVoices();
+        // अलि राम्रो सुनिने आवाज छान्ने (English - US)
+        const selectedVoice = voices.find(voice => voice.lang === 'en-US' || voice.lang === 'en_US');
+        
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+        }
 
-    stopBtn.addEventListener('click', () => {
-        window.speechSynthesis.cancel();
-        console.log("Voice stopped.");
-    });
+        utterance.rate = 0.9; // अलि बिस्तारै बोल्ने
+        utterance.pitch = 1;
+
+        synth.speak(utterance);
+    }
+
+    // बटन क्लिक गर्दा मात्र चल्ने बनाउने (यसले ब्राउजरको सेक्युरिटी ब्लक गर्दैन)
+    startBtn.onclick = () => {
+        if (synth.speaking) {
+            synth.cancel();
+        }
+        speakNow();
+    };
+
+    stopBtn.onclick = () => {
+        synth.cancel();
+    };
+
+    // ब्राउजरले आवाजहरू लोड गर्न समय लिने हुनाले यो आवश्यक छ
+    window.speechSynthesis.onvoiceschanged = () => {
+        console.log("Voices Loaded");
+    };
 </script>
     
 
