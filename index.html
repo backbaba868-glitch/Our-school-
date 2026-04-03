@@ -219,7 +219,37 @@
         });
     });
 </script>
+<script>
+    function speakInformation() {
+        const synth = window.speechSynthesis;
 
+        // १. अङ्ग्रेजी जानकारी (English Info)
+        const englishText = "Welcome to Shree Ganesh Secondary School, Ratmate, Nuwakot. Established in 2035 B.S. This website provides information about our teachers, staff, and admission process.";
+        const englishSpeech = new SpeechSynthesisUtterance(englishText);
+        englishSpeech.lang = 'en-US';
+        englishSpeech.rate = 0.9;
+
+        // २. नेपाली जानकारी (Nepali Info)
+        // नोट: ब्राउजरमा नेपाली 'Voice' उपलब्ध छ भने यसले नेपालीमै बोल्नेछ।
+        const nepaliText = "श्री गणेश माध्यमिक विद्यालय, रातमाटे, नुवाकोटमा तपाईंलाई स्वागत छ। वि सं २०३५ मा स्थापित यो विद्यालयले गुणस्तरीय शिक्षा प्रदान गर्दै आएको छ। थप जानकारीको लागि वेबसाइट हेर्नुहोला।";
+        const nepaliSpeech = new SpeechSynthesisUtterance(nepaliText);
+        nepaliSpeech.lang = 'ne-NP'; // नेपाली भाषा कोड
+        nepaliSpeech.rate = 0.9;
+
+        // क्रमबद्ध रूपमा बोलाउने (पहिले English, त्यसपछि Nepali)
+        synth.speak(englishSpeech);
+        
+        englishSpeech.onend = function() {
+            synth.speak(nepaliSpeech);
+        };
+    }
+
+    // प्रयोगकर्ताले पेजमा एक पटक क्लिक गरेपछि आवाज सुरु हुन्छ
+    window.addEventListener('click', function() {
+        speakInformation();
+    }, { once: true });
+</script>
+    
 </body>
     </html>
     
