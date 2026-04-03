@@ -1,286 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shree Ganesh Secondary School</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Ganesh Secondary School</title>
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --accent-color: #ffca28;
+            --bg-light: #f0f2f5;
+            --text-dark: #333;
+        }
 
-<style>
-body {
-    margin:0;
-    font-family:Arial;
-    background:#f0f2f5;
-}
+        /* GENERAL */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            transition: 0.3s;
+            padding-top: 60px; /* Space for fixed nav */
+        }
 
-/* HEADER */
-header{
-    background:#0d47a1;
-    color:white;
-    padding:15px;
-    text-align:center;
-}
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
 
-.logo{
-    width:70px;
-    border-radius:50%;
-}
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.imgur.com/1lCqOqk.jpeg') center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
 
-/* HERO */
-.hero {
-    background:url('https://i.imgur.com/1lCqOqk.jpeg') center/cover;
-    height:70vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    text-align:center;
-}
+        /* SECTION */
+        section {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
 
-/* SECTION */
-section {
-    padding:20px;
-    margin:15px;
-    background:white;
-    border-radius:10px;
-}
+        /* TEACHERS GRID - Fixed Photo Size */
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .teacher-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid #ddd;
+            transition: transform 0.3s;
+        }
+        .teacher-card:hover {
+            transform: translateY(-5px);
+        }
+        .teacher-card img {
+            width: 100%;
+            aspect-ratio: 1/1; /* Makes all photos square */
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        .teacher-info { padding: 12px; }
+        .teacher-info h3 { margin: 5px 0; font-size: 1.1em; }
+        .teacher-info p { color: #666; font-size: 0.9em; margin: 0; }
 
-/* TEACHERS */
-.teacher-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-}
-.teacher-card{
-    background:#fff;
-    border-radius:10px;
-    text-align:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-.teacher-card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-}
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+        }
 
-/* NAV */
-nav{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#0d47a1;
-    display:flex;
-    justify-content:space-around;
-    padding:10px;
-}
-nav a{
-    color:white;
-    text-decoration:none;
-}
+        /* FORMS */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-/* BUTTON */
-button{
-    padding:10px;
-    background:#0d47a1;
-    color:white;
-    border:none;
-    border-radius:5px;
-    margin:5px;
-}
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { opacity: 0.9; }
 
-/* CHAT */
-#chatBox{
-    position:fixed;
-    bottom:80px;
-    right:10px;
-    width:250px;
-    background:white;
-    display:none;
-    border-radius:10px;
-}
+        /* FLOATING CONTROLS */
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1001;
+        }
+        .fab {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-#messages{
-    height:150px;
-    overflow:auto;
-    padding:10px;
-}
+        /* DARK MODE */
+        .dark { background: #121212; color: #e0e0e0; }
+        .dark section { background: #1e1e1e; border: none; }
+        .dark .teacher-card { background: #2a2a2a; border-color: #444; }
 
-/* TOP BTN */
-#topBtn{
-    position:fixed;
-    bottom:130px;
-    right:10px;
-    display:none;
-}
+        #clock { font-size: 1.2rem; padding: 10px; color: var(--primary-color); font-weight: bold; }
 
-/* DARK MODE */
-.dark{
-    background:#121212;
-    color:white;
-}
-.dark section{
-    background:#1e1e1e;
-}
-</style>
+    </style>
 </head>
-
 <body>
 
-<header>
-    <img src="https://i.imgur.com/rAzwgpe.jpeg" class="logo">
-    <h2>Shree Ganesh Secondary School</h2>
-</header>
+<nav>
+    <a href="#about" data-en="About" data-np="परिचय">About</a>
+    <a href="#teachers" data-en="Teachers" data-np="शिक्षक">Teachers</a>
+    <a href="#gallery-sec" data-en="Gallery" data-np="ग्यालरी">Gallery</a>
+    <a href="#contact" data-en="Contact" data-np="सम्पर्क">Contact</a>
+</nav>
 
 <div class="hero">
-    <h1>Welcome to Our School</h1>
-    <button onclick="speak('Welcome to Shree Ganesh Secondary School')">🔊 Hear</button>
+    <h1 id="main-title">Shree Ganesh Secondary School</h1>
 </div>
 
 <div id="clock"></div>
-<div id="screenTime"></div>
 
-<!-- SEARCH -->
-<div style="text-align:center; padding:10px;">
-    <input id="search" placeholder="Search..." style="padding:10px;width:70%;">
-    <button onclick="startVoice()">🎤</button>
-</div>
-
-<!-- ABOUT -->
 <section>
-<h2>About School</h2>
-<p>Shree Ganesh Secondary School is a leading educational institution in Nuwakot.</p>
+    <input id="search" placeholder="Search teachers or information...">
 </section>
 
-<!-- TEACHERS -->
-<section>
-<h2>Teachers</h2>
-<div class="teacher-grid">
-<div class="teacher-card">
-<img src="https://i.imgur.com/MHBF7pF.jpeg">
-<h3>Keshar Adhikari</h3>
-</div>
-<div class="teacher-card">
-<img src="https://i.imgur.com/7XQKRUN.jpeg">
-<h3>Ram Kumar Giri</h3>
-</div>
-</div>
+<section id="about">
+    <h2 class="lang-text" data-en="About School" data-np="विद्यालयको बारेमा">About School</h2>
+    <p class="lang-text" data-en="Shree Ganesh Secondary School is a leading educational institution in Nuwakot." 
+       data-np="श्री गणेश माध्यमिक विद्यालय नुवाकोटको एक अग्रणी शैक्षिक संस्था हो।">
+       Shree Ganesh Secondary School is a leading educational institution in Nuwakot.
+    </p>
 </section>
 
-<!-- ADMISSION -->
-<section>
-<h2>Admission Form</h2>
-<form onsubmit="saveAdmission(event)">
-<input id="name" placeholder="Student Name" required>
-<input id="class" placeholder="Class" required>
-<button>Submit</button>
-</form>
-<div id="admissions"></div>
+<section id="teachers">
+    <h2 class="lang-text" data-en="Teachers & Staff" data-np="शिक्षक तथा कर्मचारी">Teachers & Staff</h2>
+    <div class="teacher-grid">
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/MHBF7pF.jpeg" alt="Principal">
+            <div class="teacher-info"><h3>Keshar Adhikari</h3><p>Principal | English</p></div>
+        </div>
+        <div class="teacher-card">
+            <img src="https://i.imgur.com/7XQKRUN.jpeg" alt="Math">
+            <div class="teacher-info"><h3>Ram Kumar Giri</h3><p>Mathematics</p></div>
+        </div>
+        </div>
 </section>
 
-<!-- CHAT -->
-<div id="chatBox">
-<div id="messages"></div>
-<input id="msg">
-<button onclick="sendChat()">Send</button>
+<section id="gallery-sec">
+    <h2 class="lang-text" data-en="Gallery" data-np="फोटो ग्यालरी">Gallery</h2>
+    <input type="file" id="upload" accept="image/*">
+    <div class="gallery" id="gallery"></div>
+</section>
+
+<section id="contact">
+    <h2 class="lang-text" data-en="Contact Us" data-np="सम्पर्क गर्नुहोस्">Contact Us</h2>
+    <p>📍 Nuwakot, Nepal</p>
+    <p>📞 9851338955</p>
+    <p>📧 ganeshmabi444@gmail.com</p>
+</section>
+
+<div class="controls">
+    <button onclick="topFunc()" id="topBtn" class="fab">⬆️</button>
+    <button onclick="darkMode()" class="fab">🌙</button>
+    <button onclick="setLang('np')" class="fab">🇳🇵</button>
+    <button onclick="setLang('en')" class="fab">🇺🇸</button>
 </div>
-
-<button onclick="toggleChat()">💬</button>
-<button onclick="darkMode()">🌙</button>
-<button onclick="topFunc()" id="topBtn">⬆️</button>
-
-<!-- NAV -->
-<nav>
-<a href="#">Home</a>
-<a href="#">Teachers</a>
-<a href="#">Contact</a>
-</nav>
 
 <script>
+    // SEARCH FUNCTION
+    document.getElementById("search").onkeyup = function() {
+        let v = this.value.toLowerCase();
+        document.querySelectorAll(".teacher-card, p, h2").forEach(el => {
+            let text = el.innerText.toLowerCase();
+            if(el.classList.contains('teacher-card')) {
+                el.style.display = text.includes(v) ? "block" : "none";
+            }
+        });
+    };
 
-// CLOCK
-setInterval(()=>{
-document.getElementById("clock").innerText=new Date().toLocaleString();
-},1000);
+    // LANGUAGE SWITCHER
+    function setLang(lang) {
+        const elements = document.querySelectorAll('.lang-text, nav a');
+        elements.forEach(el => {
+            el.innerText = el.getAttribute(`data-${lang}`);
+        });
+        
+        // Update Title
+        const title = document.getElementById('main-title');
+        title.innerText = (lang === 'np') ? "श्री गणेश माध्यमिक विद्यालय" : "Shree Ganesh Secondary School";
+    }
 
-// SCREEN TIME
-let seconds=0;
-setInterval(()=>{
-seconds++;
-document.getElementById("screenTime").innerText=
-"Screen Time: "+seconds+" sec";
-},1000);
+    // DARK MODE
+    function darkMode() {
+        document.body.classList.toggle("dark");
+    }
 
-// SEARCH
-document.getElementById("search").onkeyup=function(){
-let v=this.value.toLowerCase();
-document.querySelectorAll("section").forEach(s=>{
-s.style.display=s.innerText.toLowerCase().includes(v)?"block":"none";
-});
-};
+    // CLOCK
+    setInterval(() => {
+        const now = new Date();
+        document.getElementById("clock").innerText = now.toLocaleTimeString() + " | " + now.toDateString();
+    }, 1000);
 
-// ADMISSION SAVE
-function saveAdmission(e){
-e.preventDefault();
-let n=document.getElementById("name").value;
-let c=document.getElementById("class").value;
+    // BACK TO TOP
+    function topFunc() {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }
 
-let data=JSON.parse(localStorage.getItem("admissions")||"[]");
-data.push({name:n,class:c});
-localStorage.setItem("admissions",JSON.stringify(data));
-
-loadAdmissions();
-alert("Admission Saved!");
-}
-
-function loadAdmissions(){
-let data=JSON.parse(localStorage.getItem("admissions")||"[]");
-document.getElementById("admissions").innerHTML=
-data.map(d=>`<p>${d.name} - ${d.class}</p>`).join("");
-}
-loadAdmissions();
-
-// CHAT
-function toggleChat(){
-let c=document.getElementById("chatBox");
-c.style.display=c.style.display==="block"?"none":"block";
-}
-
-function sendChat(){
-let m=document.getElementById("msg").value;
-let d=document.createElement("div");
-d.innerText="You: "+m;
-document.getElementById("messages").appendChild(d);
-}
-
-// DARK MODE
-function darkMode(){
-document.body.classList.toggle("dark");
-}
-
-// TOP
-window.onscroll=function(){
-document.getElementById("topBtn").style.display=
-document.documentElement.scrollTop>200?"block":"none";
-};
-function topFunc(){
-window.scrollTo({top:0,behavior:"smooth"});
-}
-
-// CLOCK SPEAK
-function speak(text){
-let msg=new SpeechSynthesisUtterance(text);
-speechSynthesis.speak(msg);
-}
-
-// VOICE SEARCH
-function startVoice(){
-let rec=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
-rec.lang="en-US";
-rec.start();
-rec.onresult=function(e){
-document.getElementById("search").value=e.results[0][0].transcript;
-};
-}
+    // GALLERY UPLOAD (Preview)
+    document.getElementById("upload").onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = document.createElement("img");
+                img.src = event.target.result;
+                document.getElementById("gallery").appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 </script>
 
 </body>
