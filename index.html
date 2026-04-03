@@ -6,27 +6,65 @@
 <title>Shree Ganesh Secondary School</title>
 
 <style>
-
-/* GENERAL */
 body {
     margin:0;
-    font-family: Arial;
+    font-family:Arial;
     background:#f0f2f5;
+}
+
+/* HEADER */
+header{
+    background:#0d47a1;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.logo{
+    width:70px;
+    border-radius:50%;
 }
 
 /* HERO */
 .hero {
     background:url('https://i.imgur.com/1lCqOqk.jpeg') center/cover;
-    height:90vh;
+    height:70vh;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
     color:white;
     text-align:center;
 }
 
-/* NAVBAR */
-nav {
+/* SECTION */
+section {
+    padding:20px;
+    margin:15px;
+    background:white;
+    border-radius:10px;
+}
+
+/* TEACHERS */
+.teacher-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+.teacher-card{
+    background:#fff;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.teacher-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+/* NAV */
+nav{
     position:fixed;
     bottom:0;
     width:100%;
@@ -35,121 +73,77 @@ nav {
     justify-content:space-around;
     padding:10px;
 }
-nav a {
+nav a{
     color:white;
     text-decoration:none;
 }
 
-/* SECTION */
-section {
-    padding:25px;
-    background:white;
-    margin:15px;
-    border-radius:10px;
-}
-
-/* TEACHERS */
-.teacher-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
-.teacher-card{
-background:#fff;
-border-radius:10px;
-overflow:hidden;
-text-align:center;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-.teacher-card img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-.teacher-info{
-padding:10px;
-}
-
-/* GALLERY */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;
-}
-.gallery img{
-width:100%;
-height:120px;
-object-fit:cover;
-}
-
 /* BUTTON */
 button{
-padding:10px;
-border:none;
-background:#0d47a1;
-color:white;
-border-radius:5px;
-margin:5px;
-}
-
-/* DARK MODE */
-.dark{
-background:#121212;
-color:white;
-}
-.dark section{
-background:#1e1e1e;
+    padding:10px;
+    background:#0d47a1;
+    color:white;
+    border:none;
+    border-radius:5px;
+    margin:5px;
 }
 
 /* CHAT */
 #chatBox{
-position:fixed;
-bottom:80px;
-right:10px;
-width:250px;
-background:white;
-display:none;
-border-radius:10px;
+    position:fixed;
+    bottom:80px;
+    right:10px;
+    width:250px;
+    background:white;
+    display:none;
+    border-radius:10px;
 }
+
 #messages{
-height:150px;
-overflow:auto;
-padding:10px;
+    height:150px;
+    overflow:auto;
+    padding:10px;
 }
 
-/* TOP BUTTON */
+/* TOP BTN */
 #topBtn{
-position:fixed;
-bottom:130px;
-right:10px;
-display:none;
+    position:fixed;
+    bottom:130px;
+    right:10px;
+    display:none;
 }
 
-/* CLOCK */
-#clock{
-text-align:center;
-font-weight:bold;
+/* DARK MODE */
+.dark{
+    background:#121212;
+    color:white;
 }
-
-/* SEARCH */
-#search{
-width:90%;
-margin:10px;
-padding:10px;
+.dark section{
+    background:#1e1e1e;
 }
-
 </style>
 </head>
 
 <body>
 
+<header>
+    <img src="https://i.imgur.com/rAzwgpe.jpeg" class="logo">
+    <h2>Shree Ganesh Secondary School</h2>
+</header>
+
 <div class="hero">
-<h1>Shree Ganesh Secondary School</h1>
+    <h1>Welcome to Our School</h1>
+    <button onclick="speak('Welcome to Shree Ganesh Secondary School')">🔊 Hear</button>
 </div>
 
 <div id="clock"></div>
+<div id="screenTime"></div>
 
-<input id="search" placeholder="Search...">
+<!-- SEARCH -->
+<div style="text-align:center; padding:10px;">
+    <input id="search" placeholder="Search..." style="padding:10px;width:70%;">
+    <button onclick="startVoice()">🎤</button>
+</div>
 
 <!-- ABOUT -->
 <section>
@@ -159,162 +153,29 @@ padding:10px;
 
 <!-- TEACHERS -->
 <section>
-<h2>Teachers & Staff</h2>
+<h2>Teachers</h2>
 <div class="teacher-grid">
-
 <div class="teacher-card">
 <img src="https://i.imgur.com/MHBF7pF.jpeg">
-<div class="teacher-info"><h3>Keshar Adhikari</h3><p>Principal | English</p></div>
+<h3>Keshar Adhikari</h3>
 </div>
-
 <div class="teacher-card">
 <img src="https://i.imgur.com/7XQKRUN.jpeg">
-<div class="teacher-info"><h3>Ram Kumar Giri</h3><p>Mathematics</p></div>
+<h3>Ram Kumar Giri</h3>
 </div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/mYIU2Gv.jpeg">
-<div class="teacher-info"><h3>Mina Thapa</h3><p>Science</p></div>
 </div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/kAoRQmk.jpeg">
-<div class="teacher-info"><h3>Chandika Bhatta</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/xOldxMM.jpeg">
-<div class="teacher-info"><h3>Mim Bahadur Manandhar</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/U2eRbrx.jpeg">
-<div class="teacher-info"><h3>Saraswati Subadi</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/RHtxWdg.jpeg">
-<div class="teacher-info"><h3>Ashok Rai</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/2sHOkNC.jpeg">
-<div class="teacher-info"><h3>Goma Saru Magar</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/mzIcInV.jpeg">
-<div class="teacher-info"><h3>Harisharan Devkota</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/RBsZLeH.jpeg">
-<div class="teacher-info"><h3>Jayaram Pathak</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/Pv3Etkw.jpeg">
-<div class="teacher-info"><h3>Shaku Shankar Koirala</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/5wOi90i.jpeg">
-<div class="teacher-info"><h3>Upendra Thapa</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/c3Pwy7I.jpeg">
-<div class="teacher-info"><h3>Laxmi Adhikari</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/U0Cn3tB.jpeg">
-<div class="teacher-info"><h3>Rajeshwori Giri</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/YHXbFtc.jpeg">
-<div class="teacher-info"><h3>Dipak Malla</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/0M4c4DZ.jpeg">
-<div class="teacher-info"><h3>Gita Adhikari</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/k7bpqjf.jpeg">
-<div class="teacher-info"><h3>Dipendra Thapa</h3><p>Faculty Member</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/RkLE7nf.jpeg">
-<div class="teacher-info"><h3>Padam Bahadur Rai</h3><p>School Helper</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/sahxCxc.png">
-<div class="teacher-info"><h3>Kaji Bahadur Paudel</h3><p>School Helper</p></div>
-</div>
-
-<div class="teacher-card">
-<img src="https://i.imgur.com/rjuet5M.png">
-<div class="teacher-info"><h3>Shanti Shrestha</h3><p>School Helper</p></div>
-</div>
-
-</div>
-</section>
-
-<!-- GALLERY -->
-<section>
-<h2>Gallery</h2>
-<input type="file" id="upload">
-<div class="gallery" id="gallery"></div>
 </section>
 
 <!-- ADMISSION -->
 <section>
 <h2>Admission Form</h2>
-<form>
-<input placeholder="Student Name" required>
-<input placeholder="Class" required>
-<input type="email" placeholder="Email">
-<textarea placeholder="Address"></textarea>
+<form onsubmit="saveAdmission(event)">
+<input id="name" placeholder="Student Name" required>
+<input id="class" placeholder="Class" required>
 <button>Submit</button>
 </form>
+<div id="admissions"></div>
 </section>
-
-<!-- MESSAGE -->
-<section>
-<h2>Message to Principal</h2>
-<form onsubmit="sendMsg(event)">
-<input placeholder="Your Name">
-<textarea id="msgBox"></textarea>
-<button>Send</button>
-</form>
-</section>
-
-<!-- CONTACT -->
-<section>
-<h2>Contact</h2>
-<p>📍 Nuwakot, Nepal</p>
-<p>📞 9851338955</p>
-<p>📧 ganeshmabi444@gmail.com</p>
-</section>
-
-<!-- DEVELOPER -->
-<section>
-<h2>Developer</h2>
-<img src="https://i.imgur.com/rAzwgpe.jpeg" width="120" style="border-radius:50%;">
-<h3>Sirjan Bhattarai</h3>
-<p>Student & Web Developer</p>
-</section>
-
-<!-- LANGUAGE -->
-<div style="text-align:center;">
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('np')">NP</button>
-</div>
 
 <!-- CHAT -->
 <div id="chatBox">
@@ -324,18 +185,30 @@ padding:10px;
 </div>
 
 <button onclick="toggleChat()">💬</button>
-<button onclick="topFunc()" id="topBtn">⬆️</button>
 <button onclick="darkMode()">🌙</button>
+<button onclick="topFunc()" id="topBtn">⬆️</button>
 
 <!-- NAV -->
 <nav>
 <a href="#">Home</a>
 <a href="#">Teachers</a>
-<a href="#">Gallery</a>
 <a href="#">Contact</a>
 </nav>
 
 <script>
+
+// CLOCK
+setInterval(()=>{
+document.getElementById("clock").innerText=new Date().toLocaleString();
+},1000);
+
+// SCREEN TIME
+let seconds=0;
+setInterval(()=>{
+seconds++;
+document.getElementById("screenTime").innerText=
+"Screen Time: "+seconds+" sec";
+},1000);
 
 // SEARCH
 document.getElementById("search").onkeyup=function(){
@@ -345,28 +218,33 @@ s.style.display=s.innerText.toLowerCase().includes(v)?"block":"none";
 });
 };
 
-// GALLERY
-document.getElementById("upload").onchange=function(e){
-let r=new FileReader();
-r.onload=function(){
-let img=document.createElement("img");
-img.src=r.result;
-document.getElementById("gallery").appendChild(img);
-};
-r.readAsDataURL(e.target.files[0]);
-};
-
-// MESSAGE
-function sendMsg(e){
+// ADMISSION SAVE
+function saveAdmission(e){
 e.preventDefault();
-alert("Message sent to Principal");
+let n=document.getElementById("name").value;
+let c=document.getElementById("class").value;
+
+let data=JSON.parse(localStorage.getItem("admissions")||"[]");
+data.push({name:n,class:c});
+localStorage.setItem("admissions",JSON.stringify(data));
+
+loadAdmissions();
+alert("Admission Saved!");
 }
+
+function loadAdmissions(){
+let data=JSON.parse(localStorage.getItem("admissions")||"[]");
+document.getElementById("admissions").innerHTML=
+data.map(d=>`<p>${d.name} - ${d.class}</p>`).join("");
+}
+loadAdmissions();
 
 // CHAT
 function toggleChat(){
 let c=document.getElementById("chatBox");
 c.style.display=c.style.display==="block"?"none":"block";
 }
+
 function sendChat(){
 let m=document.getElementById("msg").value;
 let d=document.createElement("div");
@@ -379,7 +257,7 @@ function darkMode(){
 document.body.classList.toggle("dark");
 }
 
-// TOP BUTTON
+// TOP
 window.onscroll=function(){
 document.getElementById("topBtn").style.display=
 document.documentElement.scrollTop>200?"block":"none";
@@ -388,17 +266,22 @@ function topFunc(){
 window.scrollTo({top:0,behavior:"smooth"});
 }
 
-// CLOCK
-setInterval(()=>{
-document.getElementById("clock").innerText=new Date().toLocaleString();
-},1000);
-
-// LANGUAGE
-function setLang(lang){
-alert(lang==="np"?"Nepali Mode":"English Mode");
+// CLOCK SPEAK
+function speak(text){
+let msg=new SpeechSynthesisUtterance(text);
+speechSynthesis.speak(msg);
 }
 
+// VOICE SEARCH
+function startVoice(){
+let rec=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
+rec.lang="en-US";
+rec.start();
+rec.onresult=function(e){
+document.getElementById("search").value=e.results[0][0].transcript;
+};
+}
 </script>
 
 </body>
-    </html>
+</html>
