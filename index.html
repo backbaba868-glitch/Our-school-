@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Shree Ganesh Secondary School</title>
 
 <style>
@@ -13,23 +12,6 @@ body {
     margin:0;
     font-family: Arial;
     background:#f0f2f5;
-}
-
-/* NAVBAR (APP STYLE) */
-nav {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#0d47a1;
-    display:flex;
-    justify-content:space-around;
-    padding:10px;
-    z-index:1000;
-}
-nav a {
-    color:white;
-    text-decoration:none;
-    font-size:14px;
 }
 
 /* HERO */
@@ -43,72 +25,117 @@ nav a {
     text-align:center;
 }
 
+/* NAVBAR */
+nav {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#0d47a1;
+    display:flex;
+    justify-content:space-around;
+    padding:10px;
+}
+nav a {
+    color:white;
+    text-decoration:none;
+}
+
 /* SECTION */
 section {
-    padding:30px;
+    padding:25px;
     background:white;
     margin:15px;
     border-radius:10px;
 }
 
-/* GALLERY */
-.gallery {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:10px;
+/* TEACHERS */
+.teacher-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
-.gallery img {
-    width:100%;
-    height:120px;
-    object-fit:cover;
+.teacher-card{
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.teacher-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+.teacher-info{
+padding:10px;
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:10px;
+}
+.gallery img{
+width:100%;
+height:120px;
+object-fit:cover;
 }
 
 /* BUTTON */
-button {
-    padding:10px;
-    border:none;
-    background:#0d47a1;
-    color:white;
-    border-radius:5px;
+button{
+padding:10px;
+border:none;
+background:#0d47a1;
+color:white;
+border-radius:5px;
+margin:5px;
 }
 
 /* DARK MODE */
-.dark {
-    background:#121212;
-    color:white;
+.dark{
+background:#121212;
+color:white;
 }
-.dark section {
-    background:#1e1e1e;
+.dark section{
+background:#1e1e1e;
 }
 
 /* CHAT */
-#chatBox {
-    position:fixed;
-    right:10px;
-    bottom:70px;
-    width:250px;
-    background:white;
-    border-radius:10px;
-    display:none;
+#chatBox{
+position:fixed;
+bottom:80px;
+right:10px;
+width:250px;
+background:white;
+display:none;
+border-radius:10px;
 }
-#messages {
-    height:150px;
-    overflow:auto;
-    padding:10px;
+#messages{
+height:150px;
+overflow:auto;
+padding:10px;
 }
 
 /* TOP BUTTON */
-#topBtn {
-    position:fixed;
-    right:10px;
-    bottom:120px;
-    display:none;
+#topBtn{
+position:fixed;
+bottom:130px;
+right:10px;
+display:none;
 }
 
 /* CLOCK */
-#clock {
-    text-align:center;
-    font-weight:bold;
+#clock{
+text-align:center;
+font-weight:bold;
+}
+
+/* SEARCH */
+#search{
+width:90%;
+margin:10px;
+padding:10px;
 }
 
 </style>
@@ -117,110 +144,261 @@ button {
 <body>
 
 <div class="hero">
-    <h1>Shree Ganesh Secondary School</h1>
+<h1>Shree Ganesh Secondary School</h1>
 </div>
 
 <div id="clock"></div>
 
-<!-- SEARCH -->
-<input type="text" id="search" placeholder="Search..." style="width:90%;margin:10px;">
+<input id="search" placeholder="Search...">
 
 <!-- ABOUT -->
 <section>
-<h2>About</h2>
-<p>Best school in Nuwakot providing quality education.</p>
+<h2>About School</h2>
+<p>Shree Ganesh Secondary School is a leading educational institution in Nuwakot.</p>
+</section>
+
+<!-- TEACHERS -->
+<section>
+<h2>Teachers & Staff</h2>
+<div class="teacher-grid">
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/MHBF7pF.jpeg">
+<div class="teacher-info"><h3>Keshar Adhikari</h3><p>Principal | English</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/7XQKRUN.jpeg">
+<div class="teacher-info"><h3>Ram Kumar Giri</h3><p>Mathematics</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/mYIU2Gv.jpeg">
+<div class="teacher-info"><h3>Mina Thapa</h3><p>Science</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/kAoRQmk.jpeg">
+<div class="teacher-info"><h3>Chandika Bhatta</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/xOldxMM.jpeg">
+<div class="teacher-info"><h3>Mim Bahadur Manandhar</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/U2eRbrx.jpeg">
+<div class="teacher-info"><h3>Saraswati Subadi</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/RHtxWdg.jpeg">
+<div class="teacher-info"><h3>Ashok Rai</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/2sHOkNC.jpeg">
+<div class="teacher-info"><h3>Goma Saru Magar</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/mzIcInV.jpeg">
+<div class="teacher-info"><h3>Harisharan Devkota</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/RBsZLeH.jpeg">
+<div class="teacher-info"><h3>Jayaram Pathak</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/Pv3Etkw.jpeg">
+<div class="teacher-info"><h3>Shaku Shankar Koirala</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/5wOi90i.jpeg">
+<div class="teacher-info"><h3>Upendra Thapa</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/c3Pwy7I.jpeg">
+<div class="teacher-info"><h3>Laxmi Adhikari</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/U0Cn3tB.jpeg">
+<div class="teacher-info"><h3>Rajeshwori Giri</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/YHXbFtc.jpeg">
+<div class="teacher-info"><h3>Dipak Malla</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/0M4c4DZ.jpeg">
+<div class="teacher-info"><h3>Gita Adhikari</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/k7bpqjf.jpeg">
+<div class="teacher-info"><h3>Dipendra Thapa</h3><p>Faculty Member</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/RkLE7nf.jpeg">
+<div class="teacher-info"><h3>Padam Bahadur Rai</h3><p>School Helper</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/sahxCxc.png">
+<div class="teacher-info"><h3>Kaji Bahadur Paudel</h3><p>School Helper</p></div>
+</div>
+
+<div class="teacher-card">
+<img src="https://i.imgur.com/rjuet5M.png">
+<div class="teacher-info"><h3>Shanti Shrestha</h3><p>School Helper</p></div>
+</div>
+
+</div>
 </section>
 
 <!-- GALLERY -->
 <section>
 <h2>Gallery</h2>
-
-<!-- ADMIN UPLOAD -->
-<input type="file" id="upload" accept="image/*">
-
+<input type="file" id="upload">
 <div class="gallery" id="gallery"></div>
 </section>
 
+<!-- ADMISSION -->
+<section>
+<h2>Admission Form</h2>
+<form>
+<input placeholder="Student Name" required>
+<input placeholder="Class" required>
+<input type="email" placeholder="Email">
+<textarea placeholder="Address"></textarea>
+<button>Submit</button>
+</form>
+</section>
+
+<!-- MESSAGE -->
+<section>
+<h2>Message to Principal</h2>
+<form onsubmit="sendMsg(event)">
+<input placeholder="Your Name">
+<textarea id="msgBox"></textarea>
+<button>Send</button>
+</form>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+<p>📍 Nuwakot, Nepal</p>
+<p>📞 9851338955</p>
+<p>📧 ganeshmabi444@gmail.com</p>
+</section>
+
+<!-- DEVELOPER -->
+<section>
+<h2>Developer</h2>
+<img src="https://i.imgur.com/rAzwgpe.jpeg" width="120" style="border-radius:50%;">
+<h3>Sirjan Bhattarai</h3>
+<p>Student & Web Developer</p>
+</section>
+
+<!-- LANGUAGE -->
+<div style="text-align:center;">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('np')">NP</button>
+</div>
+
 <!-- CHAT -->
 <div id="chatBox">
-    <div id="messages"></div>
-    <input id="msg" placeholder="Type...">
-    <button onclick="sendMsg()">Send</button>
+<div id="messages"></div>
+<input id="msg">
+<button onclick="sendChat()">Send</button>
 </div>
 
 <button onclick="toggleChat()">💬</button>
-
-<!-- BUTTONS -->
 <button onclick="topFunc()" id="topBtn">⬆️</button>
 <button onclick="darkMode()">🌙</button>
 
 <!-- NAV -->
 <nav>
 <a href="#">Home</a>
-<a href="#">About</a>
+<a href="#">Teachers</a>
 <a href="#">Gallery</a>
 <a href="#">Contact</a>
 </nav>
 
 <script>
 
-// 🔍 SEARCH
-document.getElementById("search").onkeyup = function(){
-    let v = this.value.toLowerCase();
-    document.querySelectorAll("section").forEach(s=>{
-        s.style.display = s.innerText.toLowerCase().includes(v) ? "block":"none";
-    });
+// SEARCH
+document.getElementById("search").onkeyup=function(){
+let v=this.value.toLowerCase();
+document.querySelectorAll("section").forEach(s=>{
+s.style.display=s.innerText.toLowerCase().includes(v)?"block":"none";
+});
 };
 
-// 📸 GALLERY UPLOAD (ADMIN DEMO)
-document.getElementById("upload").onchange = function(e){
-    let file = e.target.files[0];
-    let reader = new FileReader();
-
-    reader.onload = function(){
-        let img = document.createElement("img");
-        img.src = reader.result;
-        document.getElementById("gallery").appendChild(img);
-    };
-
-    reader.readAsDataURL(file);
+// GALLERY
+document.getElementById("upload").onchange=function(e){
+let r=new FileReader();
+r.onload=function(){
+let img=document.createElement("img");
+img.src=r.result;
+document.getElementById("gallery").appendChild(img);
+};
+r.readAsDataURL(e.target.files[0]);
 };
 
-// 💬 CHAT
+// MESSAGE
+function sendMsg(e){
+e.preventDefault();
+alert("Message sent to Principal");
+}
+
+// CHAT
 function toggleChat(){
-    let c = document.getElementById("chatBox");
-    c.style.display = c.style.display==="block"?"none":"block";
+let c=document.getElementById("chatBox");
+c.style.display=c.style.display==="block"?"none":"block";
+}
+function sendChat(){
+let m=document.getElementById("msg").value;
+let d=document.createElement("div");
+d.innerText="You: "+m;
+document.getElementById("messages").appendChild(d);
 }
 
-function sendMsg(){
-    let msg = document.getElementById("msg").value;
-    let div = document.createElement("div");
-    div.innerText = "You: " + msg;
-    document.getElementById("messages").appendChild(div);
-    document.getElementById("msg").value="";
-}
-
-// 🌙 DARK MODE
+// DARK MODE
 function darkMode(){
-    document.body.classList.toggle("dark");
+document.body.classList.toggle("dark");
 }
 
-// ⬆️ TOP BUTTON
-window.onscroll = function(){
-    document.getElementById("topBtn").style.display =
-    document.documentElement.scrollTop>200?"block":"none";
+// TOP BUTTON
+window.onscroll=function(){
+document.getElementById("topBtn").style.display=
+document.documentElement.scrollTop>200?"block":"none";
 };
-
 function topFunc(){
-    window.scrollTo({top:0,behavior:"smooth"});
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
-// 📅 CLOCK
+// CLOCK
 setInterval(()=>{
-    document.getElementById("clock").innerText = new Date().toLocaleString();
+document.getElementById("clock").innerText=new Date().toLocaleString();
 },1000);
+
+// LANGUAGE
+function setLang(lang){
+alert(lang==="np"?"Nepali Mode":"English Mode");
+}
 
 </script>
 
 </body>
-</html>
+    </html>
