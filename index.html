@@ -679,30 +679,54 @@ function googleTranslateElementInit() {
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 <script>
     const voiceBtn = document.getElementById('voice-btn');
     const stopBtn = document.getElementById('stop-voice-btn');
     let synth = window.speechSynthesis;
 
-    voiceBtn.addEventListener('click', () => {
-        // Get all text from the body
-        const textToRead = document.body.innerText;
-        const utterance = new SpeechSynthesisUtterance(textToRead);
-        
-        // Optional: Set language (defaults to browser language)
-        utterance.lang = 'en-US'; 
-        utterance.rate = 1; // Speed
-
-        // Stop any current speaking before starting new
+    function speakText() {
+        // 1. Sabai bhanda paila boliraheko thau rokhne
         synth.cancel();
+
+        // 2. Section haru ko matra text line (Header/Nav bhanda baira)
+        const textToRead = document.querySelector('body').innerText;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+
+        // 3. Voice search garne (Browser ma available bhaye samma)
+        let voices = synth.getVoices();
+        
+        // Nepali support check (mobile/chrome ma dherai hunchha)
+        let nepaliVoice = voices.find(v => v.lang.includes('ne') || v.lang.includes('hi'));
+        if (nepaliVoice) {
+            utterance.voice = nepaliVoice;
+        }
+
+        utterance.rate = 0.9; // Ali bistari bolne banayeko
+        utterance.pitch = 1;
+
+        // 4. Bolna lagaune
         synth.speak(utterance);
-    });
+
+        // Error check garne
+        utterance.onerror = (e) => {
+            console.error("SpeechSynthesis Error:", e);
+            alert("Voice system ma samasya ayo. Kripaya browser update garnuhos.");
+        };
+    }
+
+    voiceBtn.addEventListener('click', speakText);
 
     stopBtn.addEventListener('click', () => {
         synth.cancel();
     });
+
+    // Browser le voice load garna samaya lincha, tesailai yo chahinchha
+    window.speechSynthesis.onvoiceschanged = () => {
+        console.log("Voices loaded and ready!");
+    };
 </script>
+    
+
     
 </body>
     </html>
