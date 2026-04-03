@@ -72,5 +72,34 @@
 
     window.onload = displayNotices;
 </script>
+    <section id="notices" style="padding: 20px; background: #fffde7; margin: 20px auto; max-width: 1100px; border-radius: 10px;">
+    <h2>Latest Notices</h2>
+    <div id="displayBoard">
+        </div>
+</section>
+
+<script>
+    function loadNotices() {
+        const display = document.getElementById('displayBoard');
+        let notices = JSON.parse(localStorage.getItem('notices')) || [];
+        
+        if(notices.length === 0) {
+            display.innerHTML = "<p>अहिले कुनै नयाँ सूचना छैन।</p>";
+            return;
+        }
+
+        display.innerHTML = "";
+        notices.forEach(n => {
+            display.innerHTML += `
+                <div style="border-bottom: 1px solid #ddd; padding: 10px 0;">
+                    <h4 style="margin:0; color:#0d47a1;">${n.title} <small>(${n.date})</small></h4>
+                    <p style="margin:5px 0; color:#555;">${n.desc}</p>
+                </div>
+            `;
+        });
+    }
+    window.onload = loadNotices;
+</script>
+    
 </body>
 </html>
