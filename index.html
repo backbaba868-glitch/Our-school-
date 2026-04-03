@@ -364,40 +364,7 @@
     }
 
     // ख. भाषा अनुसार बटन अपडेट
-    function updateUI() {
-        let lang = langSelect.value;
-        speakBtn.innerText = (lang === 'en') ? "🔊 Listen" : "🔊 सुन्नुहोस्";
-        searchInput.placeholder = (lang === 'en') ? "Search..." : "खोज्नुहोस्...";
-    }
-
-    // ग. मुख्य आवाज फङ्सन (लामो जानकारी सहित)
-    function speakWebsite() {
-        // यदि पहिले नै बोलिरहेको छ भने रोक्ने
-        if (synth.speaking) {
-            synth.cancel();
-            updateUI();
-            return;
-        }
-
-        let lang = langSelect.value;
-        let message = "";
-
-        if (lang === 'en') {
-            message = "Welcome to Shree Ganesh Secondary School, located in Suryagadhi-4, Ratmate, Nuwakot, Nepal. Our institution is dedicated to providing quality education and fostering excellence in every student. We offer a modern learning environment with dedicated faculty members. This website was developed by Sirjan Bhattarai, a lead developer and student of this school. We invite you to explore our courses, meet our teachers, and join our academic community. Thank you for visiting our official website!";
-        } else {
-            message = "श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेबसाइटमा तपाईंलाई स्वागत छ। यो विद्यालय नुवाकोट जिल्लाको सूर्यगढी-४, रातमाटेमा अवस्थित छ। हाम्रो मुख्य लक्ष्य विद्यार्थीहरूलाई गुणस्तरीय र व्यावहारिक शिक्षा प्रदान गर्नु हो। यहाँ हामी विद्यार्थीहरूको उज्ज्वल भविष्यका लागि उत्कृष्ट शैक्षिक वातावरण सुनिश्चित गर्दछौं। यो वेबसाइट यसै विद्यालयका विद्यार्थी सिर्जन भट्टराईले निर्माण गरेका हुन्। विद्यालयको बारेमा थप जानकारीको लागि कृपया हाम्रो वेबसाइट अवलोकन गर्नुहोला। धन्यवाद!";
-        }
-
-        const utterance = new SpeechSynthesisUtterance(message);
-        utterance.lang = (lang === 'en') ? 'en-US' : 'hi-IN'; 
-        utterance.pitch = 0.8; // पुरुषको मोटो आवाज
-        utterance.rate = 0.85; // बिस्तारै र प्रस्ट पढ्ने
-
-        utterance.onstart = () => speakBtn.innerText = "🛑 Stop";
-        utterance.onend = () => updateUI();
-
-        synth.speak(utterance);
-    }
+    
 
     // घ. महत्वपूर्ण: ब्राउजरमा आवाज सुचारु गर्ने ट्रिक (Click Fix)
     document.addEventListener('click', function() {
@@ -695,7 +662,48 @@ function showSlides() {
 </script>
 
 
+<div style="text-align: center; padding: 10px; background: #fff; border-bottom: 2px solid #ffd600;">
+    <div id="google_translate_element" style="display: inline-block; vertical-align: middle; margin-right: 20px;"></div>
 
+    <button id="voice-btn" style="width: auto; padding: 10px 20px; background: #1565c0; display: inline-block;">
+        🔊 Read Page Aloud
+    </button>
+    <button id="stop-voice-btn" style="width: auto; padding: 10px 20px; background: #d32f2f; display: inline-block; margin-left: 10px;">
+        Stop
+    </button>
+</div>
+
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ne,en,hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    const voiceBtn = document.getElementById('voice-btn');
+    const stopBtn = document.getElementById('stop-voice-btn');
+    let synth = window.speechSynthesis;
+
+    voiceBtn.addEventListener('click', () => {
+        // Get all text from the body
+        const textToRead = document.body.innerText;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        
+        // Optional: Set language (defaults to browser language)
+        utterance.lang = 'en-US'; 
+        utterance.rate = 1; // Speed
+
+        // Stop any current speaking before starting new
+        synth.cancel();
+        synth.speak(utterance);
+    });
+
+    stopBtn.addEventListener('click', () => {
+        synth.cancel();
+    });
+</script>
+    
 </body>
     </html>
     
