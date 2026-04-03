@@ -6,361 +6,215 @@
     <title>Shree Ganesh Secondary School | Nuwakot</title>
     <style>
         :root {
-            --primary: #1565c0;
+            --primary: #0d47a1;
             --secondary: #ffd600;
-            --dark: #0d47a1;
-            --light: #f0f2f5;
-            --success: #2e7d32; 
+            --accent: #1565c0;
+            --light: #f8f9fa;
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --success: #2e7d32;
         }
 
-        body { margin:0; font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--light); color: #333; scroll-behavior: smooth; }
-        /* लोगोलाई गोलो बनाउने र बीचमा राख्ने CSS */
-.school-logo {
-    width: 120px;            /* लोगोको चौडाइ */
-    height: 120px;           /* लोगोको उचाइ (Width र Height बराबर हुनुपर्छ) */
-    background-color: white; /* लोगोको पछाडि सेतो रंग */
-    border-radius: 50%;      /* यसले चौकोर फोटोलाई गोलो बनाउँछ */
-    object-fit: cover;       /* फोटो स्ट्रेच नभई गोलो भित्र फिट हुन्छ */
-    border: 4px solid var(--secondary); /* किनारमा पहेंलो बोर्डर (Optional) */
-    display: block;
-    margin: 0 auto 15px auto; /* बीचमा राख्न र मुनि अलिकति स्पेस छोड्न */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* अलिकति छायाँ */
-}
+        /* General Styles */
+        body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #333; line-height:1.6; scroll-behavior: smooth; transition: 0.3s; }
+        body.dark { background: var(--dark-bg); color: #eee; }
 
-/* मोबाइलमा लोगो अलि सानो देखाउन */
-@media (max-width: 600px) {
-    .school-logo {
-        width: 100px;
-        height: 100px;
-    }
-}
-        
+        /* Header & Circle Logo */
+        header { background: var(--primary); color:white; text-align:center; padding:40px 15px; border-bottom: 5px solid var(--secondary); }
+        .school-logo { 
+            width: 130px; height: 130px; border-radius: 50%; 
+            background: white; padding: 5px; border: 3px solid #fff; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); object-fit: cover;
+        }
+        header h1 { margin: 15px 0 5px; font-size: 2.2rem; color: var(--secondary); }
+        header p { margin: 5px 0; font-size: 1rem; opacity: 0.9; }
+
         /* Navigation */
-        nav { background: var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        nav { background: var(--accent); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
-        nav ul li a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-weight: bold; font-size: 14px; }
-        nav ul li a:hover { background: var(--dark); }
+        nav ul li a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        nav ul li a:hover { background: var(--primary); transition: 0.3s; }
 
-        /* Hero */
+        /* Hero Section */
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/1lCqOqk.jpeg'); 
-            background-size: cover; background-position: center; height: 60vh; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            color: white; text-align: center; padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.imgur.com/1lCqOqk.jpeg'); 
+            background-size: cover; background-position: center; color:white; text-align:center; padding:100px 20px; 
         }
-        .hero h1 { font-size: 2.5rem; margin: 0; color: var(--secondary); }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--secondary); }
 
-        /* Sections */
+        /* Main Sections */
         section { max-width: 1100px; margin: 30px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        h2 { color: var(--primary); border-left: 5px solid var(--secondary); padding-left: 15px; margin-bottom: 25px; }
+        body.dark section { background: var(--dark-card); border: 1px solid #333; }
+        h2 { color: var(--primary); border-left: 6px solid var(--secondary); padding-left: 15px; margin-bottom: 25px; }
+        body.dark h2 { color: var(--secondary); }
 
-        /* Teachers Grid */
-        .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        .teacher-card { background: #fff; border-radius: 12px; overflow: hidden; text-align: center; border: 1px solid #eee; transition: 0.3s; }
-        .teacher-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .teacher-card img { width: 100%; height: 250px; object-fit: cover; }
+        /* Teacher Grid - Uniform Design */
+        .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .teacher-card { 
+            background: #fff; border-radius: 12px; overflow: hidden; text-align: center; 
+            border: 1px solid #eee; transition: 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        body.dark .teacher-card { background: #252525; border-color: #444; }
+        .teacher-card img { width: 100%; height: 220px; object-fit: cover; border-bottom: 3px solid var(--secondary); }
         .teacher-info { padding: 15px; }
-        .teacher-info h3 { margin: 5px 0; font-size: 1.1rem; color: var(--dark); }
-        .teacher-subject { color: var(--success); font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 5px; }
+        .teacher-info h3 { margin: 5px 0; font-size: 1.1rem; color: var(--primary); }
+        body.dark .teacher-info h3 { color: #fff; }
+        .teacher-info p { margin: 0; font-size: 0.9rem; color: var(--success); font-weight: bold; }
 
-        /* Forms */
-        .form-group { margin-bottom: 15px; }
-        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-        button { background: var(--success); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; }
+        /* Course Cards */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .course-card { background: #e3f2fd; padding: 20px; border-radius: 10px; border-top: 5px solid var(--accent); }
+        body.dark .course-card { background: #1a237e; color: white; }
+
+        /* Form */
+        input, textarea, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; box-sizing: border-box; }
+        button { background: var(--success); color: white; padding: 15px 30px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; }
         button:hover { background: #1b5e20; }
 
-        /* Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center; background: var(--primary); color: white; padding: 40px; border-radius: 15px; }
-        .stat-item h3 { font-size: 2.5rem; color: var(--secondary); margin: 0; }
+        /* Developer Card */
+        .dev-card { text-align: center; background: #fffde7; padding: 30px; border-radius: 15px; border: 2px dashed var(--secondary); }
+        body.dark .dev-card { background: #332b00; color: white; }
+        .dev-img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); object-fit: cover; }
 
-        /* Developer Section */
-        .dev-card { text-align: center; background: #e3f2fd; padding: 40px; border-radius: 15px; }
-        .dev-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid white; object-fit: cover; }
+        /* Utilities */
+        .floating-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 2000; }
+        .float-btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: var(--primary); color: white; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+        .footer-credit { color: var(--secondary); font-weight: bold; }
 
-        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
+            header h1 { font-size: 1.6rem; }
             section { margin: 15px; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
+<header>
+    <img src="https://i.imgur.com/8QO9T9l.jpeg" alt="School Logo" class="school-logo">
+    <h1>Shree Ganesh Secondary School</h1>
+    <p>Suryagadhi-4, Ratmate, Nuwakot, Nepal</p>
+    <p><strong>Estd: 2035 BS</strong> | PG - 12 | Nepali Medium</p>
+</header>
+
 <nav>
     <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#teachers">TEACHERS</a></li>
-        <li><a href="#admission">ADMISSION</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#teachers">Teachers</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#admission">Admission</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <div class="hero" id="home">
-    <img src= "https://i.imgur.com/VEInp4V.jpeg" alt="Logo" style="width:80px; margin-bottom:15px;">
-    <h1>Shree Ganesh Secondary School</h1>
-    <p>Suryagadhi-4, Ratmate, Nuwakot</p>
-    <p style="background:var(--secondary); color:black; padding:5px 15px; border-radius:20px; font-weight:bold;">Estd: 2035 BS</p>
+    <h2>"Practice Makes Perfect"</h2>
+    <p>Providing 50% Theoretical and 50% Practical Education for a brighter future.</p>
 </div>
 
 <section id="about">
-    <h2>Welcome to Our School</h2>
-    <p>We provide 50% Theoretical and 50% Practical education for all-round development of students.</p>
-    <div class="stats-grid">
-        <div class="stat-item"><h3>500+</h3><p>Students</p></div>
-        <div class="stat-item"><h3>25+</h3><p>Teachers</p></div>
-        <div class="stat-item"><h3>45+</h3><p>Years Experience</p></div>
-        <div class="stat-item"><h3>100%</h3><p>Safe Environment</p></div>
+    <h2>About Our School</h2>
+    <p>Shree Ganesh Secondary School is a leading educational institution in Nuwakot. We focus on academic excellence, discipline, and practical knowledge from Class 0 to 12.</p>
+    <div style="background: #f1f8e9; padding: 20px; border-radius: 10px; border-left: 5px solid var(--success); margin-top: 15px;">
+        <strong>Principal's Message:</strong>
+        <p><em>"Our mission is to foster a disciplined environment where students gain the skills necessary for the 21st century."</em> — <strong>Keshar Adhikari</strong></p>
     </div>
 </section>
 
 <section id="teachers">
-    <h2>Our Dedicated Teachers</h2>
+    <h2>Our Dedicated Teachers & Staff</h2>
     <div class="teacher-grid">
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/MHBF7pF.jpeg" alt="Kesher Adhikari">
-            <div class="teacher-info">
-                <span class="teacher-subject">English / Head</span>
-                <h3>Keshar Adhikari</h3>
-                <p>Principal</p>
-            </div>
-        </div>
-        <section id="teachers">
-    <h2 style="color: #1565c0; border-left: 5px solid #ffd600; padding-left: 15px; margin-bottom: 25px;">Our Dedicated Teachers & Staff</h2>
-    
-    <div class="teacher-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
-        
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/MHBF7pF.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">English</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Keshar Adhikari</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Principal</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/7XQKRUN.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block:</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Ram Kumar Giri</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/mYIU2Gv.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Mina Thapa</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/kAoRQmk.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Chandika Bhatta</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/xOldxMM.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Mim Bahadur Manandhar</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/U2eRbrx.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Saraswati Subadi</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/RHtxWdg.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Ashok Rai</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/2sHOkNC.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Goma Saru Magar</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/mzIcInV.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Harisharan Devkota</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/RBsZLeH.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Jayaram Pathak</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/Pv3Etkw.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Shaku Shankar Koirala</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/5wOi90i.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Upendra Thapa</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/c3Pwy7I.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Laxmi Adhikari</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/U0Cn3tB.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Rajeshwori Giri</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/YHXbFtc.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Dipak Malla</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/0M4c4DZ.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Gita Adhikari</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/k7bpqjf.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Dipendra Thapa</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/ttig6DZ.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Faculty</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Sita Tamang</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">Faculty Member</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/RkLE7nf.jpeg" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Staff</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Padam Bahadur Rai</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">School Helper</p>
-            </div>
-        </div>
-
-        <div class="teacher-card">
-            <img src="https://i.imgur.com/sahxCxc.png" style="width: 100%; height: 250px; object-fit: cover;">
-            <div class="teacher-info" style="padding: 15px; text-align: center;">
-                <span style="color: #2e7d32; font-weight: bold; font-size: 0.85rem; display: block;">Staff</span>
-                <h3 style="margin: 5px 0; font-size: 1.1rem; color: #0d47a1;">Kaji Bahadur Paudel</h3>
-                <p style="font-size: 0.9rem; color: #666; margin: 0;">School Helper</p>
-            </div>
-        </div>
-
+        <div class="teacher-card"><img src="https://i.imgur.com/MHBF7pF.jpeg"><div class="teacher-info"><h3>Keshar Adhikari</h3><p>Principal</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/7XQKRUN.jpeg"><div class="teacher-info"><h3>Ram Kumar Giri</h3><p>Math Teacher</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/mYIU2Gv.jpeg"><div class="teacher-info"><h3>Mina Thapa</h3><p>Science Teacher</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/kAoRQmk.jpeg"><div class="teacher-info"><h3>Chandika Bhatta</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/xOldxMM.jpeg"><div class="teacher-info"><h3>Mim Bdr. Manandhar</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/U2eRbrx.jpeg"><div class="teacher-info"><h3>Saraswati Subadi</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/RHtxWdg.jpeg"><div class="teacher-info"><h3>Ashok Rai</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/mzIcInV.jpeg"><div class="teacher-info"><h3>Harisharan Devkota</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/RBsZLeH.jpeg"><div class="teacher-info"><h3>Jayaram Pathak</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/Pv3Etkw.jpeg"><div class="teacher-info"><h3>Shaku Shankar Koirala</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/5wOi90i.jpeg"><div class="teacher-info"><h3>Upendra Thapa</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/YHXbFtc.jpeg"><div class="teacher-info"><h3>Dipak Malla</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/k7bpqjf.jpeg"><div class="teacher-info"><h3>Dipendra Thapa</h3><p>Faculty Member</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/RkLE7nf.jpeg"><div class="teacher-info"><h3>Padam Bdr. Rai</h3><p>School Helper</p></div></div>
     </div>
-        </section>
-        
+</section>
+
+<section id="courses">
+    <h2>Our Courses</h2>
+    <div class="course-grid">
+        <div class="course-card"><h3>Primary (1-8)</h3><p>English, Nepali, Maths, Science, Social & Local Curriculum.</p></div>
+        <div class="course-card"><h3>Secondary (9-10)</h3><p>Computer, Accountancy, Optional Maths & Economics.</p></div>
+        <div class="course-card"><h3>Higher Secondary (+2)</h3><p>Specialized tracks in Management and Education.</p></div>
+    </div>
 </section>
 
 <section id="admission">
     <h2>Online Admission Inquiry</h2>
-    <p>नयाँ भर्नाको लागि तलको फारम भर्नुहोस्।</p>
     <form action="https://formspree.io/f/xgonldyb" method="POST">
-        <div class="form-group"><input type="text" name="student_name" placeholder="Student's Full Name" required></div>
-        <div class="form-group">
-            <select name="class_to_join" required>
-                <option value="">Select Class</option>
-                <option value="Nursery">Nursery - UKG</option>
-                <option value="1-5">Class 1 to 5</option>
-                <option value="6-10">Class 6 to 10</option>
-                <option value="11-12">Class 11 & 12</option>
-            </select>
-        </div>
-        <div class="form-group"><input type="email" name="email" placeholder="Parent's Email" required></div>
-        <div class="form-group"><textarea name="address" placeholder="Temporary/Permanent Address" rows="3" required></textarea></div>
+        <input type="text" name="student_name" placeholder="Student's Full Name" required>
+        <select name="class" required>
+            <option value="">Select Class</option>
+            <option>Class 1-5</option>
+            <option>Class 6-10</option>
+            <option>Class 11-12</option>
+        </select>
+        <input type="tel" name="phone" placeholder="Parent's Mobile Number" required>
+        <textarea name="details" placeholder="Full Address & Previous School Details" rows="3" required></textarea>
         <button type="submit">Submit Inquiry</button>
     </form>
 </section>
 
-<section id="message">
-    <h2>Message to Principal</h2>
-    <form action="https://formspree.io/f/xgonldyb" method="POST">
-        <input type="hidden" name="_subject" value="New Message to Principal">
-        <div class="form-group"><input type="text" name="sender_name" placeholder="Your Name" required></div>
-        <div class="form-group"><textarea name="message" placeholder="Write your message or feedback here..." rows="4" required></textarea></div>
-        <button type="submit" style="background: var(--primary);">Send Message</button>
-    </form>
-</section>
-
-<section id="developer" class="dev-card">
-    <h2>Website Developer</h2>
-    <img src="https://i.imgur.com/rAzwgpe.jpeg" alt="Sirjan Bhattarai" class="dev-img">
-    <h3>Sirjan Bhattarai</h3>
-    <p>Student & Lead Web Developer</p>
-    <p><em>Shree Ganesh Secondary School, Nuwakot</em></p>
-    <a href="mailto:sirjanbhattarai308@gmail.com" style="text-decoration:none; background:var(--dark); color:white; padding:10px 25px; border-radius:25px; font-weight:bold; display:inline-block; margin-top:10px;">Email Me</a>
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div>
+            <p>📍 <strong>Address:</strong> Ratmate, Nuwakot</p>
+            <p>📞 <strong>Phone:</strong> +977 9851338955</p>
+            <p>📧 <strong>Email:</strong> ganeshmabi444@gmail.com</p>
+        </div>
+        <div class="dev-card">
+            <img src="https://i.imgur.com/rAzwgpe.jpeg" class="dev-img" alt="Sirjan Bhattarai">
+            <h3>Sirjan Bhattarai</h3>
+            <p>Web Developer & Student</p>
+        </div>
+    </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 Shree Ganesh Secondary School | All Rights Reserved</p>
-    <p>Principal: <strong>Keshar Adhikari</strong> | Developer: <strong>Sirjan Bhattarai</strong></p>
+    <p>&copy; <span id="year"></span> Shree Ganesh Secondary School | All Rights Reserved</p>
+    <p>Website Designed by: <span class="footer-credit">Sirjan Bhattarai</span></p>
 </footer>
 
-</body>
-        </html>
+<div class="floating-btns">
+    <button class="float-btn" onclick="toggleDark()" title="Toggle Dark Mode">🌙</button>
+    <button class="float-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Go Top">⬆️</button>
+</div>
 
+<script>
+    // Set Current Year
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Dark Mode Toggle
+    function toggleDark() {
+        document.body.classList.toggle('dark');
+        const btn = document.querySelector('.float-btn');
+        btn.innerText = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    }
+
+    // Smooth Scroll for Navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+
+</body>
+    </html>
+    
