@@ -87,6 +87,8 @@
     <a href="#teachers">शिक्षकहरू</a>
     <a href="#contact">सम्पर्क</a>
     <a href="#developer">डेभलपर</a>
+    <a href="#Notice">notice</a>
+    <a href="#gallery">gallery</a>
 </nav>
 
 <section id="admission">
@@ -117,6 +119,56 @@
         <button type="submit" class="btn-submit full-width">आवेदन पठाउनुहोस्</button>
     </form>
 </section>
+    <section id="notices" style="background: #fff5f5; border: 2px solid #ffcdd2;">
+    <h2 style="color: #c62828; border-left-color: #c62828;">📢 भर्खरैका सूचनाहरू (Recent Notices)</h2>
+    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" style="font-size: 1.2rem; color: #b71c1c; font-weight: bold;">
+        🎯 शैक्षिक सत्र २०८३ को नयाँ भर्ना खुल्यो! | 📝 प्रथम त्रैमासिक परीक्षा आगामी जेठ १५ गतेदेखि संचालन हुनेछ। | 🏆 खेलकुद सप्ताहको नतिजा प्रकाशित गरिएको छ।
+    </marquee>
+</section>
+
+<section id="gallery">
+    <h2>विद्यालयको झलक (Gallery)</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://i.imgur.com/8okKQUD.jpeg" onclick="openFullImg(this.src)"></div>
+        <div class="gallery-item"><img src="https://i.imgur.com/EMrhssA.jpeg" onclick="openFullImg(this.src)"></div>
+        <div class="gallery-item"><img src="https://i.imgur.com/b8z2amr.jpeg" onclick="openFullImg(this.src)"></div>
+        <div class="gallery-item"><img src="https://i.imgur.com/rhZP1BC.jpeg" onclick="openFullImg(this.src)"></div>
+    </div>
+</section>
+
+<script>
+    function speak(text) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        msg.lang = 'ne-NP'; // नेपाली आवाजको लागि
+        window.speechSynthesis.speak(msg);
+    }
+
+    // फोटो ठूलो बनाउने फङ्सन
+    function openFullImg(src) {
+        const fullImgWindow = window.open("");
+        fullImgWindow.document.write(`<img src="${src}" style="width:100%; height:auto;">`);
+    }
+</script>
+
+<style>
+    /* नयाँ एनिमेसन थप्न */
+    .teacher-card:hover {
+        border: 2px solid var(--secondary);
+        box-shadow: 0 15px 35px rgba(13,71,161,0.2);
+    }
+    
+    /* स्क्रोल गर्दा बिस्तारै देखिने प्रभाव */
+    section {
+        animation: fadeInUp 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+    
 
 <section id="teachers">
     <h2>हाम्रा शिक्षक तथा कर्मचारीहरू (२२ सदस्यहरू)</h2>
