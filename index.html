@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,289 +24,158 @@
         #clock { font-weight: bold; background: var(--secondary); color: #000; padding: 2px 8px; border-radius: 4px; }
 
         /* Header */
-        header { background: linear-gradient(rgba(13,71,161,0.9), rgba(13,71,161,0.9)), url('https://i.imgur.com/1lCqOqk.jpeg') center/cover; color: white; text-align: center; padding: 60px 20px; border-bottom: 6px solid var(--secondary); }
-        .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid white; margin-bottom: 15px; }
+        header { background: linear-gradient(rgba(13,71,161,0.85), rgba(13,71,161,0.85)), url('https://i.imgur.com/1lCqOqk.jpeg') center/cover; color: white; text-align: center; padding: 60px 20px; border-bottom: 6px solid var(--secondary); }
+        .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid white; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
         /* Navigation */
-        nav { background: var(--accent); padding: 12px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 40px; z-index: 1000; }
+        nav { background: var(--accent); padding: 12px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 41px; z-index: 1000; }
         nav a { color: white; text-decoration: none; padding: 10px 15px; font-weight: bold; text-transform: uppercase; font-size: 12px; transition: 0.3s; }
         nav a:hover { color: var(--secondary); }
 
         /* Sections */
-        section { max-width: 1200px; margin: 35px auto; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        section { max-width: 1100px; margin: 35px auto; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         body.dark section { background: var(--dark-card); border: 1px solid #333; }
         h2 { color: var(--primary); border-left: 10px solid var(--secondary); padding-left: 15px; margin-bottom: 30px; }
         body.dark h2 { color: var(--secondary); }
 
-        /* Teacher Grid - Full 22 Members */
+        /* Teacher Grid */
         .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
         .teacher-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #eee; text-align: center; transition: 0.3s; }
         body.dark .teacher-card { background: #2a2a2a; border-color: #444; }
         .teacher-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .teacher-card img { width: 100%; height: 240px; object-fit: cover; border-bottom: 3px solid var(--secondary); }
+        .teacher-card img { width: 100%; height: 230px; object-fit: cover; border-bottom: 3px solid var(--secondary); }
         .t-info { padding: 12px; }
         .t-info h3 { margin: 5px 0; font-size: 1rem; color: var(--primary); }
         body.dark .t-info h3 { color: #fff; }
-        .t-info p { color: var(--success); font-weight: bold; margin: 0; font-size: 0.8rem; }
+        .t-info p { color: var(--success); font-weight: bold; margin: 0; font-size: 0.85rem; }
 
-        /* Gallery */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-        .gallery-item { border-radius: 10px; overflow: hidden; height: 180px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .gallery-item img:hover { transform: scale(1.1); }
+        /* Form Styles */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width { grid-column: span 2; }
+        .input-group { display: flex; flex-direction: column; }
+        label { font-weight: bold; margin-bottom: 8px; }
+        input, select, textarea { padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; }
+        .btn-submit { background: var(--success); color: white; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: #1b5e20; transform: translateY(-2px); }
 
-        /* Contact */
-        .contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-
-        /* Developer */
+        /* Developer Card */
         .dev-card { display: flex; align-items: center; gap: 25px; background: #fff8e1; padding: 25px; border-radius: 15px; border: 2px dashed var(--secondary); }
         body.dark .dev-card { background: #2d2600; }
         .dev-pic { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); object-fit: cover; }
 
         footer { background: #051e3e; color: white; text-align: center; padding: 40px; border-top: 5px solid var(--secondary); }
-        .theme-btn { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; }
+        .theme-btn { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; font-size: 20px; }
 
-        @media (max-width: 768px) { .contact-box, .dev-card { grid-template-columns: 1fr; flex-direction: column; text-align: center; } }
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } .dev-card { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
 <div class="top-nav">
     <div id="date">Loading...</div>
-    <div>📍 Nuwakot | <span id="clock">00:00:00</span></div>
+    <div>📍 Ratmate, Nuwakot | <span id="clock">00:00:00</span></div>
 </div>
 
 <header>
     <img src="https://i.imgur.com/rhZP1BC.jpeg" alt="Logo" class="logo">
-    <h1>Shree Ganesh Secondary School</h1>
-    <p>Ratmate, Suryagadhi-4, Nuwakot</p>
+    <h1>श्री गणेश माध्यमिक विद्यालय</h1>
+    <p>सूर्यगढी-४, रतमटे, नुवाकोट</p>
 </header>
 
 <nav>
-    <a href="#teachers">Staff</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-    <a href="#developer">Developer</a>
+    <a href="#admission">भर्ना फारम</a>
+    <a href="#teachers">शिक्षकहरू</a>
+    <a href="#contact">सम्पर्क</a>
+    <a href="#developer">डेभलपर</a>
 </nav>
 
-<section id="teachers">
-    <h2>Our Dedicated Staff (22 Members)</h2>
-    <div class="teacher-grid">
-        <div class="teacher-card"><img src="https://i.imgur.com/MHBF7pF.jpeg"><h3>Keshar Adhikari</h3><p>Principal</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/7XQKRUN.jpeg"><h3>Ram Kumar Giri</h3><p>information officer</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/mYIU2Gv.jpeg"><h3>Mina Thapa</h3><p>Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/kAoRQmk.jpeg"><h3>Chandika Bhatta</h3><p>ECD Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/xOldxMM.jpeg"><h3>Mim Bdr. Manandhar</h3><p>economics Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/U2eRbrx.jpeg"><h3>Saraswati Subedi</h3><p>nepali Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/RHtxWdg.jpeg"><h3>Ashok Rai</h3><p>science Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/mzIcInV.jpeg"><h3>H.S. Devkota</h3><p>Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/RBsZLeH.jpeg"><h3>Jayaram Pathak</h3><p>Account Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/Pv3Etkw.jpeg"><h3>S.S. Koirala</h3><p>NepaliTeacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/5wOi90i.jpeg"><h3>Upendra Thapa</h3><p>Maths Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/YHXbFtc.jpeg"><h3>Dipak Malla</h3><p>Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/k7bpqjf.jpeg"><h3>Dipendra Thapa</h3><p>maths Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/x1T7iKg.jpeg"><h3>Sita Tamang</h3><p>Social Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/tmuj6Pe.jpeg"><h3>Khamlal Timalsina</h3><p>English Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/1BcTevG.jpeg"><h3>Gita Adhikari</h3><p>  Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/2Zw6JDr.jpeg"><h3>Rajeshwori Giri</h3><p>Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/T32B8lD.jpeg"><h3>Laxmi Adhikari</h3><p>Ecd Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/LLTNxx5.jpeg"><h3>Goma Saru Magar</h3><p> Teacher</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/rjuet5M.png"><h3>Shanti Shrestha</h3><p>Helper</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/sahxCxc.png"><h3>Kaji Bdr. Paudel</h3><p>Helper</p></div>
-        <div class="teacher-card"><img src="https://i.imgur.com/RkLE7nf.jpeg"><h3>Padam Bdr. Rai</h3><p>Helper</p></div>
-    </div>
-</section>
-
-<section id="gallery">
-    <h2>School Gallery</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item"><img src="https://i.imgur.com/8okKQUD.jpeg"></div>
-        <div class="gallery-item"><img src="https://i.imgur.com/EMrhssA.jpeg"></div>
-        <div class="gallery-item"><img src="https://i.imgur.com/b8z2amr.jpeg"></div>
-        <div class="gallery-item"><img src="https://i.imgur.com/b8z2amr.jpeg"></div>
-    </div>
-</section>
-    <style>
-    .school-section {
-        max-width: 1100px;
-        margin: 40px auto;
-        padding: 30px;
-        background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        font-family: 'Segoe UI', sans-serif;
-    }
-    
-    .section-title {
-        color: #0d47a1;
-        border-left: 8px solid #ffd600;
-        padding-left: 15px;
-        margin-bottom: 25px;
-        font-size: 1.8rem;
-    }
-
-    .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .full-width {
-        grid-column: span 2;
-    }
-
-    .input-group {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: #333;
-    }
-
-    input, select, textarea {
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 10px;
-        font-size: 1rem;
-        transition: 0.3s;
-    }
-
-    input:focus, textarea:focus {
-        border-color: #0d47a1;
-        outline: none;
-        box-shadow: 0 0 8px rgba(13,71,161,0.2);
-    }
-
-    .btn-submit {
-        background: #2e7d32;
-        color: white;
-        padding: 15px;
-        border: none;
-        border-radius: 10px;
-        font-weight: bold;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: 10px;
-    }
-
-    .btn-submit:hover {
-        background: #1b5e20;
-        transform: translateY(-2px);
-    }
-
-    .principal-btn {
-        background: #0d47a1;
-    }
-
-    .principal-btn:hover {
-        background: #08306b;
-    }
-
-    @media (max-width: 768px) {
-        .form-grid { grid-template-columns: 1fr; }
-        .full-width { grid-column: span 1; }
-    }
-</style>
-
-<section id="admission" class="school-section">
-    <h2 class="section-title">Online Admission Form (Session 2026)</h2>
+<section id="admission">
+    <h2>अनलाइन भर्ना आवेदन (२०८३)</h2>
     <form class="form-grid" action="https://formspree.io/f/xgonldyb" method="POST">
         <div class="input-group">
-            <label>Student Full Name</label>
-            <input type="text" name="student_name" placeholder="Enter student name" required>
+            <label>विद्यार्थीको पूरा नाम</label>
+            <input type="text" name="student_name" placeholder="नाम यहाँ लेख्नुहोस्" required>
         </div>
-        
         <div class="input-group">
-            <label>Class for Admission</label>
+            <label>भर्ना हुन चाहेको कक्षा</label>
             <select name="class" required>
-                <option value="">-- Select Class --</option>
-                <option>Class PG - 5</option>
-                <option>Class 6 - 10</option>
-                <option>Class 11 (Management)</option>
-                <option>Class 11 (Education)</option>
-                <option>Class 12</option>
+                <option value="">-- कक्षा छान्नुहोस् --</option>
+                <option>PG - 5</option>
+                <option>6 - 10</option>
+                <option>11 (व्यवस्थापन)</option>
+                <option>11 (शिक्षा)</option>
             </select>
         </div>
-        
         <div class="input-group">
-            <label>Parent/Guardian Name</label>
-            <input type="text" name="guardian" placeholder="Father or Mother's name" required>
+            <label>अभिभावकको नाम</label>
+            <input type="text" name="guardian" required>
         </div>
-        
         <div class="input-group">
-            <label>Contact Phone</label>
+            <label>सम्पर्क फोन नम्बर</label>
             <input type="tel" name="phone" placeholder="98XXXXXXXX" required>
         </div>
-        
-        <div class="input-group full-width">
-            <label>Permanent Address</label>
-            <input type="text" name="address" placeholder="Tole, Ward No, Nuwakot" required>
-        </div>
-
-        <button type="submit" class="btn-submit full-width">Submit Admission Request</button>
+        <button type="submit" class="btn-submit full-width">आवेदन पठाउनुहोस्</button>
     </form>
 </section>
 
-<section id="principal" class="school-section" style="background: #f9f9f9; border: 1px solid #ddd;">
-    <h2 class="section-title">Direct Message to Principal</h2>
-    <p style="margin-bottom: 20px; color: #666;">Send a private message, suggestion, or complaint directly to <strong>Principal Keshar Adhikari</strong>.</p>
-    
-    <form class="form-grid" action="https://formspree.io/f/xgonldyb" method="POST">
-        <div class="input-group">
-            <label>Your Name</label>
-            <input type="text" name="sender_name" placeholder="Parent or Student name" required>
-        </div>
-        
-        <div class="input-group">
-            <label>Subject</label>
-            <input type="text" name="subject" placeholder="What is this about?" required>
-        </div>
-        
-        <div class="input-group full-width">
-            <label>Your Message</label>
-            <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit principal-btn full-width">Send Message Privately</button>
-    </form>
+<section id="teachers">
+    <h2>हाम्रा शिक्षक तथा कर्मचारीहरू (२२ सदस्यहरू)</h2>
+    <div class="teacher-grid">
+        <div class="teacher-card"><img src="https://i.imgur.com/MHBF7pF.jpeg"><div class="t-info"><h3>Keshar Adhikari</h3><p>प्रधानाध्यापक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/7XQKRUN.jpeg"><div class="t-info"><h3>Ram Kumar Giri</h3><p>सूचना अधिकारी</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/mYIU2Gv.jpeg"><div class="t-info"><h3>Mina Thapa</h3><p>शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/kAoRQmk.jpeg"><div class="t-info"><h3>Chandika Bhatta</h3><p>ECD शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/xOldxMM.jpeg"><div class="t-info"><h3>Mim Bdr. Manandhar</h3><p>अर्थशास्त्र शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/U2eRbrx.jpeg"><div class="t-info"><h3>Saraswati Subedi</h3><p>नेपाली शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/RHtxWdg.jpeg"><div class="t-info"><h3>Ashok Rai</h3><p>विज्ञान शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/mzIcInV.jpeg"><div class="t-info"><h3>H.S. Devkota</h3><p>शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/RBsZLeH.jpeg"><div class="t-info"><h3>Jayaram Pathak</h3><p>लेखा शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/Pv3Etkw.jpeg"><div class="t-info"><h3>S.S. Koirala</h3><p>नेपाली शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/5wOi90i.jpeg"><div class="t-info"><h3>Upendra Thapa</h3><p>गणित शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/YHXbFtc.jpeg"><div class="t-info"><h3>Dipak Malla</h3><p>शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/k7bpqjf.jpeg"><div class="t-info"><h3>Dipendra Thapa</h3><p>गणित शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/x1T7iKg.jpeg"><div class="t-info"><h3>Sita Tamang</h3><p>सामाजिक शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/tmuj6Pe.jpeg"><div class="t-info"><h3>Khamlal Timalsina</h3><p>अंग्रेजी शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/1BcTevG.jpeg"><div class="t-info"><h3>Gita Adhikari</h3><p>शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/2Zw6JDr.jpeg"><div class="t-info"><h3>Rajeshwori Giri</h3><p>शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/T32B8lD.jpeg"><div class="t-info"><h3>Laxmi Adhikari</h3><p>ECD शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/LLTNxx5.jpeg"><div class="t-info"><h3>Goma Saru Magar</h3><p>शिक्षक</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/rjuet5M.png"><div class="t-info"><h3>Shanti Shrestha</h3><p>कार्यालय सहयोगी</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/sahxCxc.png"><div class="t-info"><h3>Kaji Bdr. Paudel</h3><p>कार्यालय सहयोगी</p></div></div>
+        <div class="teacher-card"><img src="https://i.imgur.com/RkLE7nf.jpeg"><div class="t-info"><h3>Padam Bdr. Rai</h3><p>कार्यालय सहयोगी</p></div></div>
+    </div>
 </section>
-    
 
 <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-box">
+    <h2>सम्पर्क ठेगाना</h2>
+    <div class="form-grid">
         <div>
-            <p><strong>📍 Location:</strong> Suryagadhi-4, Nuwakot</p>
-            <p><strong>📞 Phone:</strong> +977 9851338955</p>
-            <p><strong>📧 Email:</strong> ganeshmabi444@gmail.com</p>
+            <p><strong>📍 ठेगाना:</strong> सूर्यगढी-४, नुवाकोट</p>
+            <p><strong>📞 फोन:</strong> +977 9851338955</p>
+            <p><strong>📧 इमेल:</strong> ganeshmabi444@gmail.com</p>
         </div>
-        <div style="background:#eee; height:200px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#888;">
-            https://maps.app.goo.gl/r6Cn7xcqFMnwxmg8A
+        <div style="background:#eee; height:150px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#888; border: 1px solid #ccc;">
+            Google Map View (Nuwakot)
         </div>
     </div>
 </section>
 
 <section id="developer">
-    <h2>Developer Profile</h2>
     <div class="dev-card">
-        <img src="https://i.imgur.com/X7Ff8qT.jpeg" class="dev-pic">
+        <img src="https://i.imgur.com/X7Ff8qT.jpeg" class="dev-pic" alt="Sirjan Bhattarai">
         <div>
             <h3>Sirjan Bhattarai</h3>
-            <p><strong>Web Developer</strong></p>
-            <p>Architect of this digital portal. Built for the community of Nuwakot.</p>
+            <p><strong>Lead Web Developer</strong></p>
+            <p>यो डिजिटल पोर्टलको निर्माण र व्यवस्थापन। नुवाकोट र आफ्नो विद्यालयलाई डिजिटल संसारमा जोड्ने प्रयास।</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 Shree Ganesh Secondary School. Designed by Sirjan Bhattarai.</p>
+    <p>© 2026 श्री गणेश माध्यमिक विद्यालय। Design by Sirjan Bhattarai.</p>
 </footer>
 
-<button class="theme-btn" onclick="document.body.classList.toggle('dark')">🌓</button>
+<button class="theme-btn" onclick="document.body.classList.toggle('dark')" title="Switch Theme">🌓</button>
 
 <script>
     function updateClock() {
