@@ -61,19 +61,68 @@
         height: 80px;
     }
 }
-       nav {
-    nav {
+       /* Floating Container - बटनहरूलाई दायाँ कुनामा राख्न */
+.floating-actions {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+}
+
+/* WhatsApp Button Design */
+.wa-btn {
+    display: flex !important;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 15px 5px;
+    background: #25d366;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-nav a {
-    flex: 1 1 auto; /* मोबाइलमा मेनुका बटनहरू मिलाउन */
-    min-width: 80px;
+
+.wa-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
 }
-           
+
+/* Back to Top Button Design */
+#backToTop {
+    display: none; /* JavaScript ले स्क्रोल गरेपछि मात्र देखाउँछ */
+    align-items: center;
+    justify-content: center;
+    background: var(--primary); /* तपाईँको नीलो रङ */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+#backToTop:hover {
+    background: #000; /* Hover गर्दा कालो रङ */
+    transform: translateY(-5px);
+}
+
+/* मोबाइलको लागि अलि सानो बनाउन */
+@media (max-width: 600px) {
+    .wa-btn { width: 50px; height: 50px; font-size: 24px; }
+    #backToTop { width: 45px; height: 45px; font-size: 18px; }
+    .floating-actions { bottom: 20px; right: 15px; }
+}
+        
 
         /* Sections */
         section { max-width: 1100px; margin: 35px auto; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
