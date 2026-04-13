@@ -276,6 +276,26 @@
     setInterval(updateClock, 1000);
     updateClock();
 </script>
+    <section id="qrcode-section" style="text-align: center; background: white; padding: 40px;">
+    <div class="section-title"><h2>Scan to Visit</h2></div>
+    <div id="qrcode" style="display: inline-block; padding: 20px; border: 5px solid var(--primary); background: white;"></div>
+    <p style="margin-top: 10px; font-weight: bold; color: var(--primary);">Shree Ganesh Secondary School Portal</p>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+    //https://backbaba868-glitch.github.io/Our-school-/
+    var websiteURL = window.location.href; 
+
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: websiteURL,
+        width: 150,
+        height: 150,
+        colorDark : "#002147", // तपाईंको Primary Blue Color
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+</script>
 
 </body>
     </html>
