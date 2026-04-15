@@ -198,9 +198,9 @@
         <div class="gallery-item" onclick="openFullImg(this.querySelector('img').src)"><img src="https://i.imgur.com/rhZP1BC.jpeg"></div>
     </div>
 </section>
-
+    
 <section id="contact">
-    <h2>सम्पर्क ठेगाना (Contact & Location)</h2>
+    <h2>सम्पर्क ठेगाना (Contact & Map)</h2>
     <div class="form-grid">
         <div class="contact-info">
             <div class="info-box">
@@ -212,17 +212,14 @@
             <div class="info-box">
                 <p><strong>📧 इमेल:</strong> ganeshmabi444@gmail.com</p>
             </div>
-            <div class="info-box">
-                <p><strong>🌐 वेवसाइट:</strong> sgss.edu.np (प्रस्तावित)</p>
-            </div>
         </div>
         
         <div class="map-wrapper">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14095.35246756627!2d85.123547!3d27.910321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb23456789abcd%3A0x1234567890abcdef!2sRatmate%2C%20Suryagadhi%204!5e0!3m2!1sne!2snp!4v1713200000000!5m2!1sne!2snp" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3524.234473856214!2d85.2602225!3d27.9211262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ebdf1e5528b52f%3A0x5115cb4dca6e510d!2sGanesh%20Secondary%20School!5e0!3m2!1sne!2snp!4v1713184500000!5m2!1sne!2snp" 
                 width="100%" 
                 height="350" 
-                style="border:0; filter: contrast(1.1) saturate(1.1);" 
+                style="border:0; filter: contrast(1.1) saturate(1.1) brightness(1.05);" 
                 allowfullscreen="" 
                 loading="lazy">
             </iframe>
@@ -231,17 +228,17 @@
 </section>
 
 <style>
-    /* 8K जस्तै स्पष्ट देखाउन CSS सुधार */
     .map-wrapper {
         border-radius: 20px;
         overflow: hidden;
         border: 4px solid var(--white);
         box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         transition: 0.5s;
+        background: #eee;
     }
     
     .map-wrapper:hover {
-        transform: translateY(-5px);
+        transform: scale(1.02);
         box-shadow: 0 20px 45px rgba(13,71,161,0.3);
     }
 
@@ -250,16 +247,17 @@
         padding: 15px;
         border-radius: 12px;
         margin-bottom: 12px;
-        border-bottom: 3px solid var(--secondary);
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     body.dark .info-box p {
         background: #252525;
         color: white;
     }
+            </style>
+    
+
 </style>
 <section id="developer">
     <div class="dev-card">
