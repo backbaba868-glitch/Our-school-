@@ -200,60 +200,74 @@
 </section>
 
 <section id="contact">
-    <h2>सम्पर्क ठेगाना</h2>
+    <h2>सम्पर्क ठेगाना (Contact & Location)</h2>
     <div class="form-grid">
         <div class="contact-info">
-            <p><strong>📍 ठेगाना:</strong> सूर्यगढी-४, रातमाटे, नुवाकोट, नेपाल</p>
-            <p><strong>📞 फोन:</strong> +977 9851338955</p>
-            <p><strong>📧 इमेल:</strong> ganeshmabi444@gmail.com</p>
-            <p><strong>⏰ समय:</strong> १०:०० AM - ४:०० PM</p>
+            <div class="info-box">
+                <p><strong>📍 ठेगाना:</strong> सूर्यगढी-४, रातमाटे, नुवाकोट</p>
+            </div>
+            <div class="info-box">
+                <p><strong>📞 फोन:</strong> +977 9851338955</p>
+            </div>
+            <div class="info-box">
+                <p><strong>📧 इमेल:</strong> ganeshmabi444@gmail.com</p>
+            </div>
+            <div class="info-box">
+                <p><strong>🌐 वेवसाइट:</strong> sgss.edu.np (प्रस्तावित)</p>
+            </div>
         </div>
         
-        <div class="map-container" style="width: 100%; height: 300px; border-radius: 15px; overflow: hidden; border: 2px solid #ddd;">
+        <div class="map-wrapper">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3526.442801452144!2d85.1558!3d27.8864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb23e3d489f3bb%3A0xc3f17e754a207604!2sRatmate%2C%20Suryagadhi%204!5e0!3m2!1sne!2snp!4v1713100000000!5m2!1sne!2snp" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14095.35246756627!2d85.123547!3d27.910321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb23456789abcd%3A0x1234567890abcdef!2sRatmate%2C%20Suryagadhi%204!5e0!3m2!1sne!2snp!4v1713200000000!5m2!1sne!2snp" 
                 width="100%" 
-                height="100%" 
-                style="border:0;" 
+                height="350" 
+                style="border:0; filter: contrast(1.1) saturate(1.1);" 
                 allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                loading="lazy">
             </iframe>
         </div> 
     </div>
 </section>
 
 <style>
-    /* म्यापलाई राम्रो देखाउन थपिएको CSS */
-    .map-container {
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transition: 0.3s;
+    /* 8K जस्तै स्पष्ट देखाउन CSS सुधार */
+    .map-wrapper {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 4px solid var(--white);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        transition: 0.5s;
     }
-    .map-container:hover {
-        transform: scale(1.01);
-        border-color: var(--primary);
+    
+    .map-wrapper:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(13,71,161,0.3);
     }
-    .contact-info p {
-        background: var(--light);
-        padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        border-left: 4px solid var(--primary);
+
+    .info-box p {
+        background: var(--white);
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border-bottom: 3px solid var(--secondary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
-    body.dark .contact-info p {
-        background: #2a2a2a;
-        color: #eee;
+
+    body.dark .info-box p {
+        background: #252525;
+        color: white;
     }
 </style>
-    
-
 <section id="developer">
     <div class="dev-card">
         <img src="https://i.imgur.com/X7Ff8qT.jpeg" class="dev-pic" alt="Sirjan Bhattarai">
         <div>
             <h3>Sirjan Bhattarai</h3>
             <p><strong>Lead Web Developer</strong></p>
-            <p>यो डिजिटल पोर्टलको निर्माण र व्यवस्थापन सरोजन भट्टराईद्वारा गरिएको हो। विद्यालयलाई डिजिटल संसारमा जोड्ने हाम्रो सानो प्रयास।</p>
+            <p>यो डिजिटल पोर्टलको निर्माण र व्यवस्थापन सिर्जन भट्टराईद्वारा गरिएको हो। विद्यालयलाई डिजिटल संसारमा जोड्ने हाम्रो सानो प्रयास।</p>
         </div>
     </div>
 </section>
