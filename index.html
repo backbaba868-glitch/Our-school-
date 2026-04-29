@@ -102,7 +102,65 @@
     <a href="#contact">सम्पर्क</a>
     <a href="#developer">डेभलपर</a>
 </nav>
+<div id="voice-controls" style="position: fixed; bottom: 100px; left: 20px; z-index: 9999;">
+    <button onclick="startFamilyGuide()" id="guideBtn" style="background: #2e7d32; color: white; border: 4px solid #ffd600; padding: 15px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-size: 1.1rem;">
+        🔊 विद्यालयको जानकारी र भर्ना गर्ने तरिका सुन्नुहोस्
+    </button>
+</div>
 
+<script>
+    let synth = window.speechSynthesis;
+
+    function startFamilyGuide() {
+        if (synth.speaking) {
+            synth.cancel();
+            document.getElementById('guideBtn').innerHTML = "🔊 फेरि सुन्नुहोस्";
+            return;
+        }
+
+        const familyScript = `
+            नमस्ते। श्री गणेश माध्यमिक विद्यालयको डिजिटल पोर्टलमा तपाईंलाई स्वागत छ। 
+            यो विद्यालय नुवाकोट, सूर्यगढी ४, रातमाटेमा छ। 
+            
+            अब म तपाईंलाई अनलाइन भर्ना कसरी गर्ने भनेर पालैपालो बताउँछु, कृपया ध्यान दिएर सुन्नुहोला:
+            
+            पहिलो काम: फारममा गएर विद्यार्थीको पूरा नाम लेख्नुहोस्। 
+            दोस्रो काम: विद्यार्थी कुन कक्षामा भर्ना हुने हो, त्यो कक्षा छान्नुहोस्। हामीकहाँ बाल विकास देखि कक्षा १० सम्म र कक्षा ११ मा शिक्षा र व्यवस्थापन पढाई हुन्छ।
+            तेस्रो काम: बुवा वा आमाको नाम लेख्नुहोस्।
+            चौथो काम: आफ्नो मोबाइल नम्बर लेख्नुहोस् ताकि विद्यालयले तपाईंलाई फोन गर्न सकोस्।
+            
+            अन्त्यमा: हरियो रंगको बटन, जसमा 'आवेदन पठाउनुहोस्' लेखिएको छ, त्यसमा थिच्नुहोस्। 
+            
+            यति गरेपछि तपाईंको बच्चाको भर्ना प्रक्रिया सुरु हुनेछ। 
+            यदि केही जान्नुपरेमा, हाम्रो फोन नम्बर ९ ८ ५ १ ३ ३ ८ ९ ५ ५ मा जुनसुकै बेला फोन गर्न सक्नुहुन्छ। धन्यवाद।
+        `;
+
+        const utter = new SpeechSynthesisUtterance(familyScript);
+        utter.lang = 'ne-NP';
+        utter.rate = 0.8; // Very slow and clear for families
+        utter.pitch = 1;
+
+        utter.onstart = () => {
+            document.getElementById('guideBtn').innerHTML = "🛑 रोक्नुहोस् (Stop)";
+            document.getElementById('guideBtn').style.background = "#c62828";
+        };
+
+        utter.onend = () => {
+            document.getElementById('guideBtn').innerHTML = "🔊 फेरि सुन्नुहोस्";
+            document.getElementById('guideBtn').style.background = "#2e7d32";
+        };
+
+        synth.speak(utter);
+    }
+
+    // This triggers the guide automatically on the first interaction
+    window.addEventListener('click', function() {
+        if (!synth.speaking) {
+            startFamilyGuide();
+        }
+    }, { once: true });
+</script>
+    
 <section id="admission">
     <h2>अनलाइन भर्ना आवेदन (२०८३)</h2>
     <form class="form-grid" action="https://formspree.io/f/xvzdgejv" method="POST">
