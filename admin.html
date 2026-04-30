@@ -40,6 +40,13 @@
                 <button class="btn btn-primary w-100" onclick="updateNotice()">वेबसाइटमा पठाउनुहोस्</button>
             </div>
         </div>
+        <div class="col-md-12 mb-4">
+    <div class="card admin-card p-4" style="border-left: 5px solid #6a1b9a;">
+        <h5 class="text-purple fw-bold" style="color: #6a1b9a;"><i class="fas fa-file-csv me-2"></i> धेरै नतिजा एकैपटक राख्नुहोस् (Bulk Upload)</h5>
+        <p class="text-muted small">तलको ढाँचामा डाटा पेस्ट गर्नुहोस्: <br> <b>SymbolNo, Name, Class, GPA</b> (हरेक विद्यार्थी नयाँ लाइनमा)</p>
+        <textarea id="bulkData" class="form-control mb-3" rows="5" placeholder="208301, Ram Thapa, 10, 3.8&#10;208302, Sita Rai, 10, 3.9"></textarea>
+        <button class="btn btn-dark w-100 fw-bold" onclick="uploadBulkResults()">सबै नतिजा अपलोड गर्नुहोस्</button>
+    </div>
 
         <div class="col-md-6 mb-4">
             <div class="card admin-card p-4">
@@ -68,15 +75,7 @@
             </div>
         </div>
     </div>
-</div>
-            
-            <div class="col-md-12 mb-4">
-    <div class="card admin-card p-4" style="border-left: 5px solid #6a1b9a;">
-        <h5 class="text-purple fw-bold" style="color: #6a1b9a;"><i class="fas fa-file-csv me-2"></i> धेरै नतिजा एकैपटक राख्नुहोस् (Bulk Upload)</h5>
-        <p class="text-muted small">तलको ढाँचामा डाटा पेस्ट गर्नुहोस्: <br> <b>SymbolNo, Name, Class, GPA</b> (हरेक विद्यार्थी नयाँ लाइनमा)</p>
-        <textarea id="bulkData" class="form-control mb-3" rows="5" placeholder="208301, Ram Thapa, 10, 3.8&#10;208302, Sita Rai, 10, 3.9"></textarea>
-        <button class="btn btn-dark w-100 fw-bold" onclick="uploadBulkResults()">सबै नतिजा अपलोड गर्नुहोस्</button>
-    </div>
+</div>  
         
 
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
