@@ -68,32 +68,8 @@
             </div>
         </div>
     </div>
-</div><div class="col-md-12 mb-4">
-    <div class="card admin-card p-4" style="border-left: 5px solid #d32f2f;">
-        <h5 class="text-danger fw-bold"><i class="fas fa-file-invoice me-2"></i> परीक्षाको नतिजा प्रविष्टि (Result Entry)</h5>
-        <div class="row">
-            <div class="col-md-3">
-                <label class="small fw-bold">सिम्बोल नम्बर</label>
-                <input type="text" id="resSymbol" class="form-control mb-2" placeholder="Ex: 208301">
-            </div>
-            <div class="col-md-3">
-                <label class="small fw-bold">विद्यार्थीको नाम</label>
-                <input type="text" id="resName" class="form-control mb-2" placeholder="विद्यार्थीको नाम">
-            </div>
-            <div class="col-md-3">
-                <label class="small fw-bold">कक्षा</label>
-                <select id="resClass" class="form-control mb-2">
-                    <option value="">कक्षा छान्नुहोस्</option>
-                    <option>५</option>
-                    <option>६</option>
-                    <option>७</option>
-                    <option>८</option>
-                    <option>९</option>
-                    <option>१० (SEE)</option>
-                    <option>११</option>
-                    <option>१२</option>
-                </select>
-            </div>
+</div>
+            
             <div class="col-md-12 mb-4">
     <div class="card admin-card p-4" style="border-left: 5px solid #6a1b9a;">
         <h5 class="text-purple fw-bold" style="color: #6a1b9a;"><i class="fas fa-file-csv me-2"></i> धेरै नतिजा एकैपटक राख्नुहोस् (Bulk Upload)</h5>
@@ -101,17 +77,7 @@
         <textarea id="bulkData" class="form-control mb-3" rows="5" placeholder="208301, Ram Thapa, 10, 3.8&#10;208302, Sita Rai, 10, 3.9"></textarea>
         <button class="btn btn-dark w-100 fw-bold" onclick="uploadBulkResults()">सबै नतिजा अपलोड गर्नुहोस्</button>
     </div>
-            </div>
-            
-            <div class="col-md-3">
-                <label class="small fw-bold">GPA / Grade</label>
-                <input type="text" id="resGPA" class="form-control mb-2" placeholder="Ex: 3.65">
-            </div>
-        </div>
-        <button class="btn btn-danger w-100 mt-2 fw-bold" onclick="uploadResult()">नतिजा प्रकाशित गर्नुहोस्</button>
-    </div>
-</div>
-    
+        
 
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
