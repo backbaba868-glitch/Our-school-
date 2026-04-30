@@ -164,34 +164,40 @@
         msg.lang = 'ne-NP';
         window.speechSynthesis.speak(msg);
     }
-    // नतिजा सुरक्षित गर्ने फङ्सन
-function uploadResult() {
-    const symbol = document.getElementById('resSymbol').value;
-    const name = document.getElementById('resName').value;
-    const grade = document.getElementById('resClass').value;
-    const gpa = document.getElementById('resGPA').value;
+    
 
-    if(symbol === "" || name === "" || grade === "" || gpa === "") {
-        alert("कृपया सबै विवरण भर्नुहोस्!");
+    function uploadBulkResults() {
+    const rawData = document.getElementById('bulkData').value;
+    const lines = rawData.split('\n'); // हरेक लाइनलाई छुट्टाउने
+    let count = 0;
+
+    if (!rawData.trim()) {
+        alert("कृपया डाटा हाल्नुहोस्!");
         return;
     }
 
-    // Firebase मा 'results' भन्ने फोल्डरमा सिम्बोल नम्बरको आधारमा डाटा बस्छ
-    db.ref('results/' + symbol).set({
-        name: name,
-        class: grade,
-        gpa: gpa,
-        date: new Date().toLocaleDateString()
-    }).then(() => {
-        alert(name + " को नतिजा सफलतापूर्वक अपडेट भयो!");
-        // फारम खाली गर्ने
-        document.getElementById('resSymbol').value = "";
-        document.getElementById('resName').value = "";
-        document.getElementById('resGPA').value = "";
-    }).catch((error) => {
-        alert("त्रुटि भयो: " + error.message);
+    lines.forEach(line => {
+        const info = line.split(','); // कमा (,) को आधारमा डाटा छुट्टाउने
+        if (info.length >= 4) {
+            const symbol = info[0].trim();
+            const name = info[1].trim();
+            const grade = info[2].trim();
+            const gpa = info[3].trim();
+
+            // Firebase मा सेभ गर्ने
+            db.ref('results/' + symbol).set({
+                name: name,
+                class: grade,
+                gpa: gpa,
+                date: new Date().toLocaleDateString()
+            });
+            count++;
+        }
     });
-}
+
+    alert(count + " जना विद्यार्थीको नतिजा सफलतापूर्वक अपलोड भयो!");
+    document.getElementById('bulkData').value = ""; // बक्स खाली गर्ने
+    }
     
 </script>
 
