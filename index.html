@@ -317,6 +317,53 @@
     
 
 </style>
+    <section id="results">
+    <h2>परीक्षाको नतिजा (Exam Results)</h2>
+    <div style="background: #e3f2fd; padding: 20px; border-radius: 15px; border: 1px solid #bbdefb;">
+        <p>आफ्नो नतिजा हेर्न तलको विवरण भर्नुहोस्:</p>
+        <div class="form-grid">
+            <div class="input-group">
+                <label>सिम्बोल नम्बर (Symbol No.)</label>
+                <input type="text" id="symbolNo" placeholder="Ex: 208001" required>
+            </div>
+            <div class="input-group">
+                <label>कक्षा छान्नुहोस्</label>
+                <select id="resultClass">
+                    <option value="">-- कक्षा छान्नुहोस् --</option>
+                    <option>कक्षा ५</option>
+                    <option>कक्षा ६</option>
+                    <option>कक्षा ७</option>
+                    <option>कक्षा ८</option>
+                    <option>कक्षा ९</option>
+                    <option>कक्षा १० (SEE)</option>
+                    <option>कक्षा ११</option>
+                    <option>कक्षा १२</option>
+                </select>
+            </div>
+            <button onclick="checkResult()" class="btn-submit full-width" style="background: var(--primary);">नतिजा खोज्नुहोस् (Search Result)</button>
+        </div>
+    </div>
+
+    <div id="resultDisplay" style="display:none; margin-top: 30px; padding: 20px; border: 2px solid var(--success); border-radius: 15px;">
+        <h3 style="text-align: center; color: var(--primary);">श्री गणेश माध्यमिक विद्यालय</h3>
+        <h4 style="text-align: center; margin-top: -15px;">प्रगति विवरण (Grade Sheet)</h4>
+        <hr>
+        <div id="studentDetails"></div>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+            <thead>
+                <tr style="background: #f2f2f2;">
+                    <th style="border: 1px solid #ddd; padding: 8px;">Subject</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Grade</th>
+                </tr>
+            </thead>
+            <tbody id="gradeTable">
+                </tbody>
+        </table>
+        <p id="gpaText" style="font-weight: bold; font-size: 1.2rem; text-align: right; color: var(--success);"></p>
+        <button onclick="window.print()" class="btn-submit" style="background: #555; width: auto; padding: 5px 15px;">Print Marksheet</button>
+    </div>
+    </section>
+    
 <section id="developer">
     <div class="dev-card">
         <img src="https://i.imgur.com/X7Ff8qT.jpeg" class="dev-pic" alt="Sirjan Bhattarai">
@@ -391,6 +438,38 @@
         width: 130,
         height: 130
     });
+    function checkResult() {
+    const symbol = document.getElementById('symbolNo').value;
+    const grade = document.getElementById('resultClass').value;
+    const display = document.getElementById('resultDisplay');
+
+    if (symbol === "" || grade === "") {
+        alert("कृपया सिम्बोल नम्बर र कक्षा राख्नुहोस्।");
+        return;
+    }
+
+    // This is a dummy logic for demonstration.
+    // In a real app, you would fetch data from a database.
+    display.style.display = "block";
+    document.getElementById('studentDetails').innerHTML = `
+        <p><b>Name:</b> Student Name (Symbol: ${symbol})</p>
+        <p><b>Class:</b> ${grade}</p>
+    `;
+
+    const tableBody = document.getElementById('gradeTable');
+    tableBody.innerHTML = `
+        <tr><td style="border:1px solid #ddd; padding:8px;">English</td><td style="border:1px solid #ddd; padding:8px;">A</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">Nepali</td><td style="border:1px solid #ddd; padding:8px;">B+</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">Mathematics</td><td style="border:1px solid #ddd; padding:8px;">A+</td></tr>
+        <tr><td style="border:1px solid #ddd; padding:8px;">Science</td><td style="border:1px solid #ddd; padding:8px;">A</td></tr>
+    `;
+    
+    document.getElementById('gpaText').innerText = "Final GPA: 3.65";
+    
+    // Scroll to result
+    display.scrollIntoView({ behavior: 'smooth' });
+    }
+    
 </script>
 
 </body>
