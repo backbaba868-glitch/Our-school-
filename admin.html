@@ -14,6 +14,60 @@
         .admin-card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .admin-header { background: var(--primary); color: white; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
         #adminPanel { display: none; padding: 20px; }
+        /* Management Section Styling */
+.mgmt-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.mgmt-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border-top: 6px solid var(--secondary); /* Yellow highlight */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+body.dark .mgmt-card {
+    background: #252525;
+    border-color: var(--secondary);
+}
+
+.mgmt-card:hover {
+    transform: translateY(-5px);
+}
+
+.mgmt-role {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.mgmt-name {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: var(--primary);
+}
+
+body.dark .mgmt-name {
+    color: #fff;
+}
+
+.mgmt-desc {
+    font-size: 0.9rem;
+    color: #666;
+}
+        
     </style>
 </head>
 <body>
@@ -76,7 +130,38 @@
         </div>
     </div>
 </div>  
+    
+       <section id="management-group">
+    <h2>विद्यालय व्यवस्थापन समिति र संगठन (Management Group)</h2>
+    <div class="mgmt-container">
         
+        <div class="mgmt-card">
+            <span class="mgmt-role">Chairperson (SMC)</span>
+            <h3 class="mgmt-name">श्री [नाम यहाँ लेख्नुहोस्]</h3>
+            <p class="mgmt-desc">अध्यक्ष, विद्यालय व्यवस्थापन समिति। विद्यालयको सर्वाङ्गिण विकास र नीति निर्माणमा नेतृत्वदायी भूमिका।</p>
+        </div>
+
+        <div class="mgmt-card">
+            <span class="mgmt-role">Member Secretary</span>
+            <h3 class="mgmt-name">श्री केशर अधिकारी</h3>
+            <p class="mgmt-desc">प्रधानाध्यापक। प्रशासनिक र शैक्षिक व्यवस्थापनको प्रमुख जिम्मेवारी।</p>
+        </div>
+
+        <div class="mgmt-card">
+            <span class="mgmt-role">Chairperson (PTA)</span>
+            <h3 class="mgmt-name">श्री [नाम यहाँ लेख्नुहोस्]</h3>
+            <p class="mgmt-desc">अध्यक्ष, अभिभावक शिक्षक संघ। विद्यालय र अभिभावक बीचको सम्बन्ध समन्वय।</p>
+        </div>
+
+        <div class="mgmt-card">
+            <span class="mgmt-role">Ward Representative</span>
+            <h3 class="mgmt-name">श्री [नाम यहाँ लेख्नुहोस्]</h3>
+            <p class="mgmt-desc">वडा प्रतिनिधि (सूर्यगढी-४)। स्थानीय निकाय र विद्यालय बीचको सहकार्य।</p>
+        </div>
+
+    </div>
+       </section>
+    
 
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
@@ -163,6 +248,7 @@
     alert(count + " जना विद्यार्थीको नतिजा सफलतापूर्वक अपलोड भयो!");
     document.getElementById('bulkData').value = ""; // बक्स खाली गर्ने
     }
+    
     
 </script>
 
