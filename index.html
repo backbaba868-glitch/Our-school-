@@ -39,41 +39,33 @@
         body.dark section { background: var(--dark-card); border: 1px solid #333; }
         h2 { color: var(--primary); border-left: 10px solid var(--secondary); padding-left: 15px; margin-bottom: 30px; }
         body.dark h2 { color: var(--secondary); }
-        /* Voice Button WhatsApp Style */
-.voice-fab {
-    position: fixed;
-    bottom: 150px; /* ह्वाट्सएप बटन भन्दा अलि माथि */
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #2e7d32; /* हरियो रङ */
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    cursor: pointer;
-    z-index: 2500;
-    border: 3px solid #ffd600;
-    animation: pulse-green 2s infinite;
-}
 
-@keyframes pulse-green {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
-}
+        .voice-fab {
+            position: fixed;
+            bottom: 150px; 
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #2e7d32; 
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 2500;
+            border: 3px solid #ffd600;
+            animation: pulse-green 2s infinite;
+        }
 
-/* मोबाइलमा कन्टेन्ट नछोपोस् भनेर सानो बनाउने */
-@media (max-width: 600px) {
-    .voice-fab {
-        width: 50px;
-        height: 50px;
-        bottom: 140px;
-    }
-}
-        
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+        }
+
+        @media (max-width: 600px) { .voice-fab { width: 50px; height: 50px; bottom: 140px; } }
 
         /* Gallery Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
@@ -93,8 +85,9 @@
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .input-group { display: flex; flex-direction: column; }
         input, select { padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; margin-top: 5px; }
-        .btn-submit { background: var(--success); color: white; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; grid-column: span 2; transition: 0.3s; }
+        .btn-submit { background: var(--success); color: white; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; grid-column: span 2; transition: 0.3s; text-align: center; }
         .btn-submit:hover { background: #1b5e20; transform: scale(1.02); }
+        .full-width { grid-column: span 2; }
 
         /* Floating Actions */
         .floating-actions { position: fixed; bottom: 80px; right: 20px; z-index: 3000; display: flex; flex-direction: column; gap: 10px; }
@@ -113,102 +106,31 @@
         }
 
         @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .btn-submit { grid-column: span 1; } .dev-card { flex-direction: column; text-align: center; } }
-        .about-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    align-items: center;
-}
-
-.estd {
-    background: var(--secondary);
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 15px;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 25px;
-}
-
-.feature-item {
-    background: var(--light);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    transition: 0.3s;
-    border: 1px solid #ddd;
-}
-
-body.dark .feature-item {
-    background: #2a2a2a;
-    border-color: #444;
-}
-
-.feature-item:hover {
-    transform: translateY(-5px);
-    background: var(--primary);
-    color: white;
-}
-
-.feature-item i {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-.feature-item:hover i {
-    color: var(--secondary);
-}
-        /* Management Grid */
-.management-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-.mgmt-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    border-top: 5px solid var(--primary);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
-}
-body.dark .mgmt-card { background: #2a2a2a; color: white; }
-
-/* Admin Suggestion Box */
-.admin-suggestion {
-    background: linear-gradient(135deg, #0d47a1, #1565c0);
-    color: white;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    margin-top: 40px;
-}
-.admin-btn {
-    background: var(--secondary);
-    color: #000;
-    padding: 12px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-.admin-btn:hover { transform: scale(1.05); background: #fff; }
-    
         
+        .about-container { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; }
+        .estd { background: var(--secondary); display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; color: #000; margin-bottom: 15px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 25px; }
+        .feature-item { background: var(--light); padding: 20px; border-radius: 15px; text-align: center; transition: 0.3s; border: 1px solid #ddd; }
+        body.dark .feature-item { background: #2a2a2a; border-color: #444; }
+        .feature-item:hover { transform: translateY(-5px); background: var(--primary); color: white; }
+        
+        /* Management Grid */
+        .management-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .mgmt-card { background: #fff; padding: 20px; border-radius: 15px; border-top: 5px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        body.dark .mgmt-card { background: #2a2a2a; color: white; }
+
+        /* Admin Suggestion Box */
+        .admin-suggestion { background: linear-gradient(135deg, #0d47a1, #1565c0); color: white; padding: 30px; border-radius: 20px; text-align: center; margin-top: 40px; }
+        .admin-btn { background: var(--secondary); color: #000; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 15px; transition: 0.3s; }
+        .admin-btn:hover { transform: scale(1.05); background: #fff; }
+
+        .map-wrapper { border-radius: 20px; overflow: hidden; border: 4px solid var(--white); box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: 0.5s; background: #eee; }
+        .map-wrapper:hover { transform: scale(1.02); box-shadow: 0 20px 45px rgba(13,71,161,0.3); }
+        .info-box p { background: var(--white); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 5px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        body.dark .info-box p { background: #252525; color: white; }
     </style>
 </head>
-<body onload="welcomeVoice()">
+<body>
 
 <div class="top-nav">
     <div id="date">Loading...</div>
@@ -228,67 +150,16 @@ body.dark .mgmt-card { background: #2a2a2a; color: white; }
     <a href="#notices">सूचना</a>
     <a href="#teachers">शिक्षकहरू</a>
     <a href="#gallery">ग्यालेरी</a>
+    <a href="#results">नतिजा</a>
     <a href="#contact">सम्पर्क</a>
     <a href="#developer">डेभलपर</a>
 </nav>
+
 <div id="voice-controls" style="position: fixed; bottom: 100px; left: 20px; z-index: 9999;">
     <button onclick="startFamilyGuide()" id="guideBtn" style="background: #2e7d32; color: white; border: 4px solid #ffd600; padding: 15px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-size: 1.1rem;">
         🔊 विद्यालयको जानकारी र भर्ना गर्ने तरिका सुन्नुहोस्
     </button>
 </div>
-
-<script>
-    let synth = window.speechSynthesis;
-
-    function startFamilyGuide() {
-        if (synth.speaking) {
-            synth.cancel();
-            document.getElementById('guideBtn').innerHTML = "🔊 फेरि सुन्नुहोस्";
-            return;
-        }
-
-        const familyScript = `
-            नमस्ते। श्री गणेश माध्यमिक विद्यालयको डिजिटल पोर्टलमा तपाईंलाई स्वागत छ। 
-            यो विद्यालय नुवाकोट, सूर्यगढी ४, रातमाटेमा छ। 
-            
-            अब म तपाईंलाई अनलाइन भर्ना कसरी गर्ने भनेर पालैपालो बताउँछु, कृपया ध्यान दिएर सुन्नुहोला:
-            
-            पहिलो काम: फारममा गएर विद्यार्थीको पूरा नाम लेख्नुहोस्। 
-            दोस्रो काम: विद्यार्थी कुन कक्षामा भर्ना हुने हो, त्यो कक्षा छान्नुहोस्। हामीकहाँ बाल विकास देखि कक्षा १० सम्म र कक्षा ११ मा शिक्षा र व्यवस्थापन पढाई हुन्छ।
-            तेस्रो काम: बुवा वा आमाको नाम लेख्नुहोस्।
-            चौथो काम: आफ्नो मोबाइल नम्बर लेख्नुहोस् ताकि विद्यालयले तपाईंलाई फोन गर्न सकोस्।
-            
-            अन्त्यमा: हरियो रंगको बटन, जसमा 'आवेदन पठाउनुहोस्' लेखिएको छ, त्यसमा थिच्नुहोस्। 
-            
-            यति गरेपछि तपाईंको बच्चाको भर्ना प्रक्रिया सुरु हुनेछ। 
-            यदि केही जान्नुपरेमा, हाम्रो फोन नम्बर ९ ८ ५ १ ३ ३ ८ ९ ५ ५ मा जुनसुकै बेला फोन गर्न सक्नुहुन्छ। धन्यवाद।
-        `;
-
-        const utter = new SpeechSynthesisUtterance(familyScript);
-        utter.lang = 'ne-NP';
-        utter.rate = 0.8; // Very slow and clear for families
-        utter.pitch = 1;
-
-        utter.onstart = () => {
-            document.getElementById('guideBtn').innerHTML = "🛑 रोक्नुहोस् (Stop)";
-            document.getElementById('guideBtn').style.background = "#c62828";
-        };
-
-        utter.onend = () => {
-            document.getElementById('guideBtn').innerHTML = "🔊 फेरि सुन्नुहोस्";
-            document.getElementById('guideBtn').style.background = "#2e7d32";
-        };
-
-        synth.speak(utter);
-    }
-
-    // This triggers the guide automatically on the first interaction
-    window.addEventListener('click', function() {
-        if (!synth.speaking) {
-            startFamilyGuide();
-        }
-    }, { once: true });
-</script>
     
 <section id="admission">
     <h2>अनलाइन भर्ना आवेदन (२०८३)</h2>
@@ -318,40 +189,35 @@ body.dark .mgmt-card { background: #2a2a2a; color: white; }
         <button type="submit" class="btn-submit">आवेदन पठाउनुहोस् (Submit)</button>
     </form>
 </section>
-    <section id="about">
+
+<section id="about">
     <div class="about-container">
         <div class="about-text">
             <h2>हाम्रो विद्यालयको बारेमा (About Our School)</h2>
             <p class="estd">स्थापना: २०३५ वि.सं. (ESTD: 1978 AD)</p>
-            
             <p>श्री गणेश माध्यमिक विद्यालय नुवाकोट जिल्लाको सूर्यगढी-४, रातमाटेमा अवस्थित एक प्रतिष्ठित शैक्षिक संस्था हो। विगत ४ दशकभन्दा लामो समयदेखि यस विद्यालयले ग्रामीण क्षेत्रका विद्यार्थीहरूलाई गुणस्तरीय र व्यवहारिक शिक्षा प्रदान गर्दै आइरहेको छ।</p>
             
             <div class="features-grid">
                 <div class="feature-item">
-                    <i class="fas fa-book-reader"></i>
                     <h4>उत्कृष्ट शिक्षा</h4>
                     <p>कक्षा १२ सम्म व्यवस्थापन र शिक्षा संकायमा गुणस्तरीय पढाइ।</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-laptop-code"></i>
                     <h4>डिजिटल सिकाई</h4>
                     <p>प्रविधिमैत्री कक्षाकोठा र कम्प्युटर ल्याबको व्यवस्था।</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-volleyball-ball"></i>
                     <h4>अतिरिक्त क्रियाकलाप</h4>
                     <p>विद्यार्थीको चौतर्फी विकासका लागि खेलकुद र रचनात्मक कार्यक्रम।</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-bus"></i>
                     <h4>सुविधाहरू</h4>
                     <p>सुविधासम्पन्न भवन, पुस्तकालय र खानेपानीको राम्रो व्यवस्था।</p>
                 </div>
             </div>
         </div>
     </div>
-    </section>
-    
+</section>
 
 <section id="notices" style="background: #fff5f5; border: 2px solid #ffcdd2;">
     <h2 style="color: #c62828;">📢 भर्खरैका सूचनाहरू</h2>
@@ -361,54 +227,37 @@ body.dark .mgmt-card { background: #2a2a2a; color: white; }
 </section>
 
 <section id="teachers">
-    <h2>हाम्रा शिक्षक तथा कर्मचारीहरू (२२ सदस्यहरू)</h2>
+    <h2>हाम्रा शिक्षक तथा कर्मचारीहरू (२३ सदस्यहरू)</h2>
     <div class="teacher-grid">
+        <!-- New Accountant Addition -->
+        <div class="teacher-card"><img src="https://via.placeholder.com/200x200.png?text=No+Image"><div class="t-info"><h3>Dipa</h3><p>लेखापाल (Accountant)</p></div></div>
+        
         <div class="teacher-card"><img src="https://i.imgur.com/MHBF7pF.jpeg"><div class="t-info"><h3>Keshar Adhikari</h3><p>प्रधानाध्यापक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/7XQKRUN.jpeg"><div class="t-info"><h3>Ram Kumar Giri</h3><p>सूचना अधिकारी</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/mYIU2Gv.jpeg"><div class="t-info"><h3>Mina Thapa</h3><p>शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/kAoRQmk.jpeg"><div class="t-info"><h3>Chandika Bhatta</h3><p>ECD शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/xOldxMM.jpeg"><div class="t-info"><h3>Mim Bdr. Manandhar</h3><p>अर्थशास्त्र शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/U2eRbrx.jpeg"><div class="t-info"><h3>Saraswati Subedi</h3><p>नेपाली शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/RHtxWdg.jpeg"><div class="t-info"><h3>Ashok Rai</h3><p>विज्ञान शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/mzIcInV.jpeg"><div class="t-info"><h3>H.S. Devkota</h3><p>शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/RBsZLeH.jpeg"><div class="t-info"><h3>Jayaram Pathak</h3><p>लेखा शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/Pv3Etkw.jpeg"><div class="t-info"><h3>S.S. Koirala</h3><p>नेपाली शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/5wOi90i.jpeg"><div class="t-info"><h3>Upendra Thapa</h3><p>गणित शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/YHXbFtc.jpeg"><div class="t-info"><h3>Dipak Malla</h3><p>शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/k7bpqjf.jpeg"><div class="t-info"><h3>Dipendra Thapa</h3><p>गणित शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/x1T7iKg.jpeg"><div class="t-info"><h3>Sita Tamang</h3><p>सामाजिक शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/tmuj6Pe.jpeg"><div class="t-info"><h3>Khamlal Timalsina</h3><p>अंग्रेजी शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/1BcTevG.jpeg"><div class="t-info"><h3>Gita Adhikari</h3><p>शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/2Zw6JDr.jpeg"><div class="t-info"><h3>Rajeshwori Giri</h3><p>शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/T32B8lD.jpeg"><div class="t-info"><h3>Laxmi Adhikari</h3><p>ECD शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/LLTNxx5.jpeg"><div class="t-info"><h3>Goma Saru Magar</h3><p>शिक्षक</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/rjuet5M.png"><div class="t-info"><h3>Shanti Shrestha</h3><p>कार्यालय सहयोगी</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/sahxCxc.png"><div class="t-info"><h3>Kaji Bdr. Paudel</h3><p>कार्यालय सहयोगी</p></div></div>
-        
         <div class="teacher-card"><img src="https://i.imgur.com/RkLE7nf.jpeg"><div class="t-info"><h3>Padam Bdr. Rai</h3><p>कार्यालय सहयोगी</p></div></div>
+        <div class="teacher-card"><img src=""><div class="t-info"><h3>Dipa</h3><p>अकान्टेन्ट</p></div></div>
+    
     </div>
 </section>
-    
 
 <section id="gallery">
     <h2>विद्यालयको झलक (Gallery)</h2>
@@ -424,292 +273,358 @@ body.dark .mgmt-card { background: #2a2a2a; color: white; }
     <h2>सम्पर्क ठेगाना (Contact & Map)</h2>
     <div class="form-grid">
         <div class="contact-info">
-            <div class="info-box">
-                <p><strong>📍 ठेगाना:</strong> सूर्यगढी-४, रातमाटे, नुवाकोट</p>
-            </div>
-            <div class="info-box">
-                <p><strong>📞 फोन:</strong> +977 9851338955</p>
-            </div>
-            <div class="info-box">
-                <p><strong>📧 इमेल:</strong> ganeshmabi444@gmail.com</p>
-            </div>
+            <div class="info-box"><p><strong>📍 ठेगाना:</strong> सूर्यगढी-४, रातमाटे, नुवाकोट</p></div>
+            <div class="info-box"><p><strong>📞 फोन:</strong> +977 9851338955</p></div>
+            <div class="info-box"><p><strong>📧 इमेल:</strong> ganeshmabi444@gmail.com</p></div>
         </div>
-        
         <div class="map-wrapper">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3524.234473856214!2d85.2602225!3d27.9211262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ebdf1e5528b52f%3A0x5115cb4dca6e510d!2sGanesh%20Secondary%20School!5e0!3m2!1sne!2snp!4v1713184500000!5m2!1sne!2snp" 
-                width="100%" 
-                height="350" 
-                style="border:0; filter: contrast(1.1) saturate(1.1) brightness(1.05);" 
-                allowfullscreen="" 
-                loading="lazy">
+                width="100%" height="350" style="border:0; filter: contrast(1.1) saturate(1.1) brightness(1.05);" allowfullscreen="" loading="lazy">
             </iframe>
         </div> 
     </div>
 </section>
 
-<style>
-    .map-wrapper {
-        border-radius: 20px;
-        overflow: hidden;
-        border: 4px solid var(--white);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        transition: 0.5s;
-        background: #eee;
-    }
-    
-    .map-wrapper:hover {
-        transform: scale(1.02);
-        box-shadow: 0 20px 45px rgba(13,71,161,0.3);
-    }
-
-    .info-box p {
-        background: var(--white);
-        padding: 15px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        border-left: 5px solid var(--primary);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    body.dark .info-box p {
-        background: #252525;
-        color: white;
-    }
-            </style>
-    
-
-</style>
-    <section id="results">
+<section id="results">
     <h2>परीक्षाको नतिजा (Exam Results)</h2>
     <div style="background: #e3f2fd; padding: 20px; border-radius: 15px; border: 1px solid #bbdefb;">
         <p>आफ्नो नतिजा हेर्न तलको विवरण भर्नुहोस्:</p>
         <div class="form-grid">
             <div class="input-group">
                 <label>सिम्बोल नम्बर (Symbol No.)</label>
-                <input type="text" id="symbolNo" placeholder="Ex: 208001" required>
+                <input type="text" id="symbolNo" placeholder="Ex: 208301" required>
             </div>
             <div class="input-group">
                 <label>कक्षा छान्नुहोस्</label>
                 <select id="resultClass">
                     <option value="">-- कक्षा छान्नुहोस् --</option>
-                    <option>कक्षा ५</option>
-                    <option>कक्षा ६</option>
-                    <option>कक्षा ७</option>
-                    <option>कक्षा ८</option>
-                    <option>कक्षा ९</option>
-                    <option>कक्षा १० (SEE)</option>
-                    <option>कक्षा ११</option>
-                    <option>कक्षा १२</option>
+                    <option value="class5">कक्षा ५</option>
+                    <option value="class8">कक्षा ८</option>
+                    <option value="class10">कक्षा १० (SEE)</option>
+                    <option value="class11">कक्षा ११</option>
+                    <option value="class12">कक्षा १२</option>
                 </select>
             </div>
             <button onclick="checkResult()" class="btn-submit full-width" style="background: var(--primary);">नतिजा खोज्नुहोस् (Search Result)</button>
         </div>
     </div>
 
-    <div id="resultDisplay" style="display:none; margin-top: 30px; padding: 20px; border: 2px solid var(--success); border-radius: 15px;">
-        <h3 style="text-align: center; color: var(--primary);">श्री गणेश माध्यमिक विद्यालय</h3>
-        <h4 style="text-align: center; margin-top: -15px;">प्रगति विवरण (Grade Sheet)</h4>
-        <hr>
-        <div id="studentDetails"></div>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <!-- Error/Status Messaging -->
+    <div id="resultStatus" style="display:none; margin-top:15px; padding:15px; text-align:center; border-radius:10px; font-weight:bold;"></div>
+
+    <div id="resultDisplay" style="display:none; margin-top: 30px; padding: 20px; border: 2px solid var(--success); border-radius: 15px; background: #fff;">
+        <h3 style="text-align: center; color: var(--primary); margin:0;">श्री गणेश माध्यमिक विद्यालय</h3>
+            p style="text-align: center; margin: 2px 0; font-weight: bold; color: #555;">वार्षिक परीक्षाp style="text-align: center; margin: 2px 0; font-weight: bold; color: #555;">वार्षिक परीक्षा नतिजा - २०८३</p>
+        <hr style="border: 1px solid #ddd; margin: 15px 0;">
+        
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold;">
+            <div>नाम: <span id="resName" style="color:var(--primary);">-</span></div>
+            <div>सिम्बोल नम्बर: <span id="resSymbol">-</span></div>
+            <div>कक्षा: <span id="resClass">-</span></div>
+        </div>
+
+        <!-- Marksheet Table -->
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; text-align: left;">
             <thead>
-                <tr style="background: #f2f2f2;">
-                    <th style="border: 1px solid #ddd; padding: 8px;">Subject</th>
-                    <th style="border: 1px solid #ddd; padding: 8px;">Grade</th>
+                <tr style="background: var(--primary); color: white;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">विषय (Subjects)</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">प्राप्तांक ग्रेड (Grade)</th>
                 </tr>
             </thead>
-            <tbody id="gradeTable">
-                </tbody>
+            <tbody id="marksheetBody">
+                <!-- JavaScript ले यहाँ डाटा भर्नेछ -->
+            </tbody>
         </table>
-        <p id="gpaText" style="font-weight: bold; font-size: 1.2rem; text-align: right; color: var(--success);"></p>
-        <button onclick="window.print()" class="btn-submit" style="background: #555; width: auto; padding: 5px 15px;">Print Marksheet</button>
+
+        <div style="margin-top: 20px; text-align: right; font-size: 1.2rem; font-weight: bold;">
+            नतिजा (Final Result): <span id="resTotal" style="color: var(--success); background: #e8f5e9; padding: 5px 15px; border-radius: 5px;">-</span>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+            <button onclick="window.print()" class="btn-submit" style="background: #555; padding: 10px 20px; width: auto;">🖨️ मार्कशीट प्रिन्ट गर्नुहोस्</button>
+        </div>
     </div>
-    </section>
-    
+</section>
+
 <section id="developer">
+    <h2>वेबसाइट डेभलपर (Developer Info)</h2>
     <div class="dev-card">
-        <img src="https://i.imgur.com/X7Ff8qT.jpeg" class="dev-pic" alt="Sirjan Bhattarai">
+        <img src="https://via.placeholder.com/100x100.png?text=SB" alt="Srijan" class="dev-pic">
         <div>
-            <h3>Sirjan Bhattarai</h3>
-            <p><strong>Lead Web Developer</strong></p>
-            <p>यो डिजिटल पोर्टलको निर्माण र व्यवस्थापन सिर्जन भट्टराईद्वारा गरिएको हो। विद्यालयलाई डिजिटल संसारमा जोड्ने हाम्रो सानो प्रयास।</p>
+            <h3 style="margin: 0 0 5px 0; color: var(--primary);">सृजन भट्टराई</h3>
+            <p style="margin: 0 0 10px 0; font-weight: bold; color: #666;">वेब डेभलपर | IT विद्यार्थी</p>
+            <p style="margin: 0;">यस श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेब पोर्टल र नतिजा व्यवस्थापन प्रणाली स्थानीय प्रविधि क्षमताको उपयोग गरी निर्माण गरिएको हो।</p>
         </div>
     </div>
 </section>
 
-<section id="qrcode-section" style="text-align: center;">
-    <h2>Scan to Visit</h2>
-    <div id="qrcode" style="display: inline-block; padding: 15px; border: 4px solid var(--primary); background: white;"></div>
-    <p style="font-weight: bold; color: var(--primary); margin-top: 10px;">Official School Portal</p>
-</section>
-    <div id="visitor-stats" style="text-align: center; padding: 20px; background: #fdfdfd; border-radius: 15px; margin: 20px auto; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-    <p style="margin: 0; color: #555; font-size: 0.9rem; font-weight: bold;">कुल आगन्तुक (Total Visitors)</p>
-    <div style="display: flex; justify-content: center; align-items: center; gap: 5px; margin-top: 10px;">
-        <span style="background: var(--primary); color: white; padding: 5px 10px; border-radius: 5px; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px;" id="v-count">
-            ००००
-        </span>
-    </div>
-    <p style="font-size: 0.7rem; color: #888; margin-top: 5px;">0 देखि गणना सुरु</p>
-    </div>
-    <script>
-    function updateVisitorCounter() {
-        // १. लोकल स्टोरेजबाट पुरानो डाटा लिने वा सुरुवाती मान सेट गर्ने (Ex: १२४५ बाट सुरु)
-        let count = localStorage.getItem('school_visitor_count');
-        
-        if (!count) {
-            count = 1245; // यो तपाईंको सुरुवाती भिजिटर संख्या हो
-        } else {
-            count = parseInt(count) + 1;
-        }
+<!-- Theme Toggle Button -->
+<button class="theme-btn" onclick="toggleTheme()">🌓</button>
 
-        // २. नयाँ संख्यालाई सेभ गर्ने
-        localStorage.setItem('school_visitor_count', count);
-
-        // ३. अंकलाई नेपालीमा बदल्ने फङ्सन
-        const nepalidigits = {'0':'०','1':'१','2':'२','3':'३','4':'४','5':'५','6':'६','7':'७','8':'८','9':'९'};
-        
-        let countStr = count.toString();
-        let nepaliCount = "";
-        
-        for (let i = 0; i < countStr.length; i++) {
-            nepaliCount += nepalidigits[countStr[i]];
-        }
-
-        // ४. स्क्रिनमा देखाउने
-        document.getElementById('v-count').innerText = nepaliCount;
-    }
-
-    // पेज लोड हुँदा फङ्सन चलाउने
-    window.onload = function() {
-        updateVisitorCounter();
-        // यदि तपाईंको पुरानो घडीको फङ्सन छ भने त्यसलाई पनि यहाँ कल गर्न सक्नुहुन्छ
-        if(typeof updateClock === 'function') updateClock(); 
-    };
-            </script>
-    <section id="management">
-    <h2>विद्यालय व्यवस्थापन समिति (SMC)</h2>
-    <div class="management-grid">
-        <div class="mgmt-card">
-            <h3>अध्यक्ष</h3>
-            <p><strong>श्री [नाम यहाँ राख्नुहोस्]</strong></p>
-            <small>विद्यालय व्यवस्थापन समिति</small>
-        </div>
-        <div class="mgmt-card">
-            <h3>सदस्य सचिव</h3>
-            <p><strong>श्री केशर अधिकारी</strong></p>
-            <small>प्रधानाध्यापक</small>
-        </div>
-        <div class="mgmt-card">
-            <h3>अध्यक्ष (PTA)</h3>
-            <p><strong>श्री [नाम यहाँ राख्नुहोस्]</strong></p>
-            <small>अभिभावक शिक्षक संघ</small>
-        </div>
-    </div>
-</section>
-
-<section id="admin-pannel-promo">
-    <div class="admin-suggestion">
-        <div style="font-size: 40px; margin-bottom: 10px;">🔐</div>
-        <h2>Admin Control Center</h2>
-        <p>व्यवस्थापन समितिका लागि: यहाँबाट विद्यालयको हाजिरी, नतिजा, र सूचनाहरू व्यवस्थापन गर्न सकिनेछ।</p>
-        <p style="font-size: 0.9rem; opacity: 0.8;">(This feature is a suggestion for future integration)</p>
-        <a href="#" class="admin-btn">Admin Login (Coming Soon)</a>
-    </div>
-</section>
-    
-
-<footer>
-    <p>© 2026 श्री गणेश माध्यमिक विद्यालय। Developed by Sirjan Bhattarai.</p>
-</footer>
-
-<div class="floating-actions">
-    <a href="https://wa.me/9851338955" class="float-btn" style="background:#25d366;" target="_blank">💬</a>
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="float-btn" id="backToTop" style="background:var(--primary); display:none;">↑</button>
-</div>
-
-<button class="theme-btn" onclick="document.body.classList.toggle('dark')">🌓</button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-    // Clock & Date
+    // Live Clock & Date
     function updateClock() {
         const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString();
-        document.getElementById('date').innerText = now.toDateString();
+        
+        // Date Formatting
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date').innerText = now.toLocaleDateString('ne-NP', options);
+        
+        // Clock Formatting
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+        
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        
+        document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Back to Top Button
-    window.onscroll = function() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            document.getElementById("backToTop").style.display = "flex";
+    // Dark Mode Toggle
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+    }
+
+    // Voice Synthesis (Nepali Text to Speech)
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Prior speech clear
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ne-NP';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
         } else {
-            document.getElementById("backToTop").style.display = "none";
+            alert("तपाईँको ब्राउजरले आवाज प्रणाली सपोर्ट गरेन।");
         }
+    }
+
+    function startFamilyGuide() {
+        const guideText = "श्री गणेश माध्यमिक विद्यालयको डिजिटल पोर्टलमा स्वागत छ। नयाँ शैक्षिक सत्र २०८३ को अनलाइन भर्ना आबेदन फारम माथि उपलब्ध छ। आफ्नो नाम, कक्षा, र अभिभावकको विवरण भरेर सबमिट गर्नुहोस्। परीक्षाको नतिजा हेर्न तल रहेको नतिजा सेक्सनमा गई आफ्नो सिम्बोल नम्बर राखेर सर्च गर्नुहोस्। धन्यवाद।";
+        speak(guideText);
+    }
+
+    // Dummy Result Database for Demonstration
+    const dummyResults = {
+        "208301": { name: "राम थापा", class: "कक्षा १० (SEE)", gpa: "A", subjects: { "नेपाली": "A", "अंग्रेजी": "B+", "गणित": "A+", "विज्ञान": "A", "सामाजिक": "B" } },
+        "208302": { name: "सिता श्रेष्ठ", class: "कक्षा १२", gpa: "B+", subjects: { "नेपाली": "B", "अंग्रेजी": "A", "एकाउन्ट": "B+", "इकनमिक्स": "A", "कम्प्युटर": "A+" } }
     };
 
-    // Voice
-    function speak(text) {
-        const msg = new SpeechSynthesisUtterance();
-        msg.text = text;
-        msg.lang = 'ne-NP';
-        window.speechSynthesis.speak(msg);
-    }
-    function welcomeVoice() {
-        setTimeout(() => speak("श्री गणेश माध्यमिक विद्यालयको पोर्टलमा स्वागत छ"), 1000);
-    }
-
-    // Lightbox for Gallery
-    function openFullImg(src) {
-        const modal = document.createElement("div");
-        modal.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:5000; cursor:pointer;";
-        modal.innerHTML = `<img src="${src}" style="max-width:90%; max-height:90%; border:5px solid white; border-radius:10px;">`;
-        modal.onclick = () => modal.remove();
-        document.body.appendChild(modal);
-    }
-
-    // QR Code
-    new QRCode(document.getElementById("qrcode"), {
-        text: window.location.href,
-        width: 130,
-        height: 130
-    });
+    // Check Result Function
     function checkResult() {
-    const symbol = document.getElementById('symbolNo').value;
-    const grade = document.getElementById('resultClass').value;
-    const display = document.getElementById('resultDisplay');
+        const symbol = document.getElementById('symbolNo').value.trim();
+        const selectedClass = document.getElementById('resultClass').value;
+        const statusDiv = document.getElementById('resultStatus');
+        const displayDiv = document.getElementById('resultDisplay');
 
-    if (symbol === "" || grade === "") {
-        alert("कृपया सिम्बोल नम्बर र कक्षा राख्नुहोस्।");
-        return;
+        statusDiv.style.display = "none";
+        displayDiv.style.display = "none";
+
+        if (!symbol || !selectedClass) {
+            statusDiv.style.display = "block";
+            statusDiv.style.background = "#ffebee";
+            statusDiv.style.color = "#c62828";
+            statusDiv.innerText = "कृपया सिम्बोल नम्बर र कक्षा दुबै छान्नुहोस्।";
+            speak("कृपया सिम्बोल नम्बर र कक्षा छान्नुहोस्");
+            return;
+        }
+
+        // Processing Search
+        if (dummyResults[symbol]) {
+            const data = dummyResults[symbol];
+            
+            document.getElementById('resName').innerText = data.name;
+            document.getElementById('resSymbol').innerText = symbol;
+            document.getElementById('resClass').innerText = data.class;
+            document.getElementById('resTotal').innerText = data.gpa;
+
+            // Generate Marksheet Table Rows
+            const tbody = document.getElementById('marksheetBody');
+            tbody.innerHTML = "";
+            for (let sub in data.subjects) {
+                let row = `<tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">${sub}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight:bold;">${data.subjects[sub]}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            }
+
+            displayDiv.style.display = "block";
+            speak("बधाई छ, तपाईंको नतिजा फेला पर्यो।");
+        } else {
+            statusDiv.style.display = "block";
+            statusDiv.style.background = "#fff3e0";
+            statusDiv.style.color = "#ef6c00";
+            statusDiv.innerText = "माफ गर्नुहोला, उक्त सिम्बोल नम्बरको नतिजा भेटिएन। कृपया सही विवरण राख्नुहोस्।";
+            speak("विवरण मिलेन, कृपया फेरि प्रयास गर्नुहोस्");
+        }
     }
 
-    // This is a dummy logic for demonstration.
-    // In a real app, you would fetch data from a database.
-    display.style.display = "block";
-    document.getElementById('studentDetails').innerHTML = `
-        <p><b>Name:</b> Student Name (Symbol: ${symbol})</p>
-        <p><b>Class:</b> ${grade}</p>
-    `;
-
-    const tableBody = document.getElementById('gradeTable');
-    tableBody.innerHTML = `
-        <tr><td style="border:1px solid #ddd; padding:8px;">English</td><td style="border:1px solid #ddd; padding:8px;">A</td></tr>
-        <tr><td style="border:1px solid #ddd; padding:8px;">Nepali</td><td style="border:1px solid #ddd; padding:8px;">B+</td></tr>
-        <tr><td style="border:1px solid #ddd; padding:8px;">Mathematics</td><td style="border:1px solid #ddd; padding:8px;">A+</td></tr>
-        <tr><td style="border:1px solid #ddd; padding:8px;">Science</td><td style="border:1px solid #ddd; padding:8px;">A</td></tr>
-    `;
-    
-    document.getElementById('gpaText').innerText = "Final GPA: 3.65";
-    
-    // Scroll to result
-    display.scrollIntoView({ behavior: 'smooth' });
+    // Gallery Image Popup Feature (Optional)
+    function openFullImg(src) {
+        alert("तपाईँले हेर्नुभएको तस्बिर: " + src + "\n(यसलाई Lightbox वा नयाँ ट्याबमा खोल्न सकिन्छ)");
     }
-    
 </script>
-
 </body>
-                </html>
-    
+</html>
+
+   नतिजा - २०८३</p>
+        <hr style="border: 1px solid #ddd; margin: 15px 0;">
+        
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold;">
+            <div>नाम: <span id="resName" style="color:var(--primary);">-</span></div>
+            <div>सिम्बोल नम्बर: <span id="resSymbol">-</span></div>
+            <div>कक्षा: <span id="resClass">-</span></div>
+        </div>
+
+        <!-- Marksheet Table -->
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; text-align: left;">
+            <thead>
+                <tr style="background: var(--primary); color: white;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">विषय (Subjects)</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">प्राप्तांक ग्रेड (Grade)</th>
+                </tr>
+            </thead>
+            <tbody id="marksheetBody">
+                <!-- JavaScript ले यहाँ डाटा भर्नेछ -->
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px; text-align: right; font-size: 1.2rem; font-weight: bold;">
+            नतिजा (Final Result): <span id="resTotal" style="color: var(--success); background: #e8f5e9; padding: 5px 15px; border-radius: 5px;">-</span>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+            <button onclick="window.print()" class="btn-submit" style="background: #555; padding: 10px 20px; width: auto;">🖨️ मार्कशीट प्रिन्ट गर्नुहोस्</button>
+        </div>
+    </div>
+</section>
+
+<section id="developer">
+    <h2>वेबसाइट डेभलपर (Developer Info)</h2>
+    <div class="dev-card">
+        <img src="https://via.placeholder.com/100x100.png?text=SB" alt="Srijan" class="dev-pic">
+        <div>
+            <h3 style="margin: 0 0 5px 0; color: var(--primary);"सिर्जन भट्टराई</h3>
+            <p style="margin: 0 0 10px 0; font-weight: bold; color: #666;">वेब डेभलपर | IT विद्यार्थी</p>
+            <p style="margin: 0;">यस श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेब पोर्टल र नतिजा व्यवस्थापन प्रणाली स्थानीय प्रविधि क्षमताको उपयोग गरी निर्माण गरिएको हो।</p>
+        </div>
+    </div>
+</section>
+
+<!-- Theme Toggle Button -->
+<button class="theme-btn" onclick="toggleTheme()">🌓</button>
+
+<script>
+    // Live Clock & Date
+    function updateClock() {
+        const now = new Date();
+        
+        // Date Formatting
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date').innerText = now.toLocaleDateString('ne-NP', options);
+        
+        // Clock Formatting
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+        
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        
+        document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Dark Mode Toggle
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+    }
+
+    // Voice Synthesis (Nepali Text to Speech)
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Prior speech clear
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ne-NP';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("तपाईँको ब्राउजरले आवाज प्रणाली सपोर्ट गरेन।");
+        }
+    }
+
+    function startFamilyGuide() {
+        const guideText = "श्री गणेश माध्यमिक विद्यालयको डिजिटल पोर्टलमा स्वागत छ। नयाँ शैक्षिक सत्र २०८३ को अनलाइन भर्ना आबेदन फारम माथि उपलब्ध छ। आफ्नो नाम, कक्षा, र अभिभावकको विवरण भरेर सबमिट गर्नुहोस्। परीक्षाको नतिजा हेर्न तल रहेको नतिजा सेक्सनमा गई आफ्नो सिम्बोल नम्बर राखेर सर्च गर्नुहोस्। धन्यवाद।";
+        speak(guideText);
+    }
+
+    // Dummy Result Database for Demonstration
+    const dummyResults = {
+        "208301": { name: "राम थापा", class: "कक्षा १० (SEE)", gpa: "A", subjects: { "नेपाली": "A", "अंग्रेजी": "B+", "गणित": "A+", "विज्ञान": "A", "सामाजिक": "B" } },
+        "208302": { name: "सिता श्रेष्ठ", class: "कक्षा १२", gpa: "B+", subjects: { "नेपाली": "B", "अंग्रेजी": "A", "एकाउन्ट": "B+", "इकनमिक्स": "A", "कम्प्युटर": "A+" } }
+    };
+
+    // Check Result Function
+    function checkResult() {
+        const symbol = document.getElementById('symbolNo').value.trim();
+        const selectedClass = document.getElementById('resultClass').value;
+        const statusDiv = document.getElementById('resultStatus');
+        const displayDiv = document.getElementById('resultDisplay');
+
+        statusDiv.style.display = "none";
+        displayDiv.style.display = "none";
+
+        if (!symbol || !selectedClass) {
+            statusDiv.style.display = "block";
+            statusDiv.style.background = "#ffebee";
+            statusDiv.style.color = "#c62828";
+            statusDiv.innerText = "कृपया सिम्बोल नम्बर र कक्षा दुबै छान्नुहोस्।";
+            speak("कृपया सिम्बोल नम्बर र कक्षा छान्नुहोस्");
+            return;
+        }
+
+        // Processing Search
+        if (dummyResults[symbol]) {
+            const data = dummyResults[symbol];
+            
+            document.getElementById('resName').innerText = data.name;
+            document.getElementById('resSymbol').innerText = symbol;
+            document.getElementById('resClass').innerText = data.class;
+            document.getElementById('resTotal').innerText = data.gpa;
+
+            // Generate Marksheet Table Rows
+            const tbody = document.getElementById('marksheetBody');
+            tbody.innerHTML = "";
+            for (let sub in data.subjects) {
+                let row = `<tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">${sub}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-weight:bold;">${data.subjects[sub]}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            }
+
+            displayDiv.style.display = "block";
+            speak("बधाई छ, तपाईंको नतिजा फेला पर्यो।");
+        } else {
+            statusDiv.style.display = "block";
+            statusDiv.style.background = "#fff3e0";
+            statusDiv.style.color = "#ef6c00";
+            statusDiv.innerText = "माफ गर्नुहोला, उक्त सिम्बोल नम्बरको नतिजा भेटिएन। कृपया सही विवरण राख्नुहोस्।";
+            speak("विवरण मिलेन, कृपया फेरि प्रयास गर्नुहोस्");
+        }
+    }
+
+    // Gallery Image Popup Feature (Optional)
+    function openFullImg(src) {
+        alert("तपाईँले हेर्नुभएको तस्बिर: " + src + "\n(यसलाई Lightbox वा नयाँ ट्याबमा खोल्न सकिन्छ)");
+    }
+</script>
+</body>
+</html>
