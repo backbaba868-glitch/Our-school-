@@ -230,7 +230,6 @@
     <h2>हाम्रा शिक्षक तथा कर्मचारीहरू (२३ सदस्यहरू)</h2>
     <div class="teacher-grid">
         <!-- New Accountant Addition -->
-        <div class="teacher-card"><img src="https://via.placeholder.com/200x200.png?text=No+Image"><div class="t-info"><h3>Dipa</h3><p>लेखापाल (Accountant)</p></div></div>
         
         <div class="teacher-card"><img src="https://i.imgur.com/MHBF7pF.jpeg"><div class="t-info"><h3>Keshar Adhikari</h3><p>प्रधानाध्यापक</p></div></div>
         <div class="teacher-card"><img src="https://i.imgur.com/7XQKRUN.jpeg"><div class="t-info"><h3>Ram Kumar Giri</h3><p>सूचना अधिकारी</p></div></div>
@@ -350,9 +349,9 @@
 <section id="developer">
     <h2>वेबसाइट डेभलपर (Developer Info)</h2>
     <div class="dev-card">
-        <img src="https://via.placeholder.com/100x100.png?text=SB" alt="Srijan" class="dev-pic">
+        <img src="https://i.imgur.com/X7Ff8qT.jpeg" alt="Srijan" class="dev-pic">
         <div>
-            <h3 style="margin: 0 0 5px 0; color: var(--primary);">सृजन भट्टराई</h3>
+            <h3 style="margin: 0 0 5px 0; color: var(--primary);">सिर्जन भट्टराई</h3>
             <p style="margin: 0 0 10px 0; font-weight: bold; color: #666;">वेब डेभलपर | IT विद्यार्थी</p>
             <p style="margin: 0;">यस श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेब पोर्टल र नतिजा व्यवस्थापन प्रणाली स्थानीय प्रविधि क्षमताको उपयोग गरी निर्माण गरिएको हो।</p>
         </div>
@@ -472,159 +471,4 @@
 </body>
 </html>
 
-   नतिजा - २०८३</p>
-        <hr style="border: 1px solid #ddd; margin: 15px 0;">
-        
-        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold;">
-            <div>नाम: <span id="resName" style="color:var(--primary);">-</span></div>
-            <div>सिम्बोल नम्बर: <span id="resSymbol">-</span></div>
-            <div>कक्षा: <span id="resClass">-</span></div>
-        </div>
-
-        <!-- Marksheet Table -->
-        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; text-align: left;">
-            <thead>
-                <tr style="background: var(--primary); color: white;">
-                    <th style="padding: 10px; border: 1px solid #ddd;">विषय (Subjects)</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">प्राप्तांक ग्रेड (Grade)</th>
-                </tr>
-            </thead>
-            <tbody id="marksheetBody">
-                <!-- JavaScript ले यहाँ डाटा भर्नेछ -->
-            </tbody>
-        </table>
-
-        <div style="margin-top: 20px; text-align: right; font-size: 1.2rem; font-weight: bold;">
-            नतिजा (Final Result): <span id="resTotal" style="color: var(--success); background: #e8f5e9; padding: 5px 15px; border-radius: 5px;">-</span>
-        </div>
-
-        <div style="text-align: center; margin-top: 25px;">
-            <button onclick="window.print()" class="btn-submit" style="background: #555; padding: 10px 20px; width: auto;">🖨️ मार्कशीट प्रिन्ट गर्नुहोस्</button>
-        </div>
-    </div>
-</section>
-
-<section id="developer">
-    <h2>वेबसाइट डेभलपर (Developer Info)</h2>
-    <div class="dev-card">
-        <img src="https://via.placeholder.com/100x100.png?text=SB" alt="Srijan" class="dev-pic">
-        <div>
-            <h3 style="margin: 0 0 5px 0; color: var(--primary);"सिर्जन भट्टराई</h3>
-            <p style="margin: 0 0 10px 0; font-weight: bold; color: #666;">वेब डेभलपर | IT विद्यार्थी</p>
-            <p style="margin: 0;">यस श्री गणेश माध्यमिक विद्यालयको आधिकारिक वेब पोर्टल र नतिजा व्यवस्थापन प्रणाली स्थानीय प्रविधि क्षमताको उपयोग गरी निर्माण गरिएको हो।</p>
-        </div>
-    </div>
-</section>
-
-<!-- Theme Toggle Button -->
-<button class="theme-btn" onclick="toggleTheme()">🌓</button>
-
-<script>
-    // Live Clock & Date
-    function updateClock() {
-        const now = new Date();
-        
-        // Date Formatting
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('date').innerText = now.toLocaleDateString('ne-NP', options);
-        
-        // Clock Formatting
-        let hours = now.getHours();
-        let minutes = now.getMinutes();
-        let seconds = now.getSeconds();
-        
-        hours = hours < 10 ? '0' + hours : hours;
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        
-        document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Dark Mode Toggle
-    function toggleTheme() {
-        document.body.classList.toggle('dark');
-    }
-
-    // Voice Synthesis (Nepali Text to Speech)
-    function speak(text) {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); // Prior speech clear
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'ne-NP';
-            utterance.rate = 0.9;
-            window.speechSynthesis.speak(utterance);
-        } else {
-            alert("तपाईँको ब्राउजरले आवाज प्रणाली सपोर्ट गरेन।");
-        }
-    }
-
-    function startFamilyGuide() {
-        const guideText = "श्री गणेश माध्यमिक विद्यालयको डिजिटल पोर्टलमा स्वागत छ। नयाँ शैक्षिक सत्र २०८३ को अनलाइन भर्ना आबेदन फारम माथि उपलब्ध छ। आफ्नो नाम, कक्षा, र अभिभावकको विवरण भरेर सबमिट गर्नुहोस्। परीक्षाको नतिजा हेर्न तल रहेको नतिजा सेक्सनमा गई आफ्नो सिम्बोल नम्बर राखेर सर्च गर्नुहोस्। धन्यवाद।";
-        speak(guideText);
-    }
-
-    // Dummy Result Database for Demonstration
-    const dummyResults = {
-        "208301": { name: "राम थापा", class: "कक्षा १० (SEE)", gpa: "A", subjects: { "नेपाली": "A", "अंग्रेजी": "B+", "गणित": "A+", "विज्ञान": "A", "सामाजिक": "B" } },
-        "208302": { name: "सिता श्रेष्ठ", class: "कक्षा १२", gpa: "B+", subjects: { "नेपाली": "B", "अंग्रेजी": "A", "एकाउन्ट": "B+", "इकनमिक्स": "A", "कम्प्युटर": "A+" } }
-    };
-
-    // Check Result Function
-    function checkResult() {
-        const symbol = document.getElementById('symbolNo').value.trim();
-        const selectedClass = document.getElementById('resultClass').value;
-        const statusDiv = document.getElementById('resultStatus');
-        const displayDiv = document.getElementById('resultDisplay');
-
-        statusDiv.style.display = "none";
-        displayDiv.style.display = "none";
-
-        if (!symbol || !selectedClass) {
-            statusDiv.style.display = "block";
-            statusDiv.style.background = "#ffebee";
-            statusDiv.style.color = "#c62828";
-            statusDiv.innerText = "कृपया सिम्बोल नम्बर र कक्षा दुबै छान्नुहोस्।";
-            speak("कृपया सिम्बोल नम्बर र कक्षा छान्नुहोस्");
-            return;
-        }
-
-        // Processing Search
-        if (dummyResults[symbol]) {
-            const data = dummyResults[symbol];
-            
-            document.getElementById('resName').innerText = data.name;
-            document.getElementById('resSymbol').innerText = symbol;
-            document.getElementById('resClass').innerText = data.class;
-            document.getElementById('resTotal').innerText = data.gpa;
-
-            // Generate Marksheet Table Rows
-            const tbody = document.getElementById('marksheetBody');
-            tbody.innerHTML = "";
-            for (let sub in data.subjects) {
-                let row = `<tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">${sub}</td>
-                    <td style="padding: 10px; border: 1px solid #ddd; font-weight:bold;">${data.subjects[sub]}</td>
-                </tr>`;
-                tbody.innerHTML += row;
-            }
-
-            displayDiv.style.display = "block";
-            speak("बधाई छ, तपाईंको नतिजा फेला पर्यो।");
-        } else {
-            statusDiv.style.display = "block";
-            statusDiv.style.background = "#fff3e0";
-            statusDiv.style.color = "#ef6c00";
-            statusDiv.innerText = "माफ गर्नुहोला, उक्त सिम्बोल नम्बरको नतिजा भेटिएन। कृपया सही विवरण राख्नुहोस्।";
-            speak("विवरण मिलेन, कृपया फेरि प्रयास गर्नुहोस्");
-        }
-    }
-
-    // Gallery Image Popup Feature (Optional)
-    function openFullImg(src) {
-        alert("तपाईँले हेर्नुभएको तस्बिर: " + src + "\n(यसलाई Lightbox वा नयाँ ट्याबमा खोल्न सकिन्छ)");
-    }
-</script>
-</body>
-</html>
+       
